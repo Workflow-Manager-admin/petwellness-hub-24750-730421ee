@@ -231,23 +231,71 @@ function Dashboard() {
  * Summary Card for dashboard grid - rounded, pastel, icon, animated progress bar
  */
 function SummaryCard({ label, value, icon, progress, color }) {
-  // For Appointments card, use .card-main-flex to better constrain and wrap the text.
+  // For Appointments card, use a special horizontal flex row for main content.
   const isAppointments = label === "Appointments";
   return (
-    <div className="summary-card shadow-card" tabIndex={0} style={{"--bg-accent": color, flex: '1 1 0', minWidth:172, maxWidth:260}}>
-      <div className="card-icon" style={{background: color+"22"}}>
+    <div
+      className="summary-card shadow-card"
+      tabIndex={0}
+      style={{
+        "--bg-accent": color,
+        flex: '1 1 0',
+        minWidth: 172,
+        maxWidth: 260
+      }}
+    >
+      <div className="card-icon" style={{ background: color + "22" }}>
         <span>{icon}</span>
       </div>
       {/* 
         LAYOUT FIX: 
-        - For Appointments card, apply .card-main-flex class to switch main area to a flex column with wrap and min-width constraint.
-        - Ensures the value (e.g., 'Next: 5/26') does not overflow parent, and wraps if required.
+        - For Appointments card, .card-main-flex-row sets flex row, aligns items, reduces padding for single line fit.
+        - For others, keep default column flex.
       */}
-      <div className={isAppointments ? "card-main card-main-flex" : "card-main"}>
-        {/* Prevent wrapping on label forcibly for Appointments */}
-        <div className="card-label" style={isAppointments ? {whiteSpace:"nowrap"} : {}}>{label}</div>
-        <div className="card-value">{value}</div>
-        <div className="card-progress">
+      <div
+        className={
+          isAppointments
+            ? "card-main card-main-flex-row"
+            : "card-main"
+        }
+        style={
+          isAppointments
+            ? { alignItems: "center", minWidth: 0, paddingRight: 2 }
+            : undefined
+        }
+      >
+        <div
+          className="card-label"
+          style={
+            isAppointments
+              ? {
+                  whiteSpace: "nowrap",
+                  paddingRight: 7,
+                  fontWeight: 600
+                }
+              : {}
+          }
+        >
+          {label}
+        </div>
+        <div
+          className="card-value"
+          style={
+            isAppointments
+              ? {
+                  margin: 0,
+                  fontSize: "1.09rem",
+                  fontWeight: 700,
+                  whiteSpace: "nowrap",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis"
+                }
+              : {}
+          }
+        >
+          {value}
+        </div>
+        <div className="card-progress" style={isAppointments ? { marginLeft: "auto", width: 68, minWidth: 48 } : {}}>
           <div
             className="progress-bar"
             style={{
