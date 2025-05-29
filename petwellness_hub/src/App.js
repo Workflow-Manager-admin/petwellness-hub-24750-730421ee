@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import TopNavBar from "./TopNavBar";
+import LandingPage from "./LandingPage";
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Profile from "./Profile";
