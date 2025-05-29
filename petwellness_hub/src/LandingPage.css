@@ -379,8 +379,11 @@ section {
   height: 141px;
   z-index: 0;
   pointer-events: none;
-  overflow-x: hidden;
   box-sizing: border-box;
+  overflow-x: hidden;
+  /* Responsive clamp */
+  min-width: 0;
+  max-width: 100vw;
 }
 
 /* === TESTIMONIALS === */
