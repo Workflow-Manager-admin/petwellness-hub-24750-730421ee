@@ -48,9 +48,7 @@ function Profile() {
   ]);
 
   const [notes, setNotes] = useState(
-    "2024-06-18: Fido loved his new puzzle toy! Noticed a bit of a limp after walk; will monitor for a few days. Appetite is great.
-
-2024-06-12: Quick afternoon swim. Next grooming: end of June."
+    "2024-06-18: Fido loved his new puzzle toy! Noticed a bit of a limp after walk; will monitor for a few days. Appetite is great.\n\n2024-06-12: Quick afternoon swim. Next grooming: end of June."
   );
 
   // For the owner panel
