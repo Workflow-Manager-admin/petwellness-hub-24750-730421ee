@@ -196,6 +196,7 @@
 .dropdown-submenu .dropdown-caret {
   float: right;
 }
+/* Default: right-aligned submenu for .dropdown-submenu */
 .dropdown-submenu .dropdown-menu {
   left: 100%;
   top: 0;
@@ -204,6 +205,18 @@
   min-width: 165px;
   box-shadow: 0 6px 18px 0 rgba(120,120,80,0.15);
 }
+
+/* LEFT-aligned submenu for Account/Support in Settings */
+.dropdown-submenu-left > .dropdown-menu {
+  left: auto;
+  right: 100%;
+  margin-left: 0;
+  margin-right: -4px;
+  margin-top: -4px;
+  min-width: 165px;
+  box-shadow: 0 6px 18px 0 rgba(120,120,80,0.15);
+}
+
 .dropdown-submenu.open > .dropdown-menu {
   display: flex;
 }
@@ -291,6 +304,14 @@
     top: 0;
     min-width: 100%;
     margin: 0;
+    box-shadow: none;
+  }
+  .dropdown-submenu-left > .dropdown-menu {
+    position: static;
+    left: 0;
+    right: unset;
+    min-width: 100%;
+    margin-right: 0;
     box-shadow: none;
   }
   .dropdown.open > .dropdown-menu,
