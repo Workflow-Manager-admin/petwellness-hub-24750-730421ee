@@ -254,6 +254,16 @@
   font-size: 0.98em;
   margin-left: 8px;
 }
+
+/* Only affects the owner's name and phone in Owner Info */
+.owner-black {
+  color: #000 !important;
+}
+
+/* Only for the specific Medical Overview clinic/date line */
+.clinic-green {
+  color: green !important;
+}
 .profile-owner-emergency {
   background: #ffeaa8;
   padding: 5px 10px;

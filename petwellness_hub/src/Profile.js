@@ -235,11 +235,13 @@ function Profile() {
             {showOwnerPanel && (
               <div className="profile-owner-details">
                 <div>
-                  <Icon name="owner" /> <b>{owner.name}</b>
+                  <Icon name="owner" />{" "}
+                  <b className="owner-black">{owner.name}</b>
                   <span className="profile-owner-rel">({owner.relationship})</span>
                 </div>
                 <div>
-                  <Icon name="phone" /> {owner.contact}
+                  <Icon name="phone" />{" "}
+                  <span className="owner-black">{owner.contact}</span>
                 </div>
                 <div className="profile-owner-emergency">
                   <span>
@@ -321,7 +323,7 @@ function Profile() {
                 <span className="profile-medical-label">
                   <Icon name="vet" /> Last Vet Visit:
                 </span>{" "}
-                {medical.lastVet}
+                <span className="clinic-green">{medical.lastVet}</span>
               </div>
               <div>
                 <span className="profile-medical-label">
