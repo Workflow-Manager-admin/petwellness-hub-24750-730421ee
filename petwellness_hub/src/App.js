@@ -3,6 +3,9 @@ import './App.css';
 import TopNavBar from "./TopNavBar";
 import LandingPage from "./LandingPage";
 
+// Import Dashboard (fix missing import)
+import Dashboard from "./Dashboard";
+
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Profile from "./Profile";
 import HealthTracker from "./HealthTracker";
@@ -19,6 +22,11 @@ function App() {
         <main>
           <div className="container" style={{ paddingTop: 80 }}>
             <Routes>
+              {/* Dashboard route FIX */}
+              <Route
+                path="/dashboard"
+                element={<Dashboard />}
+              />
               <Route
                 path="/profile"
                 element={<Profile />}
