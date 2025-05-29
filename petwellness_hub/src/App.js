@@ -40,6 +40,19 @@ function App() {
                 element={<DietNutrition />}
               />
               <Route
+                path="/diet-nutrition"
+                element={<DietNutrition />}
+              />
+              <Route
+                path="/appointments/manage"
+                element={
+                  <div>
+                    <h1>Appointments Manage</h1>
+                    <p>This is the Appointments management page.</p>
+                  </div>
+                }
+              />
+              <Route
                 path="/activity"
                 element={<Activity />}
               />
