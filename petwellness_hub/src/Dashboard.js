@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import "./Dashboard.css";
-// You may need to install icon packages for FontAwesome/Lucide - using emoji and SVG here as placeholder.
-// Uncomment and install libraries as needed for production: 
-// import { FaPaw, FaHeartbeat, FaUtensils, FaRunning, FaCalendarAlt, FaBell, FaChevronDown, FaCheckCircle, FaClock, FaPlus, FaExchangeAlt, FaQuoteLeft } from "react-icons/fa";
+import { Link, useNavigate } from "react-router-dom"; // Import React Router
 
 // PUBLIC_INTERFACE
 function Dashboard() {
@@ -23,6 +21,14 @@ function Dashboard() {
   const today = new Date();
   const formattedDate = today.toLocaleDateString(undefined, { weekday: "long", month: "short", day: "numeric" });
 
+  // Dashboard card navigation targets for each card
+  const navTargets = {
+    Health: "/health-tracker",
+    Diet: "/diet-nutrition",
+    Activity: "/activity",
+    Appointments: "/appointments/manage",
+  };
+
   const summaryCards = [
     {
       label: "Health",
@@ -30,6 +36,7 @@ function Dashboard() {
       icon: "🩺", // Substitute with FaHeartbeat or similar
       progress: 90,
       color: "var(--dashboard-green)",
+      nav: navTargets.Health,
     },
     {
       label: "Diet",
@@ -37,6 +44,7 @@ function Dashboard() {
       icon: "🥕", // Substitute with FaUtensils
       progress: 78,
       color: "var(--dashboard-orange)",
+      nav: navTargets.Diet,
     },
     {
       label: "Activity",
@@ -44,6 +52,7 @@ function Dashboard() {
       icon: "🏃‍♂️", // Substitute with FaRunning
       progress: 60,
       color: "var(--dashboard-blue)",
+      nav: navTargets.Activity,
     },
     {
       label: "Appointments",
@@ -51,6 +60,7 @@ function Dashboard() {
       icon: "📅", // Substitute with FaCalendarAlt
       progress: 100,
       color: "var(--dashboard-purple)",
+      nav: navTargets.Appointments,
     },
   ];
 
@@ -136,6 +146,7 @@ function Dashboard() {
             icon={card.icon}
             progress={card.progress}
             color={card.color}
+            nav={card.nav}
           />
         ))}
       </section>
