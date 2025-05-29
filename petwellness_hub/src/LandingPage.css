@@ -199,6 +199,8 @@ section {
   height: 310px;
   margin-top: 10px;
   margin-right: 0;
+  max-width: 100vw;
+  overflow: hidden; /* clamp any floating icons or illus */
 }
 .furever-hero-illus {
   width: 100%;
@@ -207,6 +209,8 @@ section {
   border-radius: 24px;
   box-shadow: 0 8px 34px 0 #a2c88a23, 0 2px 6px 0 #71706f16;
   transition: transform 0.35s cubic-bezier(.86,0,.07,1);
+  max-width: 100%;
+  overflow: hidden;
 }
 /* Floating glass icons for subtle animation */
 .furever-hero-float-icon {
@@ -222,6 +226,7 @@ section {
   font-size: 2rem;
   /* Animate subtle float on hover of parent .furever-hero-illus-wrapper */
   transition: transform 0.27s cubic-bezier(.7,.22,.17,1.54), box-shadow 0.25s;
+  max-width: 80vw; /* clamp icon in hero wrapper */
 }
 .furever-hero-illus-wrapper:hover .furever-hero-float-icon,
 .furever-hero-illus-wrapper:focus .furever-hero-float-icon {
@@ -229,10 +234,10 @@ section {
   transform: translateY(-8px) scale(1.08) rotate(-3deg);
   box-shadow: 0 10px 25px 0 #8aa18233;
 }
-/* Icon positions */
-.furever-float-1 { left: -36px; top: 14px; }
-.furever-float-2 { right: -22px; top: 46px; background: rgba(232,122,65,0.16);}
-.furever-float-3 { left: 24px; bottom: -20px; background: rgba(138,161,130,0.14); }
+/* Icon positions bounded so they never overflow horizontally */
+.furever-float-1 { left: 0; top: 14px; }
+.furever-float-2 { right: 0; top: 46px; background: rgba(232,122,65,0.16);}
+.furever-float-3 { left: 24px; bottom: 0; background: rgba(138,161,130,0.14); }
 
 /* === FEATURES SECTION === */
 .furever-features {
@@ -704,6 +709,8 @@ section {
   height: 310px;
   margin-top: 10px;
   margin-right: 0;
+  max-width: 100vw;
+  overflow: hidden; /* clamp any floating icons or illus */
 }
 .furever-hero-illus {
   width: 100%;
@@ -712,6 +719,8 @@ section {
   border-radius: 24px;
   box-shadow: 0 8px 34px 0 #a2c88a23, 0 2px 6px 0 #71706f16;
   transition: transform 0.35s cubic-bezier(.86,0,.07,1);
+  max-width: 100%;
+  overflow: hidden;
 }
 /* Floating glass icons for subtle animation */
 .furever-hero-float-icon {
