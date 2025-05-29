@@ -63,10 +63,10 @@ function Profile() {
   ]);
 
   // PUBLIC_INTERFACE
-  function handleEditPet(() => {
+  function handleEditPet() {
     // TODO: Wire this to open edit modal/form
     alert("Edit pet details coming soon!");
-  });
+  }
 
   // PUBLIC_INTERFACE
   function handleEditInfo(field) {
