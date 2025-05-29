@@ -99,6 +99,21 @@ function TopNavBar() {
                   Profile
                 </a>
               </li>
+              <li>
+                <a href="/health-tracker" tabIndex={openDropdown === "mypets" ? 0 : -1} onClick={closeAllDropdowns}>
+                  Health Tracker
+                </a>
+              </li>
+              <li>
+                <a href="/nutrition" tabIndex={openDropdown === "mypets" ? 0 : -1} onClick={closeAllDropdowns}>
+                  Diet &amp; Nutrition
+                </a>
+              </li>
+              <li>
+                <a href="/activity" tabIndex={openDropdown === "mypets" ? 0 : -1} onClick={closeAllDropdowns}>
+                  Activity
+                </a>
+              </li>
             </ul>
           </li>
 
