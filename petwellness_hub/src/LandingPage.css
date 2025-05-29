@@ -614,6 +614,16 @@ body,
    - For dark mode: Use [data-theme="dark"] and override color vars only
 === */
 
+/* --- EXPLANATION OF LAYOUT REFACTOR ---
+  All page sections (.furever-landing, .furever-hero, .furever-features, .furever-about-story,
+  .furever-testimonials, .furever-footer, .furever-footer-inner and grids) are now set to 
+  width: 100%, max-width: 1200px, and margin: 0 auto.
+  html/body has a soft gradient background.
+  All previous 100vw or full-bleed styles are contained to the main page width.
+  margin-left: 0 and margin-right:0 or auto ensure central alignment, never pushed left.
+  No negative left margin, no side overlays/edges.
+*/
+
 /* Hero Section */
 .furever-hero {
   display: flex;
