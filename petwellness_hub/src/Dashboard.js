@@ -234,7 +234,7 @@ function SummaryCard({ label, value, icon, progress, color }) {
   // For Appointments card, use .card-main-flex to better constrain and wrap the text.
   const isAppointments = label === "Appointments";
   return (
-    <div className="summary-card shadow-card" tabIndex={0} style={{"--bg-accent": color}}>
+    <div className="summary-card shadow-card" tabIndex={0} style={{"--bg-accent": color, flex: '1 1 0', minWidth:172, maxWidth:260}}>
       <div className="card-icon" style={{background: color+"22"}}>
         <span>{icon}</span>
       </div>
@@ -244,7 +244,8 @@ function SummaryCard({ label, value, icon, progress, color }) {
         - Ensures the value (e.g., 'Next: 5/26') does not overflow parent, and wraps if required.
       */}
       <div className={isAppointments ? "card-main card-main-flex" : "card-main"}>
-        <div className="card-label">{label}</div>
+        {/* Prevent wrapping on label forcibly for Appointments */}
+        <div className="card-label" style={isAppointments ? {whiteSpace:"nowrap"} : {}}>{label}</div>
         <div className="card-value">{value}</div>
         <div className="card-progress">
           <div
