@@ -226,9 +226,10 @@
   justify-content: center;
   align-items: flex-end;
   gap: 6vw 66px;
-  max-width: 1090px;
-  margin: 0 auto;
-  padding: 92px 2vw 72px 2vw;
+  width: 100vw;
+  max-width: 100vw;
+  margin: 0;
+  padding: 92px 0 72px 0;
   min-height: 330px;
 }
 .furever-about-content {
@@ -276,15 +277,18 @@
 
 /* Testimonials */
 .furever-testimonials {
-  margin: 0 auto;
-  max-width: 1100px;
-  padding: 62px 2vw 18px 2vw;
+  width: 100vw;
+  max-width: 100vw;
+  margin: 0;
+  padding: 62px 0 18px 0;
 }
 .furever-testimonial-grid {
   display: flex;
   flex-wrap: wrap;
   gap: 34px;
   justify-content: center;
+  width: 100vw;
+  max-width: 100vw;
 }
 .furever-testimonial-card {
   background: rgba(255,255,255,0.82);
