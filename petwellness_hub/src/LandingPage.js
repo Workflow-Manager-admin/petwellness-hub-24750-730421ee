@@ -1,16 +1,26 @@
 import React from "react";
 import "./LandingPage.css";
 
-// PUBLIC_INTERFACE
+/**
+ * PUBLIC_INTERFACE
+ * LandingPage: The modern principal area for FurEverCare landing.
+ * Refactored: 
+ * - Full edge-to-edge gradient background, overflow-x hidden, no horizontal scroll or black bars at any device width.
+ * - Global box-sizing and max-width rules anchor all sections flush with viewport.
+ * - Consistent use of Poppins/Nunito fonts, variables/colors, and whitespace for every main area.
+ * - Comments and structure clarify which classes/containers solve the no-scroll and flush/fit goals.
+ * - Active hover/animation on major CTAs and feature cards.
+ */
 function LandingPage() {
-  /**
-   * FurEverCare Landing Page - Hero, Features, About, (optional) Testimonials, Footer.
-   * - Placeholder images/icons are used.
-   * - Ready for future animation/dark mode upgrades.
-   */
   return (
+    // Root: background, no overflow, box sizing. All further style/box rules in LandingPage.css!
     <div className="furever-landing">
-      {/* Hero Section */}
+      {/* 
+        HERO SECTION
+        - Centered text and call-to-action
+        - Buttons with lively gradient/hover 
+        - Edge-clamped container, never allows scroll past viewport
+      */}
       <section className="furever-hero">
         <div className="furever-hero-left">
           <h1 className="furever-hero-title">
@@ -22,23 +32,29 @@ function LandingPage() {
             Track health, nutrition, activity, and more—all in one beautiful dashboard.
           </p>
           <div className="furever-hero-cta-row" style={{justifyContent: 'center', width: '100%'}}>
-            <a href="/signup" className="furever-btn furever-btn-gradient" tabIndex={0}>Get Started</a>
-            <a href="/profile" className="furever-btn furever-btn-glass" tabIndex={0}>See Dashboard</a>
+            {/* "Get Started" with animated gradient bg and button lift */}
+            <a href="/signup" className="furever-btn furever-btn-gradient" tabIndex={0}>
+              Get Started
+            </a>
+            {/* Glass style secondary button */}
+            <a href="/profile" className="furever-btn furever-btn-glass" tabIndex={0}>
+              See Dashboard
+            </a>
           </div>
           <div className="furever-hero-note">
             {/* Could add AOS/GSAP for fade-in: See <LandingPage.css> for upgrade comment */}
             <span role="img" aria-label="paw">🐾</span> Loved by pet parents and vets.
           </div>
         </div>
+        {/* Main illustration and floating icon accents, flush with edge */}
         <div className="furever-hero-right">
-          {/* Main dashboard illustration */}
           <div className="furever-hero-illus-wrapper">
             <img
               className="furever-hero-illus"
               src="https://undraw.co/api/illustrations/038ae9e2-b5e2-48a6-973b-f47153b57c46"
               alt="Pet dashboard illustration (placeholder)"
             />
-            {/* Floating icons */}
+            {/* Floating, softly-animated icons: No overflow */}
             <div className="furever-hero-float-icon furever-float-1" title="Profile">
               <span role="img" aria-label="profile">🐶</span>
             </div>
@@ -48,12 +64,14 @@ function LandingPage() {
             <div className="furever-hero-float-icon furever-float-3" title="Checked">
               <span role="img" aria-label="check">✅</span>
             </div>
-            {/* Placeholders for possible parallax animation */}
-            {/* TODO: Add parallax with GSAP/AOS in upgrade */}
           </div>
         </div>
       </section>
-      {/* Key Features */}
+      {/* 
+        KEY FEATURES
+        - Four cards, animated glass hover.
+        - Never overflows, grid spans flush.
+      */}
       <section className="furever-features">
         <h2 className="furever-section-title">Key Features</h2>
         <div className="furever-features-grid">
@@ -79,16 +97,19 @@ function LandingPage() {
           />
         </div>
       </section>
-      {/* About/Our Story */}
+      {/* 
+        ABOUT/STORY SECTION
+        - Two-column layout: text and visual.
+        - No horizontal illegality, all widths flush.
+      */}
       <section className="furever-about-story">
         <div className="furever-about-content">
           <h2 className="furever-section-title">Our Story</h2>
           <p>
-            FurEverCare began with a simple mission: to help every pet thrive and every owner feel confident. 
+            FurEverCare began with a simple mission: to help every pet thrive and every owner feel confident.
             Our founders, both pet lovers and technologists, wanted to build a safer, more joyful world for animals—using the power of modern technology and design.
             Join us as we make pet wellness easy, accessible, and beautiful!
           </p>
-          {/* Could add chat widget or timeline animation here */}
         </div>
         <div className="furever-about-illus-wrapper">
           <img
@@ -97,7 +118,7 @@ function LandingPage() {
             className="furever-about-illus"
           />
         </div>
-        {/* SVG background for soft curves */}
+        {/* Decorative SVG curve - width is unconstrained, so edge is flush */}
         <svg className="furever-about-bg-svg" viewBox="0 0 500 160" preserveAspectRatio="none">
           <path
             d="M0,48 C180,120 320,10 500,70 L500,00 L0,0 Z"
@@ -105,7 +126,11 @@ function LandingPage() {
           />
         </svg>
       </section>
-      {/* (Optional) Testimonials */}
+      {/* 
+        TESTIMONIALS
+        - User cards, hover/animation for delight and engagement.
+        - Responsive and always fits grid to full width (no black gaps).
+      */}
       <section className="furever-testimonials">
         <h2 className="furever-section-title">What Users Say</h2>
         <div className="furever-testimonial-grid">
@@ -126,7 +151,11 @@ function LandingPage() {
           />
         </div>
       </section>
-      {/* Footer */}
+      {/* 
+        FOOTER
+        - Brand, links, socials - full width, gradient background.
+        - Enforces no-gap edge-to-edge policy
+      */}
       <footer className="furever-footer">
         <div className="furever-footer-inner">
           <div className="furever-footer-brand">
@@ -155,9 +184,11 @@ function LandingPage() {
   );
 }
 
-// PUBLIC_INTERFACE
+/**
+ * PUBLIC_INTERFACE
+ * Glassmorphism feature card for features grid, includes hover/transition style in CSS.
+ */
 function FeatureCard({ icon, title, desc }) {
-  /** @public Glassmorphism feature card */
   return (
     <div className="furever-feature-card">
       <div className="furever-feature-icon">{icon}</div>
@@ -167,9 +198,11 @@ function FeatureCard({ icon, title, desc }) {
   );
 }
 
-// PUBLIC_INTERFACE
+/**
+ * PUBLIC_INTERFACE
+ * Testimonial card for user reviews, hover/clickable.
+ */
 function TestimonialCard({ avatar, user, feedback }) {
-  /** @public Glass testimonial card */
   return (
     <div className="furever-testimonial-card">
       <div className="furever-testimonial-avatar">
