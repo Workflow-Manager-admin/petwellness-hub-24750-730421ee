@@ -38,12 +38,7 @@ function App() {
               <Route
                 path="/"
                 element={
-                  <div className="hero">
-                    <div className="subtitle">AI Workflow Manager Template</div>
-                    <h1 className="title">petwellness_hub</h1>
-                    <div className="description">Start building your application.</div>
-                    <button className="btn btn-large">Button</button>
-                  </div>
+                  <LandingPage />
                 }
               />
             </Routes>
