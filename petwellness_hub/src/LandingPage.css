@@ -85,8 +85,8 @@ body,
   justify-content: space-between;
   align-items: stretch;
   width: 100%;
-  max-width: 100vw;
-  margin: 0;
+  max-width: 1200px;
+  margin: 0 auto !important;
   padding: 4vw 0 56px 0;
   gap: 2vw;
   position: relative;
@@ -262,9 +262,9 @@ body,
 
 /* === FEATURES SECTION === */
 .furever-features {
-  width: 100vw;
-  max-width: 100vw;
-  margin: 0;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto !important;
   padding: 38px 0 14px 0;
   box-sizing: border-box;
   overflow-x: hidden;
