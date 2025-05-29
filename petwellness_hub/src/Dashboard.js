@@ -231,12 +231,19 @@ function Dashboard() {
  * Summary Card for dashboard grid - rounded, pastel, icon, animated progress bar
  */
 function SummaryCard({ label, value, icon, progress, color }) {
+  // For Appointments card, use .card-main-flex to better constrain and wrap the text.
+  const isAppointments = label === "Appointments";
   return (
     <div className="summary-card shadow-card" tabIndex={0} style={{"--bg-accent": color}}>
       <div className="card-icon" style={{background: color+"22"}}>
         <span>{icon}</span>
       </div>
-      <div className="card-main">
+      {/* 
+        LAYOUT FIX: 
+        - For Appointments card, apply .card-main-flex class to switch main area to a flex column with wrap and min-width constraint.
+        - Ensures the value (e.g., 'Next: 5/26') does not overflow parent, and wraps if required.
+      */}
+      <div className={isAppointments ? "card-main card-main-flex" : "card-main"}>
         <div className="card-label">{label}</div>
         <div className="card-value">{value}</div>
         <div className="card-progress">
