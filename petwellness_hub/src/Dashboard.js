@@ -240,10 +240,93 @@ function Dashboard() {
 
 /**
  * Summary Card for dashboard grid - rounded, pastel, icon, animated progress bar
+ *
+ * If a nav prop is present, renders the card as a React Router <Link>
  */
-function SummaryCard({ label, value, icon, progress, color }) {
+function SummaryCard({ label, value, icon, progress, color, nav }) {
   // For Appointments card, use a special horizontal flex row for main content.
   const isAppointments = label === "Appointments";
+  // ARIA: role=link if nav; tabIndex=0 for navigability; aria-label for readers
+
+  // Keyboard support for click-like navigation if not using <Link>
+  // (for completeness, here we prefer <Link> as main, for SPA router).
+  if (nav) {
+    return (
+      <Link
+        className="summary-card shadow-card"
+        tabIndex={0}
+        style={{
+          "--bg-accent": color,
+          flex: '1 1 0',
+          minWidth: 172,
+          maxWidth: 260,
+          textDecoration: "none", // Remove link underline
+        }}
+        to={nav}
+        role="link"
+        aria-label={`Go to ${label} section`}
+      >
+        <div className="card-icon" style={{ background: color + "22" }}>
+          <span>{icon}</span>
+        </div>
+        <div
+          className={
+            isAppointments
+              ? "card-main card-main-flex-row"
+              : "card-main"
+          }
+          style={
+            isAppointments
+              ? { alignItems: "center", minWidth: 0, paddingRight: 2 }
+              : undefined
+          }
+        >
+          <div
+            className="card-label"
+            style={
+              isAppointments
+                ? {
+                    whiteSpace: "nowrap",
+                    paddingRight: 7,
+                    fontWeight: 600
+                  }
+                : {}
+            }
+          >
+            {label}
+          </div>
+          <div
+            className="card-value"
+            style={
+              isAppointments
+                ? {
+                    margin: 0,
+                    fontSize: "1.09rem",
+                    fontWeight: 700,
+                    whiteSpace: "nowrap",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis"
+                  }
+                : {}
+            }
+          >
+            {value}
+          </div>
+          <div className="card-progress" style={isAppointments ? { marginLeft: "auto", width: 68, minWidth: 48 } : {}}>
+            <div
+              className="progress-bar"
+              style={{
+                width: `${progress}%`,
+                background: color,
+                transition: "width 0.65s cubic-bezier(.31,.6,.16,1.19)"
+              }}
+            />
+          </div>
+        </div>
+      </Link>
+    );
+  }
+  // Fallback: div as before if no nav (should not be reached)
   return (
     <div
       className="summary-card shadow-card"
@@ -252,17 +335,14 @@ function SummaryCard({ label, value, icon, progress, color }) {
         "--bg-accent": color,
         flex: '1 1 0',
         minWidth: 172,
-        maxWidth: 260
+        maxWidth: 260,
       }}
+      role="link"
+      aria-label={`Go to ${label} section`}
     >
       <div className="card-icon" style={{ background: color + "22" }}>
         <span>{icon}</span>
       </div>
-      {/* 
-        LAYOUT FIX: 
-        - For Appointments card, .card-main-flex-row sets flex row, aligns items, reduces padding for single line fit.
-        - For others, keep default column flex.
-      */}
       <div
         className={
           isAppointments
