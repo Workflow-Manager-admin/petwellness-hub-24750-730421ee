@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,600,700|Nunito:400,700&display=swap');
 
+/* Failsafe: never show horizontal scroll on LandingPage */
+html, body {
+  overflow-x: hidden !important;
+  max-width: 100vw !important;
+}
 /* Global background and font */
 .furever-landing {
   min-height: 100vh;
