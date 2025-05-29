@@ -215,6 +215,27 @@
   flex-direction: column;
   gap: 7px;
 }
+
+/* LAYOUT FIX: 
+    .card-main-flex enables flex wrapping and min-width constraint to handle overflow safely for Appointments card content */
+.card-main-flex {
+  flex-direction: column;
+  flex-wrap: wrap;
+  min-width: 0;
+  word-break: break-word;
+  /* Padding right to avoid edge overflow for long text (e.g., Next: 11/30, Next: Vaccination 6/2) */
+  padding-right: 4px;
+}
+
+/* LAYOUT FIX:
+   .card-value uses flex-grow and min-width 0 to ensure text like 'Next: 5/26' wraps instead of overflowing the card boundary */
+.card-main-flex .card-value {
+  min-width: 0;
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
 .card-label {
   color: #8aa182;
   font-weight: 600;
