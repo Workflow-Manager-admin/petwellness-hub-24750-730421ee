@@ -15,10 +15,17 @@
 html, body {
   margin: 0 !important;
   padding: 0 !important;
-  overflow-x: hidden !important;
+  overflow-x: hidden !important; /* Prevent horizontal scroll on all viewport sizes */
   max-width: 100vw !important;
   box-sizing: border-box;
 }
+
+/* Clamp x-overflow globally for Landing page; no horizontal bleed/scroll possible */
+body,
+.furever-landing {
+  overflow-x: hidden !important;
+}
+
 /* Everything is border-box (safe for all devices) */
 *, *::before, *::after {
   box-sizing: inherit;
