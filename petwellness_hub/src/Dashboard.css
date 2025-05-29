@@ -429,11 +429,27 @@
 }
 
 .dashboard-analytics {
-  background: linear-gradient(96deg,#f8fbfa 70%,#f0e6fc 100%);
+  background: linear-gradient(96deg,#fffefd 78%, #f4faf5 93%, #f0e6fc 100%);
   border-radius: var(--dashboard-radius);
-  box-shadow: var(--dashboard-shadow);
+  /* Add a bright box-shadow/glow and a subtle border for pop */
+  box-shadow:
+    0 0 0 5px #fffa  /* large glow border */,
+    0 8px 32px 0 #fbecfd7c,
+    0 4px 18px #b6e8ea42,
+    var(--dashboard-shadow);
+  border: 2.5px solid #fff7e766;
   position: relative;
   min-width: 265px;
+  /* subtle animation on hover for stronger effect */
+  transition: box-shadow .22s, background .19s;
+}
+.dashboard-analytics:hover {
+  box-shadow:
+    0 0 0 10px #fff6cc92, 
+    0 14px 48px #eddafd7c, 
+    0 9px 30px #d2f6e766,
+    var(--dashboard-shadow);
+  background: linear-gradient(90deg,#fffefa 88%, #f8eafd 100%);
 }
 .analytics-content {
   display: flex;
@@ -443,19 +459,45 @@
   gap: 21px;
   padding: 11px 0;
   min-height: 114px;
+  /* Make the content more visually distinct */
 }
 .analytics-illus {
-  background: #e7f7f3;
-  border-radius: 15px;
-  padding: 13px 18px;
-  box-shadow: 0 1px 6px #d0eaea66;
+  background: #fffbe7;
+  border-radius: 22px;
+  padding: 17px 22px;
+  box-shadow:
+    0 2px 12px #fbeacf6b,
+    0 1.5px 8px #eafeea8a,
+    0 2px 18px #e6ebf933;
   margin-bottom: 7px;
+  border: 2px solid #fafaf688;
+  filter: brightness(1.12) saturate(1.1) drop-shadow(0 0 10px #f9fbc440);
+  /* Add a subtle up-glow below chart bars for highlight */
+  position: relative;
+  overflow: visible;
+}
+.analytics-illus::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  bottom: -7px;
+  height: 18px;
+  border-radius: 30px;
+  background: radial-gradient(ellipse at center, #fff6cc66 0%, transparent 90%);
+  opacity: 0.63;
+  pointer-events: none;
+  z-index: 2;
 }
 .analytics-callout {
-  font-size: 1rem;
-  color: #738b85;
+  font-size: 1.07rem;
+  color: #615497;
   text-align: center;
   margin-top: 7px;
+  font-weight: 600;
+  text-shadow: 0 2px 8px #fffbe799;
+  letter-spacing: 0.01em;
 }
 
 .dashboard-recents {
