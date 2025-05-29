@@ -173,6 +173,7 @@
   }
 }
 
+/* --- Clickable Summary Card - overrides for <Link> & accessibility --- */
 .summary-card {
   background: var(--dashboard-card);
   border-radius: var(--dashboard-radius);
@@ -185,17 +186,47 @@
   min-width: 172px;
   max-width: 260px;
   flex: 1 1 0;
-  transition: box-shadow .23s, transform .18s;
+  transition: box-shadow .23s, transform .18s, border-color .15s;
   cursor: pointer;
   border: 2.5px solid transparent;
   /* Ensure all cards, especially the last one ("Appointments"), maintain width parity */
+  outline: none;
+  user-select: none;
+  /* Remove underline for links */
+  text-decoration: none !important;
+  color: inherit !important;
+  position: relative;
 }
 .summary-card:focus,
-.summary-card:hover {
+.summary-card:hover,
+.summary-card:active {
   box-shadow: 0 11px 36px #ecd8ed55, 0 4.5px 22px #a2d99833;
   transform: translateY(-3px) scale(1.03) rotate(-1deg);
   border: 2.5px solid var(--bg-accent, #8aa182);
+  outline: none;
+  z-index: 2;
 }
+
+.summary-card:focus-visible {
+  box-shadow: 0 0 0 3px #ff9c5a99, 0 11px 36px #ecd8ed55;
+  outline: 2.5px solid var(--bg-accent, #E87A41);
+}
+
+.summary-card[role="link"]:hover,
+.summary-card[role="link"]:focus,
+.summary-card[aria-label]:hover {
+  background: #fafafa;
+}
+
+.summary-card:active {
+  filter: brightness(0.98);
+  transform: scale(0.99);
+}
+
+.summary-card * {
+  pointer-events: none; /* let link capture all pointer events */
+}
+
 
 .card-icon {
   background: #f7f9fc;
