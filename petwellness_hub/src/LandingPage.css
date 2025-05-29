@@ -43,15 +43,16 @@ section {
 .furever-landing {
   min-height: 100vh;
   width: 100vw; /* Always fill viewport width */
-  max-width: 100vw;
-  min-width: 0;
+  max-width: 100vw !important;
+  min-width: 0 !important;
   margin: 0 !important;
   padding: 0;
   background: linear-gradient(110deg, #f6f7fc 0%, #eaf6f6 60%, #fcf8ee 100%);
   font-family: 'Poppins', 'Nunito', Arial, sans-serif;
   color: #23281e;
   position: relative;
-  overflow-x: hidden;
+  /* Enforce no x-overflow for all child floats/absolutely-positioned elements */
+  overflow-x: hidden !important;
   /* Padding for navbar overlay, removed lateral padding for flush fit */
   padding-top: 72px;
 }
@@ -62,14 +63,15 @@ section {
   flex-direction: row;
   justify-content: space-between;
   align-items: stretch;
-  width: 100vw;
+  width: 100%;
   max-width: 100vw;
   margin: 0;
   padding: 4vw 0 56px 0;
   gap: 2vw;
   position: relative;
   box-sizing: border-box;
-  overflow-x: hidden;
+  overflow-x: hidden; /* Prevent floats from overflowing parent */
+  flex-wrap: wrap;
 }
 
 /* --- HERO LEFT --- */
@@ -255,7 +257,7 @@ section {
   gap: 38px;
   flex-wrap: wrap;
   justify-content: center;
-  width: 100vw;
+  width: 100%;
   max-width: 100vw;
   padding: 0 16px;
   box-sizing: border-box;
