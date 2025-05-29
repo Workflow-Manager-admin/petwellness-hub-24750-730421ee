@@ -563,14 +563,16 @@ section {
     padding-left: 4vw;
     padding-right: 4vw;
     box-sizing: border-box;
-    max-width: 100vw;
-    width: 100%;
-    overflow-x: hidden;
+    max-width: 100vw !important;
+    width: 100% !important;
+    overflow-x: hidden !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
   }
   .furever-features-grid,
   .furever-testimonial-grid { flex-direction: column; }
   .furever-feature-card,
-  .furever-testimonial-card { max-width: 98vw; min-width: 0; }
+  .furever-testimonial-card { max-width: 98vw; min-width: 0; width: 100%; }
   .furever-about-illus-wrapper { height: 170px; }
 }
 
@@ -1059,14 +1061,16 @@ section {
     padding-left: 4vw;
     padding-right: 4vw;
     box-sizing: border-box;
-    max-width: 100vw;
-    width: 100%;
-    overflow-x: hidden;
+    max-width: 100vw !important;
+    width: 100% !important;
+    overflow-x: hidden !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
   }
   .furever-features-grid,
   .furever-testimonial-grid { flex-direction: column; }
   .furever-feature-card,
-  .furever-testimonial-card { max-width: 98vw; min-width: 0; }
+  .furever-testimonial-card { max-width: 98vw; min-width: 0; width: 100%; }
   .furever-about-illus-wrapper { height: 170px; }
 }
 
