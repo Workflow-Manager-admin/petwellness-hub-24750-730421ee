@@ -246,6 +246,11 @@
   text-align: left;
   margin-bottom: 19px;
 }
+@media (max-width: 900px) {
+  .furever-about-story .furever-section-title {
+    text-align: center;
+  }
+}
 .furever-about-content p {
   font-size: 1.13rem;
   line-height: 1.67;
@@ -343,6 +348,7 @@
   color: #504;
   margin-bottom: 8px;
   text-align: center;
+  width: 100%;
 }
 .furever-testimonial-stars {
   font-size: 1.15rem;
