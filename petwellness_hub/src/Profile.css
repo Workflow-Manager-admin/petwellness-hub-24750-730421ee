@@ -1,0 +1,530 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,600,700|Inter:400,600|Roboto:400,500&display=swap');
+
+/* --- Color palette: Soft teal, blue, coral, background washes ---
+   Use .css variables if desired for extensibility.
+   See also Dashboard.css and App.css for primary vars.
+*/
+:root {
+  --profile-teal: #8aa182;
+  --profile-coral: #F18C63;
+  --profile-coral-light: #f9d7cc;
+  --profile-blue: #62aadd;
+  --profile-pink: #f8b2d1;
+  --profile-pastel: #e7f7f3;
+  --profile-yellow: #ffeaa8;
+  --profile-section-bg: #f9fafc;
+  --profile-card-bg: #fff;
+  --profile-soft-shadow: 0 4px 22px 0 #8aa18228;
+  --profile-border: #e6ebe9;
+  --profile-gray: #6d7d83;
+}
+
+/* --- Page root --- */
+.profile-root {
+  font-family: 'Poppins', 'Inter', 'Roboto', Arial, sans-serif;
+  background: linear-gradient(105deg, #f2fcfa 0%, #fbeee8 60%, #f8e7fa 100%);
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 0 46px 0;
+  min-height: 100vh;
+}
+
+@media (max-width: 950px) {
+  .profile-root {
+    padding: 0 0 22px 0;
+  }
+}
+
+/* --- Header - Circular avatar, name, edit, shadow/bg --- */
+.profile-header-bg {
+  background: linear-gradient(110deg, #e7f7f3 40%, #faebe1 100%);
+  border-radius: 0 0 36px 36px;
+  box-shadow: var(--profile-soft-shadow);
+  padding: 32px 0 27px 0;
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 186px;
+  position: relative;
+}
+
+.profile-header-inner {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.profile-pet-photo {
+  width: 128px;
+  height: 128px;
+  border-radius: 55%;
+  box-shadow: 0 8px 34px 0 #f18c6346, 0 4px 17px #8aa18236;
+  background: #fff;
+  object-fit: cover;
+  border: 5px solid #fff9da;
+  position: relative;
+}
+
+.profile-header-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.profile-pet-name {
+  font-size: 2.35rem;
+  font-weight: 700;
+  color: var(--profile-teal);
+  display: flex;
+  align-items: center;
+  gap: 17px;
+}
+
+.profile-pet-breed {
+  color: var(--profile-coral);
+  font-size: 1.09rem;
+  background: #fffbe9;
+  border-radius: 11px;
+  padding: 5px 13px;
+  box-shadow: 0 2px 11px #f18c6326, 0 1px 6px #8aa18212;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.profile-edit-btn {
+  background: #fff9da;
+  color: var(--profile-coral);
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  box-shadow: 0 0 0 #fff0, 0 1px 2px #fbeee8;
+  padding: 5px 11px 5px 10px;
+  font-size: 1.17rem;
+  cursor: pointer;
+  margin-left: 12px;
+  transition: background .19s;
+}
+.profile-edit-btn:hover,
+.profile-row-edit-btn:hover,
+.profile-notes-edit-btn:hover {
+  background: var(--profile-pink);
+  color: #f18c63;
+  box-shadow: 0 3px 9px #f8b2d155;
+}
+
+/* --- Card Grid --- */
+.profile-cards-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+  max-width: 1120px;
+  margin: 0 auto;
+  align-items: flex-start;
+}
+
+@media (max-width: 1000px) {
+  .profile-cards-2col {
+    grid-template-columns: 1fr;
+    gap: 27px;
+    max-width: 95vw;
+  }
+}
+
+.profile-col {
+  display: flex;
+  flex-direction: column;
+  gap: 33px;
+}
+
+/* --- Section Card --- */
+.profile-section {
+  background: var(--profile-section-bg);
+  border-radius: 19px;
+  box-shadow: var(--profile-soft-shadow);
+  border: 2.2px solid var(--profile-border);
+  padding: 28px 32px 21px 32px;
+  margin-bottom: 7px;
+  position: relative;
+  min-width: 0;
+  min-height: 65px;
+  transition: box-shadow .21s;
+}
+@media (max-width: 800px) {
+  .profile-section {
+    padding: 16px 9vw 11px 8vw;
+  }
+}
+
+.profile-section:hover {
+  box-shadow: 0 9px 33px #f18c631c, 0 3px 13px #8aa18219;
+}
+
+/* --- Section/Card Title --- */
+.profile-card-title {
+  font-size: 1.23rem;
+  font-weight: 700;
+  color: var(--profile-teal);
+  margin-bottom: 18px;
+  letter-spacing: 0.01em;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+/* --- Basic Info Grid --- */
+.profile-info-card {
+  background: #fff;
+  border-color: #eeeee4;
+}
+.profile-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 0;
+}
+@media (max-width: 700px) {
+  .profile-info-grid {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+}
+
+.profile-info-row {
+  display: flex;
+  align-items: center;
+  padding: 6px 7px;
+  gap: 8px;
+  border-radius: 7px;
+  transition: background .12s;
+  font-size: 1.07rem;
+  color: var(--profile-gray);
+}
+
+.profile-info-icon {
+  margin-right: 7px;
+  font-size: 1.1em;
+  color: var(--profile-coral);
+}
+
+.profile-info-label {
+  font-weight: 600;
+  margin-right: 10px;
+  color: #719490;
+  min-width: 68px;
+}
+
+.profile-info-value {
+  color: #6b4c2c;
+  background: #f8f5ea;
+  border-radius: 10px;
+  padding: 3.1px 12px;
+  margin-right: 8px;
+  font-size: 1.01rem;
+  flex: 1;
+}
+
+.profile-row-edit-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.01rem;
+  color: var(--profile-coral);
+  padding: 3px 8px;
+  border-radius: 6px;
+  margin-left: -1px;
+}
+
+/* --- Owner Info Card --- */
+.profile-owner-card {
+  background: var(--profile-pastel);
+  border-color: #d8e9e7;
+}
+.profile-owner-details {
+  font-size: 1.14rem;
+  margin-top: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.profile-owner-rel {
+  color: var(--profile-coral);
+  font-size: 0.98em;
+  margin-left: 8px;
+}
+.profile-owner-emergency {
+  background: #ffeaa8;
+  padding: 5px 10px;
+  border-radius: 7px;
+  margin-top: 6px;
+  font-size: 1.02rem;
+  color: #d37e60;
+}
+
+/* --- Medical Overview Card --- */
+.profile-medical-card {
+  background: #fffdfa;
+  border-color: #edeee6;
+}
+.profile-medical-row > div {
+  margin-bottom: 7px;
+}
+.profile-medical-label {
+  font-weight: 600;
+  color: var(--profile-blue);
+  margin-right: 6px;
+}
+.profile-medical-status {
+  color: var(--profile-teal);
+  font-weight: 700;
+}
+.profile-badge {
+  display: inline-block;
+  border-radius: 11px;
+  padding: 2.7px 14px;
+  margin-left: 7px;
+  font-size: 0.95em;
+  font-weight: 500;
+  background: #f4faf9;
+  color: #6d7d83;
+}
+.badge-condition { background: #f0eaff; color: #8960c7; }
+.badge-allergy { background: #fff6ea; color: #e08167; }
+.badge-meds { background: #edf6fe; color: #5d95b6; }
+.badge-none { background: #e4f3e7; color: #80c37d; }
+.profile-medical-history-btn {
+  margin-top: 13px;
+  background: var(--profile-blue);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1.01rem;
+  padding: 6px 25px;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 0 2px 10px #62aadd35;
+  transition: background .17s;
+}
+.profile-medical-history-btn:hover {
+  background: #6fc3ee;
+}
+
+/* --- Vaccination Panel --- */
+.profile-vax-card {
+  background: #f2fcfa;
+  border-color: #dbf1e7;
+}
+.profile-vax-list {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-bottom: 12px;
+}
+.profile-vax-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.07rem;
+  padding: 5px 0;
+}
+.profile-vax-complete { color: #68c188; }
+.profile-vax-due { color: #f18c63; }
+.profile-vax-upcoming { color: #61b0dd; }
+.profile-vax-label { font-weight: 600; min-width: 100px; }
+.profile-vax-date {
+  margin-left: 12px;
+  background: #e7f7f3;
+  color: #539c7d;
+  border-radius: 7px;
+  padding: 1.5px 12px;
+  font-size: 0.96em;
+}
+.profile-vax-add-btn {
+  background: var(--profile-coral);
+  color: #fff;
+  border: none;
+  border-radius: 9px;
+  padding: 6px 19px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 9px;
+  box-shadow: 0 1px 7px #f18c6323;
+  transition: background .18s;
+}
+.profile-vax-add-btn:hover { background: #fabeab; color: var(--profile-coral); }
+
+/* --- Notes Card (Digital Diary style) --- */
+.profile-notes-card {
+  background: #fff7f0;
+  border-color: #f8e5d5;
+}
+.profile-notes-area {
+  background: #fffefb;
+  border-radius: 18px;
+  box-shadow: 0 1px 7px #f9c4a854;
+  font-family: 'Poppins', 'Inter', monospace;
+  padding: 16px 17px 12px 17px;
+  min-height: 72px;
+  font-size: 1.09rem;
+  line-height: 1.47;
+  color: #914d2d;
+  letter-spacing: 0.004em;
+  white-space: pre-wrap;
+  position: relative;
+}
+.profile-notes-edit-btn {
+  position: absolute;
+  top: 10px;
+  right: 13px;
+  background: transparent;
+  border: none;
+  color: var(--profile-coral);
+  font-size: 1.19rem;
+  cursor: pointer;
+  transition: color .15s;
+}
+
+.profile-notes-area pre {
+  margin: 0;
+  font-family: inherit;
+  background: none;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: inherit;
+  font-size: inherit;
+  border: none;
+  box-shadow: none;
+}
+
+/* --- Attachments --- */
+.profile-attachments-card {
+  background: #edf8fe;
+  border-color: #c5e1ef;
+}
+.profile-attachments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-bottom: 13px;
+}
+.profile-attachment-preview {
+  background: #f8fafd;
+  border: 1.3px solid #e2effa;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 6px 13px;
+  box-shadow: 0 2px 9px #c5e1ef22;
+  font-size: 1.03rem;
+}
+.profile-img-thumb {
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  object-fit: cover;
+  background: #fff;
+  border: 1px solid #efefef;
+  margin-right: 2px;
+}
+.preview-icon {
+  font-size: 1.41em;
+}
+.preview-filename {
+  flex: 1;
+  margin-left: 2px;
+  word-break: break-all;
+}
+.profile-attachment-delete-btn {
+  background: none;
+  border: none;
+  color: #d37e60;
+  border-radius: 6px;
+  padding: 4px 8px;
+  cursor: pointer;
+  transition: background .12s;
+  font-size: 1.17rem;
+}
+.profile-attachment-delete-btn:hover {
+  background: #ffebec;
+  color: #ea5255;
+}
+.profile-attachments-upload {
+  display: flex;
+  justify-content: flex-start;
+}
+.profile-attachments-upload-btn {
+  background: var(--profile-teal);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1.01rem;
+  padding: 5px 17px;
+  margin-top: 4px;
+  cursor: pointer;
+  box-shadow: 0 1px 8px #8aa18217;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  transition: background .18s;
+}
+.profile-attachments-upload-btn:hover {
+  background: var(--profile-blue);
+  color: #fff;
+}
+
+/* --- General icon helper --- */
+.profile-icon {
+  vertical-align: middle;
+  margin-right: 4px;
+  user-select: none;
+  font-size: 1.09em;
+}
+
+/* --- Pet Age Subtle --- */
+.profile-pet-age {
+  color: #b28646;
+  font-weight: 600;
+  font-size: 0.92em;
+  margin-left: 4px;
+}
+
+/* --- Responsive tweaks --- */
+@media (max-width: 600px) {
+  .profile-section {
+    padding: 11px 3vw 9px 3vw;
+  }
+  .profile-header-inner {
+    flex-direction: column;
+    align-items: center;
+    gap: 13px;
+  }
+  .profile-header-bg {
+    min-height: 136px;
+    padding: 23px 0 16px 0;
+  }
+  .profile-cards-2col {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .profile-root {
+    padding: 0 0 12px 0;
+  }
+}
+
+/* --- Scrapbook-like divider accents and animation placeholder ---
+  Insert: borders, corners, stickers, subtle box shadows if desired.
+  Could add section border graphics or SVG behind .profile-section.
+  
+  For transitions, add:
+  .profile-section { animation: fadeSlideIn .3s cubic-bezier(.45,.58,.12,1.08);}
+  @keyframes fadeSlideIn {
+    from { opacity: 0; transform: translateY(22px) scale(.98);}
+    to { opacity:1; transform: none;}
+  }
+*/
