@@ -153,10 +153,10 @@
 
 .dashboard-card-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 28px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
   margin: 0 0 22px 0;
-  padding: 0 35px;
+  padding: 0 28px;
 }
 @media (max-width: 1100px) {
   .dashboard-card-grid {
@@ -180,12 +180,13 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 18px;
-  padding: 23px 22px;
+  gap: 16px;
+  padding: 20px 15px 20px 16px; /* slightly reduced horizontal padding */
   min-width: 0;
   transition: box-shadow .23s, transform .18s;
   cursor: pointer;
   border: 2.5px solid transparent;
+  /* Ensure all cards, especially the last one ("Appointments"), maintain width parity */
 }
 .summary-card:focus,
 .summary-card:hover {
