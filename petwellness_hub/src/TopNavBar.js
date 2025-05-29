@@ -95,42 +95,8 @@ function TopNavBar() {
             </button>
             <ul className="dropdown-menu">
               <li>
-                <a href="/pets" tabIndex={openDropdown === "mypets" ? 0 : -1} onClick={closeAllDropdowns}>
-                  All Pets
-                </a>
-              </li>
-              <li>
-                <a href="/pets/add" tabIndex={openDropdown === "mypets" ? 0 : -1} onClick={closeAllDropdowns}>
-                  Add New Pet
-                </a>
-              </li>
-              <li>
-                <a href="/pets/manage" tabIndex={openDropdown === "mypets" ? 0 : -1} onClick={closeAllDropdowns}>
-                  Manage Profiles
-                </a>
-              </li>
-              {/* New: Profile */}
-              <li>
                 <a href="/profile" tabIndex={openDropdown === "mypets" ? 0 : -1} onClick={closeAllDropdowns}>
                   Profile
-                </a>
-              </li>
-              {/* New: Health Tracker */}
-              <li>
-                <a href="/health-tracker" tabIndex={openDropdown === "mypets" ? 0 : -1} onClick={closeAllDropdowns}>
-                  Health Tracker
-                </a>
-              </li>
-              {/* New: Diet & Nutrition */}
-              <li>
-                <a href="/nutrition" tabIndex={openDropdown === "mypets" ? 0 : -1} onClick={closeAllDropdowns}>
-                  Diet &amp; Nutrition
-                </a>
-              </li>
-              {/* New: Activity */}
-              <li>
-                <a href="/activity" tabIndex={openDropdown === "mypets" ? 0 : -1} onClick={closeAllDropdowns}>
-                  Activity
                 </a>
               </li>
             </ul>
