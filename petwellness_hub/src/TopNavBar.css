@@ -1,0 +1,318 @@
+:root {
+  --fur-primary: #8aa182;
+  --fur-accent: #71706f;
+  --fur-navbar-bg: #ffffff;
+  --fur-navbar-shadow: 0 2px 8px 0 rgba(50,60,44,0.08);
+  --fur-link: #444;
+  --fur-link-active: var(--fur-primary);
+  --fur-link-hover: #525a44;
+  --fur-dropdown-bg: #f5f7f1;
+  --fur-border: #d1d5ae;
+  --fur-text: #20231c;
+  --fur-navbar-height: 62px;
+}
+
+/* Main navbar */
+.furever-navbar {
+  width: 100%;
+  min-height: var(--fur-navbar-height);
+  background: var(--fur-navbar-bg);
+  box-shadow: var(--fur-navbar-shadow);
+  border-bottom: 1px solid var(--fur-border);
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 998;
+  font-family: "Inter", system-ui, Arial, sans-serif;
+}
+
+.furever-navbar-inner {
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2vw;
+  position: relative;
+}
+
+.furever-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.furever-logo-symbol {
+  display: block;
+  line-height: 0;
+}
+
+.furever-logo-text {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--fur-primary);
+  letter-spacing: 0.04em;
+  transition: color .23s;
+}
+
+.furever-logo:hover .furever-logo-text {
+  color: var(--fur-accent);
+}
+
+.furever-navbar-links {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+  font-size: 1.05rem;
+  font-weight: 500;
+  background: none;
+}
+
+/* Hamburger shown on mobile only */
+.furever-navbar-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  width: 42px;
+  height: 38px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 8px;
+  z-index: 1002;
+}
+.furever-navbar-hamburger span {
+  display: block;
+  width: 28px;
+  height: 4px;
+  margin: 4px 0;
+  border-radius: 4px;
+  background: var(--fur-primary);
+  transition: all 0.24s cubic-bezier(0.68,-0.55,0.27,1.55);
+}
+
+/* Main links */
+.furever-navbar-links > li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  transition: background .13s;
+}
+
+.furever-navbar-links > li > a,
+.furever-navbar-links > li > button {
+  padding: 10px 18px;
+  color: var(--fur-link);
+  text-decoration: none;
+  background: none;
+  border: none;
+  outline: none;
+  font-size: inherit;
+  font-family: inherit;
+  cursor: pointer;
+  border-radius: 7px;
+  transition: background 0.13s, color 0.2s;
+  white-space: nowrap;
+}
+
+/* Active, hover states */
+.furever-navbar-links > li > a:hover,
+.furever-navbar-links > li.open > button,
+.furever-navbar-links > li > button:focus {
+  color: var(--fur-link-active);
+  background: #ecf4ed;
+}
+
+/* Dropdown Carat */
+.dropdown-caret {
+  font-size: 0.8em;
+  margin-left: 6px;
+  color: var(--fur-accent);
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  flex-direction: column;
+  min-width: 172px;
+  z-index: 1001;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--fur-dropdown-bg);
+  border-radius: 8px;
+  box-shadow: 0 4px 10px 0 rgba(120,120,80,0.11);
+  margin-top: 6px;
+  padding: 4px 0;
+  border: 1px solid var(--fur-border);
+}
+
+.dropdown.open > .dropdown-menu {
+  display: flex;
+}
+
+.dropdown-menu > li > a,
+.dropdown-menu > li > button {
+  display: block;
+  padding: 10px 24px 10px 18px;
+  color: var(--fur-link);
+  font-weight: 500;
+  background: none;
+  border: none;
+  text-decoration: none;
+  text-align: left;
+  border-radius: 0;
+  width: 100%;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1rem;
+  outline: none;
+  transition: background 0.11s, color 0.18s;
+}
+
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > button:hover,
+.dropdown-menu > li > a:focus {
+  background: #e6eee4;
+  color: var(--fur-link-active);
+}
+
+/* Nested dropdowns */
+.dropdown-submenu {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.dropdown-submenu .dropdown-caret {
+  float: right;
+}
+.dropdown-submenu .dropdown-menu {
+  left: 100%;
+  top: 0;
+  margin-left: -4px;
+  margin-top: -4px;
+  min-width: 165px;
+  box-shadow: 0 6px 18px 0 rgba(120,120,80,0.15);
+}
+.dropdown-submenu.open > .dropdown-menu {
+  display: flex;
+}
+.dropdown-submenu > button {
+  width: 100%;
+  text-align: left;
+}
+
+.furever-navbar-links .dropdown-menu > li {
+  width: 100%;
+  display: flex;
+}
+
+/* Notifications (with emoji bell) */
+.furever-navbar-links > li > a[aria-label*="Reminders"] {
+  color: var(--fur-accent);
+}
+
+/* Responsive Styles */
+@media (max-width: 900px) {
+  .furever-navbar-inner {
+    max-width: none;
+    padding: 0 5vw;
+  }
+  .furever-navbar-links > li > a,
+  .furever-navbar-links > li > button {
+    padding: 10px 11px;
+    font-size: 1rem;
+  }
+}
+@media (max-width: 700px) {
+  .furever-navbar {
+    min-height: 50px;
+    --fur-navbar-height: 50px;
+  }
+  .furever-navbar-inner {
+    padding: 0 2vw;
+  }
+  .furever-navbar-links {
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    width: 85vw;
+    max-width: 340px;
+    flex-direction: column;
+    background: var(--fur-navbar-bg);
+    align-items: flex-start;
+    gap: 0;
+    padding: 92px 0 0 0;
+    transform: translateX(110%);
+    transition: transform .23s cubic-bezier(0.53,0.05,0.66,0.99);
+    box-shadow: -8px 0 40px 0 rgba(120,120,80,0.08);
+    z-index: 1003;
+  }
+  .furever-navbar-links.open {
+    transform: translateX(0%);
+  }
+
+  .furever-navbar-links > li {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .furever-navbar-links > li > a,
+  .furever-navbar-links > li > button {
+    padding: 14px 18px;
+    width: 100%;
+    border-radius: 0;
+    text-align: left;
+    border-bottom: 1px solid var(--fur-border);
+    background: none;
+  }
+
+  .dropdown-menu {
+    position: static;
+    border: none;
+    box-shadow: none;
+    margin: 0;
+    min-width: 100%;
+  }
+  .dropdown-submenu .dropdown-menu {
+    position: static;
+    left: 0;
+    top: 0;
+    min-width: 100%;
+    margin: 0;
+    box-shadow: none;
+  }
+  .dropdown.open > .dropdown-menu,
+  .dropdown-submenu.open > .dropdown-menu {
+    position: static;
+  }
+
+  .furever-navbar-hamburger {
+    display: flex;
+  }
+}
+
+/* Backdrop overlay for mobile menu */
+.furever-navbar-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1002;
+  background: rgba(70, 80, 60, 0.13);
+  cursor: pointer;
+  animation: fadeIn 0.16s;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
