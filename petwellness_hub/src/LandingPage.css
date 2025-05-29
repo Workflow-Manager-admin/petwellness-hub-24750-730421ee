@@ -1,25 +1,572 @@
+/* 
+  LandingPage.css
+  - Edge-to-edge, overflow-x: hidden, full gradient background
+  - Remove browser default margins/paddings globally
+  - Apply consistent box-sizing, fonts (Poppins/Nunito), colors, spacing across all main LandingPage elements
+  - Interactive hover (lift, gradient, shadow) for buttons/cards
+  - All spacing, width, and overflow rules prevent horizontal scrolling or "black" borders
+*/
+
+/* Import modern font-families for visual consistency */
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,600,700|Nunito:400,700&display=swap');
 
-/* Failsafe: never show horizontal scroll on LandingPage */
+/* === GLOBAL RESETS === */
+/* Remove ALL default spacing and enforce universal box-sizing */
 html, body {
+  margin: 0 !important;
+  padding: 0 !important;
   overflow-x: hidden !important;
   max-width: 100vw !important;
+  box-sizing: border-box;
 }
-/* Global background and font */
+/* Everything is border-box (safe for all devices) */
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+/* Remove margins on all sections by default */
+section {
+  margin: 0 !important;
+  padding: 0;
+}
+
+/* === ROOT LANDING CONTAINER === */
+/* 
+  .furever-landing: full-page gradient, soft pattern, base font + color, flush width 
+*/
 .furever-landing {
   min-height: 100vh;
-  background: linear-gradient(135deg, #edf9ee 0%, #dae8e2 60%, #fff8ec 100%);
+  width: 100vw; /* Always fill viewport width */
+  max-width: 100vw;
+  min-width: 0;
+  margin: 0 !important;
+  padding: 0;
+  background: linear-gradient(110deg, #f6f7fc 0%, #eaf6f6 60%, #fcf8ee 100%);
   font-family: 'Poppins', 'Nunito', Arial, sans-serif;
   color: #23281e;
-  box-sizing: border-box;
-  padding-top: 72px; /* For navbar overlay */
-  width: 100%;
-  min-width: 0;
-  overflow-x: hidden;
-  /* Explicitly constrain the root width and prevent overflow */
-  max-width: 100vw;
   position: relative;
+  overflow-x: hidden;
+  /* Padding for navbar overlay, removed lateral padding for flush fit */
+  padding-top: 72px;
 }
+
+/* === HERO SECTION === */
+.furever-hero {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  width: 100vw;
+  max-width: 100vw;
+  margin: 0;
+  padding: 4vw 0 56px 0;
+  gap: 2vw;
+  position: relative;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+/* --- HERO LEFT --- */
+.furever-hero-left {
+  flex: 1.25;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 310px;
+  z-index: 1;
+  align-items: center;
+  width: 100%;
+}
+
+.furever-hero-title {
+  font-size: 2.9rem;
+  font-weight: 700;
+  margin: 0 0 14px 0;
+  line-height: 1.17;
+  letter-spacing: -0.02em;
+  text-align: center;
+  width: 100%;
+  display: block;
+}
+/* Brand-highlighted gradient text */
+.gradient-text {
+  background: linear-gradient(90deg,#8aa182 25%,#e87a41 69%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.furever-hero-desc {
+  font-size: 1.18rem;
+  color: #3c4131;
+  margin-bottom: 24px;
+  letter-spacing: 0.01em;
+  text-shadow: 0 1px 6px #fff6;
+  text-align: center;
+}
+
+/* --- HERO CTA ROW (buttons) --- */
+.furever-hero-cta-row {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 12px;
+  justify-content: center;
+  width: 100%;
+}
+
+.furever-btn {
+  padding: 13px 30px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 1.08rem;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  box-shadow: 0 2px 13px 0 rgba(162, 200, 140, 0.15);
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition:
+    box-shadow 0.22s cubic-bezier(.5,1.7,.0,1.0),
+    background 0.21s cubic-bezier(.55,0,1,.6),
+    transform 0.18s cubic-bezier(.42,0,.32,1.26),
+    color 0.16s;
+}
+
+.furever-btn-gradient {
+  background: linear-gradient(96deg, #8aa182 47%, #eeb278 82%);
+  color: #fff;
+  box-shadow: 0 4px 18px 0 #8aa18235, 0 0.5px 7px 0 #eeb27829;
+  border: none;
+}
+.furever-btn-gradient:hover,
+.furever-btn-gradient:focus {
+  /* Animate gradient and lift on hover */
+  background: linear-gradient(89deg, #e87a41 20%, #8aa182 92%);
+  color: #fff;
+  box-shadow: 0 9px 30px 0 #eeb27870;
+  transform: translateY(-5px) scale(1.037);
+}
+
+/* Glassy secondary CTA */
+.furever-btn-glass {
+  background: rgba(255,255,255,0.44);
+  color: #8aa182;
+  border: 1.5px solid #8aa18244;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 17px 0 #abc4a043;
+}
+.furever-btn-glass:hover,
+.furever-btn-glass:focus {
+  color: #71706f;
+  border-color: #71706f99;
+  background: rgba(255,255,255,0.75);
+  transform: translateY(-2px) scale(1.03);
+}
+
+.furever-hero-note {
+  font-size: 1.04rem;
+  color: #7ea27b;
+  font-weight: 500;
+  margin-top: 18px;
+  opacity: 0.8;
+  text-align: center;
+}
+
+/* --- HERO RIGHT --- */
+.furever-hero-right {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  min-width: 220px;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+.furever-hero-illus-wrapper {
+  position: relative;
+  width: 310px;
+  height: 310px;
+  margin-top: 10px;
+  margin-right: 0;
+}
+.furever-hero-illus {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 24px;
+  box-shadow: 0 8px 34px 0 #a2c88a23, 0 2px 6px 0 #71706f16;
+  transition: transform 0.35s cubic-bezier(.86,0,.07,1);
+}
+/* Floating glass icons for subtle animation */
+.furever-hero-float-icon {
+  position: absolute;
+  width: 52px;
+  height: 52px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.58);
+  box-shadow: 0 5px 20px 0 #8aa18233;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  /* Animate subtle float on hover of parent .furever-hero-illus-wrapper */
+  transition: transform 0.27s cubic-bezier(.7,.22,.17,1.54), box-shadow 0.25s;
+}
+.furever-hero-illus-wrapper:hover .furever-hero-float-icon,
+.furever-hero-illus-wrapper:focus .furever-hero-float-icon {
+  /* Parallax-plane style float/shift effect on parent hover */
+  transform: translateY(-8px) scale(1.08) rotate(-3deg);
+  box-shadow: 0 10px 25px 0 #8aa18233;
+}
+/* Icon positions */
+.furever-float-1 { left: -36px; top: 14px; }
+.furever-float-2 { right: -22px; top: 46px; background: rgba(232,122,65,0.16);}
+.furever-float-3 { left: 24px; bottom: -20px; background: rgba(138,161,130,0.14); }
+
+/* === FEATURES SECTION === */
+.furever-features {
+  width: 100vw;
+  max-width: 100vw;
+  margin: 0;
+  padding: 38px 0 14px 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+.furever-section-title {
+  font-size: 2.2rem;
+  text-align: center;
+  color: #8aa182;
+  font-weight: 700;
+  margin-bottom: 36px;
+  font-family: 'Poppins', 'Nunito', Arial, sans-serif;
+}
+
+.furever-features-grid {
+  display: flex;
+  gap: 38px;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100vw;
+  max-width: 100vw;
+  padding: 0 16px;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+/* === FEATURE CARD - Glassmorphism, lift/animation on hover === */
+.furever-feature-card {
+  background: rgba(255,255,255,0.72);
+  box-shadow: 0 3px 18px 0 #b5cebb26, 0 2px 11px 0 #eeb27827;
+  border-radius: 26px;
+  min-width: 200px;
+  max-width: 285px;
+  flex: 1 1 220px;
+  padding: 32px 25px 30px 25px;
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  outline: none;
+  backdrop-filter: blur(3px);
+  border: 1.5px solid #8aa18217;
+  /* Animated glass hover (box-shadow, translate, rotate) */
+  transition: transform 0.23s cubic-bezier(.57,.11,.33,1.47), box-shadow 0.22s, background 0.18s;
+}
+.furever-feature-card:hover,
+.furever-feature-card:focus {
+  background: rgba(255,255,255,0.97);
+  transform: translateY(-7px) scale(1.035) rotate(-1deg);
+  box-shadow: 0 9px 33px 0 #eeb27861;
+}
+
+/* Small icon, bold title, clean desc style */
+.furever-feature-icon {
+  font-size: 2.5rem;
+  margin-bottom: 14px;
+}
+.furever-feature-title {
+  font-size: 1.18rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #71706f;
+  text-align: center;
+}
+.furever-feature-desc {
+  color: #3c4131;
+  font-size: 1.03rem;
+  text-align: center;
+}
+
+/* === ABOUT/STORY SECTION === */
+.furever-about-story {
+  position: relative;
+  background: transparent;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 6vw 66px;
+  width: 100vw;
+  max-width: 100vw;
+  margin: 0;
+  padding: 92px 0 72px 0;
+  min-height: 330px;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+.furever-about-content {
+  flex: 1.2;
+  z-index: 1;
+}
+.furever-about-story .furever-section-title {
+  color: #e87a41;
+  text-align: left;
+  margin-bottom: 19px;
+}
+@media (max-width: 900px) {
+  .furever-about-story .furever-section-title {
+    text-align: center;
+  }
+}
+
+.furever-about-content p {
+  font-size: 1.13rem;
+  line-height: 1.67;
+  color: #343624;
+  margin: 0 0 9px 0;
+}
+.furever-about-illus-wrapper {
+  flex: 0.8;
+  min-width: 160px;
+  height: 215px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+.furever-about-illus {
+  height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  border-radius: 18px 46px 55px 18px;
+  box-shadow: 0 8px 36px #b5cebb33, 0 2px 10px #eeb27828;
+}
+.furever-about-bg-svg {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -28px;
+  width: 100vw;
+  max-width: 100vw;
+  height: 141px;
+  z-index: 0;
+  pointer-events: none;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+/* === TESTIMONIALS === */
+.furever-testimonials {
+  width: 100vw;
+  max-width: 100vw;
+  margin: 0;
+  padding: 62px 0 18px 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+.furever-testimonial-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 34px;
+  justify-content: center;
+  width: 100vw;
+  max-width: 100vw;
+  padding-left: 16px;
+  padding-right: 16px;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+.furever-testimonial-card {
+  background: rgba(255,255,255,0.82);
+  box-shadow: 0 2px 19px #b5cebb21, 0 2px 14px #eeb27816;
+  border-radius: 24px;
+  min-width: 200px;
+  max-width: 320px;
+  flex: 1 1 240px;
+  padding: 28px 23px 23px 23px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  transition: transform 0.17s cubic-bezier(.62,.21,.26,1.3), box-shadow 0.16s, background 0.12s;
+  border: 1px solid #8aa18213;
+}
+.furever-testimonial-card:hover,
+.furever-testimonial-card:focus {
+  background: #fff;
+  box-shadow: 0 8px 33px 0 #8aa18231;
+  transform: translateY(-5px) scale(1.025) rotate(0.5deg);
+}
+.furever-testimonial-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 12px;
+  border: 3.3px solid #eeb27840;
+  background: #fffefa;
+  box-shadow: 0 1px 5px #8aa18216;
+}
+.furever-testimonial-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.furever-testimonial-user {
+  font-weight: 700;
+  font-size: 1.07rem;
+  color: #8aa182;
+  margin-bottom: 3px;
+}
+.furever-testimonial-feedback {
+  font-size: 1.01rem;
+  color: #504;
+  margin-bottom: 8px;
+  text-align: center;
+  width: 100%;
+}
+.furever-testimonial-stars {
+  font-size: 1.15rem;
+  color: #eeb278;
+  filter: drop-shadow(0 0 4px #eeb27866);
+}
+
+/* === FOOTER === */
+.furever-footer {
+  background: linear-gradient(85deg, #8aa182 2%, #eeb278 65%);
+  color: #fff;
+  padding: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  margin-top: 34px;
+  box-shadow: 0 -7px 32px #b5cebb25;
+  font-family: 'Nunito', 'Poppins', Arial, sans-serif;
+  width: 100vw;
+  max-width: 100vw;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+.furever-footer-inner {
+  width: 100vw;
+  max-width: 100vw;
+  margin: 0;
+  padding: 36px 16px 16px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+.furever-footer-brand {
+  font-weight: 700;
+  font-size: 1.35rem;
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.footer-logo {
+  font-size: 2.03rem;
+  margin-right: 2px;
+}
+.furever-footer-links {
+  display: flex;
+  gap: 25px;
+  font-weight: 500;
+  font-size: 1.08rem;
+  align-items: center;
+}
+.furever-footer-links a {
+  color: #fffde7;
+  text-decoration: none;
+  transition: color 0.13s;
+}
+.furever-footer-links a:hover {
+  color: #343624;
+}
+.furever-footer-social {
+  display: flex;
+  gap: 15px;
+}
+.furever-footer-social a {
+  color: #fff;
+  font-size: 1.42rem;
+  margin-right: 0;
+  transition: color 0.16s, transform 0.19s;
+  text-decoration: none;
+}
+.furever-footer-social a:hover {
+  color: #eda96d;
+  transform: scale(1.13) rotate(-5deg);
+}
+.furever-footer-bottom {
+  text-align: center;
+  font-size: 0.98rem;
+  opacity: 0.82;
+  padding: 14px 0 15px 0;
+  border-top: 1.3px solid #eedaba66;
+}
+
+/* === RESPONSIVE & MOBILE === */
+@media (max-width: 1000px) {
+  .furever-hero { flex-direction: column; align-items: center; }
+  .furever-hero-left, .furever-hero-right { min-width: 0; width: 100%; }
+  .furever-hero-illus-wrapper { margin: 0 auto; }
+  .furever-features-grid, .furever-testimonial-grid { gap: 20px; }
+  .furever-about-story { flex-direction: column; gap: 0; align-items: flex-start; }
+  .furever-about-bg-svg { left: 0; width: 100vw; max-width: 100vw;}
+}
+@media (max-width: 740px) {
+  .furever-hero-title { font-size: 2.1rem; }
+  .furever-section-title { font-size: 1.45rem; }
+  .furever-hero,
+  .furever-features,
+  .furever-about-story,
+  .furever-testimonials,
+  .furever-footer-inner {
+    padding-left: 4vw;
+    padding-right: 4vw;
+    box-sizing: border-box;
+    max-width: 100vw;
+    width: 100%;
+    overflow-x: hidden;
+  }
+  .furever-features-grid,
+  .furever-testimonial-grid { flex-direction: column; }
+  .furever-feature-card,
+  .furever-testimonial-card { max-width: 98vw; min-width: 0; }
+  .furever-about-illus-wrapper { height: 170px; }
+}
+
+@media (max-width: 510px) {
+  .furever-hero-illus-wrapper { width: 92vw; height: 36vw; min-width: 128px; }
+  .furever-about-illus { border-radius: 11px 21px 20px 10px; }
+  .furever-about-story { padding: 16vw 2vw 42px 2vw; min-height: 170px; }
+  .furever-footer-inner { flex-direction: column; align-items: flex-start; gap: 13px; }
+}
+
+/* === UPGRADE HOOKS (maintain for future devs) ===
+   - For animation: add aos-fade/fade-up classes to feature, hero, testimonial
+   - For GSAP: wrap float icons in motion.div and animate on mount/scroll
+   - Add chat widget at footer/about if needed
+   - For dark mode: Use [data-theme="dark"] and override color vars only
+=== */
 
 /* Hero Section */
 .furever-hero {
