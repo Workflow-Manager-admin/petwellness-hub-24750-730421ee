@@ -489,22 +489,33 @@
     gap: 14px;
   }
 }
+/* LAYOUT FIX:
+   Make quick action buttons smaller and nudge them further to the right
+   - Reduce padding and font size
+   - Add additional right margin for side alignment
+   - Minimize width for icon+text combo
+   - Adjust border-radius for smaller size
+*/
 .quick-action-btn {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 1.08rem;
+  gap: 6px;
+  font-size: 0.97rem;
   background: linear-gradient(93deg,#fff6fb 60%,#e7ebe4 100%);
   border: 2.2px solid #fbe8c7;
-  border-radius: 18px;
+  border-radius: 13px; /* slightly smaller radius */
   box-shadow: 0 2px 14px #e9efeb38;
-  padding: 9px 21px 9px 18px;
+  padding: 6px 14px 6px 12px;    /* smaller padding */
   cursor: pointer;
   outline: none;
   transition: box-shadow .19s, transform .14s, background .23s;
   font-family: 'Inter','Poppins','Roboto',sans-serif;
   color: #61413b;
   font-weight: 600;
+  /* Shift buttons further right */
+  margin-left: 12px;    /* nudge right from container */
+  min-width: 0;
+  width: max-content;
 }
 .quick-action-btn:hover,
 .quick-action-btn:focus {
