@@ -157,7 +157,7 @@ function TopNavBar() {
             <ul className="dropdown-menu">
               {/* Support sub-dropdown */}
               <li
-                className={`dropdown-submenu${openSubDropdown === "support" ? " open" : ""}`}
+                className={`dropdown-submenu dropdown-submenu-left${openSubDropdown === "support" ? " open" : ""}`}
                 onMouseEnter={() => handleSubDropdown("support")}
                 onMouseLeave={() => handleSubDropdown(null)}
               >
@@ -168,7 +168,8 @@ function TopNavBar() {
                   tabIndex={openDropdown === "settings" ? 0 : -1}
                   type="button"
                 >
-                  Support <span className="dropdown-caret">&#9656;</span>
+                  {/* Caret left for submenu opening to the left */}
+                  Support <span className="dropdown-caret">&#9666;</span>
                 </button>
                 <ul className="dropdown-menu">
                   <li>
@@ -193,7 +194,7 @@ function TopNavBar() {
 
               {/* Account sub-dropdown (Login, Signup) */}
               <li
-                className={`dropdown-submenu${openSubDropdown === "account" ? " open" : ""}`}
+                className={`dropdown-submenu dropdown-submenu-left${openSubDropdown === "account" ? " open" : ""}`}
                 onMouseEnter={() => handleSubDropdown("account")}
                 onMouseLeave={() => handleSubDropdown(null)}
               >
@@ -204,7 +205,8 @@ function TopNavBar() {
                   tabIndex={openDropdown === "settings" ? 0 : -1}
                   type="button"
                 >
-                  Account <span className="dropdown-caret">&#9656;</span>
+                  {/* Caret left for submenu opening to the left */}
+                  Account <span className="dropdown-caret">&#9666;</span>
                 </button>
                 <ul className="dropdown-menu">
                   <li>
