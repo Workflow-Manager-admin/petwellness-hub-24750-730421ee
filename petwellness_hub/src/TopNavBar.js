@@ -79,7 +79,7 @@ function TopNavBar() {
             </a>
           </li>
 
-          {/* My Pets dropdown */}
+          {/* My Pets dropdown with new links */}
           <li
             className={`dropdown${openDropdown === "mypets" ? " open" : ""}`}
             tabIndex={0}
@@ -109,35 +109,31 @@ function TopNavBar() {
                   Manage Profiles
                 </a>
               </li>
+              {/* New: Profile */}
+              <li>
+                <a href="/profile" tabIndex={openDropdown === "mypets" ? 0 : -1} onClick={closeAllDropdowns}>
+                  Profile
+                </a>
+              </li>
+              {/* New: Health Tracker */}
+              <li>
+                <a href="/health-tracker" tabIndex={openDropdown === "mypets" ? 0 : -1} onClick={closeAllDropdowns}>
+                  Health Tracker
+                </a>
+              </li>
+              {/* New: Diet & Nutrition */}
+              <li>
+                <a href="/nutrition" tabIndex={openDropdown === "mypets" ? 0 : -1} onClick={closeAllDropdowns}>
+                  Diet &amp; Nutrition
+                </a>
+              </li>
+              {/* New: Activity */}
+              <li>
+                <a href="/activity" tabIndex={openDropdown === "mypets" ? 0 : -1} onClick={closeAllDropdowns}>
+                  Activity
+                </a>
+              </li>
             </ul>
-          </li>
-
-          {/* Profile - single link */}
-          <li>
-            <a href="/profile" onClick={closeAllDropdowns}>
-              Profile
-            </a>
-          </li>
-
-          {/* Health Tracker */}
-          <li>
-            <a href="/health-tracker" onClick={closeAllDropdowns}>
-              Health Tracker
-            </a>
-          </li>
-
-          {/* Diet & Nutrition */}
-          <li>
-            <a href="/nutrition" onClick={closeAllDropdowns}>
-              Diet &amp; Nutrition
-            </a>
-          </li>
-
-          {/* Activity */}
-          <li>
-            <a href="/activity" onClick={closeAllDropdowns}>
-              Activity
-            </a>
           </li>
 
           {/* Appointments dropdown (Manage, Notes/Documents) */}
