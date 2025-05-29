@@ -276,6 +276,7 @@ section {
   border-radius: 26px;
   min-width: 200px;
   max-width: 285px;
+  width: 100%; /* ensure card fills parent grid slot, avoids float overflow */
   flex: 1 1 220px;
   padding: 32px 25px 30px 25px;
   margin-bottom: 24px;
@@ -286,7 +287,7 @@ section {
   outline: none;
   backdrop-filter: blur(3px);
   border: 1.5px solid #8aa18217;
-  /* Animated glass hover (box-shadow, translate, rotate) */
+  box-sizing: border-box;
   transition: transform 0.23s cubic-bezier(.57,.11,.33,1.47), box-shadow 0.22s, background 0.18s;
 }
 .furever-feature-card:hover,
