@@ -10,30 +10,52 @@
 /* Import modern font-families for visual consistency */
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,600,700|Nunito:400,700&display=swap');
 
-/* === GLOBAL RESETS === */
-/* Remove ALL default spacing and enforce universal box-sizing */
+/* === GLOBAL RESETS AND LAYOUT === */
+/* Remove default spacing, universal box-sizing, soft gradient background for html/body */
 html, body {
   margin: 0 !important;
   padding: 0 !important;
-  overflow-x: hidden !important; /* Prevent horizontal scroll on all viewport sizes */
-  max-width: 100vw !important;
+  min-height: 100vh;
+  width: 100%;
   box-sizing: border-box;
+  overflow-x: hidden !important;
+  /* Soft background gradient so no "black" shows if viewport is wider than content */
+  background: linear-gradient(110deg, #f6f7fc 0%, #eaf6f6 60%, #fcf8ee 100%);
+}
+
+/* Universal border-box sizing for all content */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Remove margins on all sections by default and ensure they are centered within container */
+section {
+  margin: 0 auto !important;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1200px; /* Standard desktop site width */
+}
+
+/* Page root and all major sections use standard max-width and centering */
+.furever-landing,
+.furever-hero,
+.furever-features,
+.furever-about-story,
+.furever-testimonials,
+.furever-footer,
+.furever-footer-inner {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 /* Clamp x-overflow globally for Landing page; no horizontal bleed/scroll possible */
 body,
 .furever-landing {
   overflow-x: hidden !important;
-}
-
-/* Everything is border-box (safe for all devices) */
-*, *::before, *::after {
-  box-sizing: inherit;
-}
-/* Remove margins on all sections by default */
-section {
-  margin: 0 !important;
-  padding: 0;
 }
 
 /* === ROOT LANDING CONTAINER === */
