@@ -21,7 +21,7 @@ function LandingPage() {
             Your all-in-one pet wellness companion.<br />
             Track health, nutrition, activity, and more—all in one beautiful dashboard.
           </p>
-          <div className="furever-hero-cta-row">
+          <div className="furever-hero-cta-row" style={{justifyContent: 'center', width: '100%'}}>
             <a href="/signup" className="furever-btn furever-btn-gradient" tabIndex={0}>Get Started</a>
             <a href="/profile" className="furever-btn furever-btn-glass" tabIndex={0}>See Dashboard</a>
           </div>
