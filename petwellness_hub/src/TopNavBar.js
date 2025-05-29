@@ -155,13 +155,6 @@ function TopNavBar() {
               Settings <span className="dropdown-caret">&#9662;</span>
             </button>
             <ul className="dropdown-menu">
-              {/* Settings Home */}
-              <li>
-                <a href="/settings" tabIndex={openDropdown === "settings" ? 0 : -1} onClick={closeAllDropdowns}>
-                  Settings Home
-                </a>
-              </li>
-
               {/* Support sub-dropdown */}
               <li
                 className={`dropdown-submenu${openSubDropdown === "support" ? " open" : ""}`}
