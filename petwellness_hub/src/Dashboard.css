@@ -230,6 +230,18 @@
   padding-right: 4px;
 }
 
+/* NEW: For Appointments, use horizontal row flex to put label and value on a single line */
+.card-main-flex-row {
+  flex-direction: row !important;
+  align-items: center;
+  gap: 0.58em;
+  min-width: 0;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  padding-right: 2px;
+  width: 100%;
+}
+
 /* LAYOUT FIX:
    .card-value uses flex-grow and min-width 0 to ensure text like 'Next: 5/26' wraps instead of overflowing the card boundary */
 .card-main-flex .card-value {
