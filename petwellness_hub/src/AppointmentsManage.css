@@ -23,6 +23,136 @@
   color: #000 !important;
 }
 
+/* Card style for Upcoming Appointments ONLY (do not affect .appt-card elsewhere) */
+.appt-section .appt-list > .appt-card {
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 2px 16px 0 rgba(50,60,85,0.14), 0 0.5px 2.5px rgba(140,170,150,0.11);
+  margin-bottom: 28px;
+  padding: 20px 26px 18px 26px;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.17s, transform 0.15s;
+  border: 1.5px solid #e5e9eb;
+}
+.appt-section .appt-list > .appt-card:hover {
+  box-shadow: 0 8px 20px 0 rgba(80,120,110,0.19), 0 2.5px 10px rgba(120,170,140,0.13);
+  transform: translateY(-2px) scale(1.011);
+}
+
+.appt-section .appt-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.appt-section .appt-type-icon {
+  font-size: 1.4em;
+}
+
+.appt-section .appt-type {
+  color: #8aa182 !important;
+  font-weight: bold;
+}
+
+.appt-section .appt-status {
+  margin-left: auto;
+  font-size: 0.93em;
+  padding: 2px 11px;
+  border-radius: 11px;
+  font-weight: 500;
+  background: #f2f5f2;
+  color: #899;
+  border: 1.1px solid #e7eafb;
+}
+.appt-section .appt-status-scheduled {
+  background: #e7fae7;
+  color: #419a41 !important;
+  border-color: #bddfbc;
+}
+.appt-section .appt-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.25em;
+  gap: 8px;
+}
+.appt-section .appt-card .appt-pet {
+  font-weight: 600;
+  font-size: 1.13em;
+}
+.appt-section .appt-card .appt-time {
+  color: #51515a;
+}
+.appt-section .appt-vet {
+  color: #707a5a !important;
+  font-size: 0.98em;
+}
+.appt-section .appt-docs .doc-btn {
+  padding: 2px 12px;
+  border-radius: 17px;
+  font-size: 0.89em;
+  background: #f6fafe;
+  color: #8aa182;
+  border: 1.2px solid #eaecec;
+  margin-left: 8px;
+  cursor: pointer;
+  transition: background 0.14s;
+}
+
+.appt-section .appt-docs .doc-btn:hover {
+  background: #e4f3ec;
+  color: #538d72;
+}
+
+.appt-section .appt-card-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 14px;
+  justify-content: flex-end;
+}
+
+.appt-section .appt-card-actions button {
+  background: #f8f8fc;
+  border: none;
+  border-radius: 14px;
+  padding: 6px 16px;
+  color: #818088;
+  font-size: 0.96em;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: none;
+  transition: background 0.13s, color 0.13s;
+}
+
+.appt-section .appt-card-actions button:hover {
+  background: #e8f3f0;
+  color: #385f58;
+}
+
+.appt-section .appt-card-actions .btn-cancel {
+  background: #ffe4e0;
+  color: #a94141 !important;
+  border: 1.2px solid #ffd2c9;
+}
+
+.appt-section .appt-card-actions .btn-cancel:hover {
+  background: #ffd6d1;
+  color: #ce3434 !important;
+}
+
+.appt-section .appt-card .appt-notes {
+  background: #f8fbfa;
+  border-radius: 9px;
+  padding: 7px 13px;
+  margin: 12px 0 0 0;
+  font-size: 0.98em;
+  color: #678684 !important;
+  border-left: 2.5px solid #8aa18214;
+}
+
 /* Enforce all text, headings, inputs, section titles, and close icon in black within modal */
 .dialog-modal,
 .dialog-modal *,
