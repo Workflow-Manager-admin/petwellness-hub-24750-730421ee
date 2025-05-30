@@ -43,6 +43,69 @@
   outline: none;
   transition: border .14s;
 }
+/* NEW: Allergy & Condition vertical stacks */
+.allergy-section-stack, .condition-section-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 7px;
+  width: 100%;
+}
+.allergy-pills-row, .condition-pills-row {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 2px;
+  margin-bottom: 2px;
+}
+.allergy-pills-list, .condition-pills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  align-items: flex-start;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.allergy-pill, .condition-pill {
+  max-width: 98vw;
+  white-space: pre-line;
+  overflow-wrap: break-word;
+  margin-bottom: 5px;
+}
+.allergy-input-row, .condition-input-row {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin-bottom: 0;
+}
+.allergy-input-row input, .condition-input-row input {
+  width: 100% !important;
+}
+.allergy-add-btn-row, .condition-add-btn-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-top: 3px;
+  margin-bottom: 6px;
+}
+.allergy-add-btn-row button, .condition-add-btn-row button {
+  margin-left: 0;
+  width: 120px;
+}
+.health-pill-section {
+  overflow-x: hidden !important;
+  overflow-y: visible;
+}
+
+/* Make sure child input/controls never overflow the card */
+.health-pill-section input[type="text"], 
+.health-pill-section button {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
 .health-pill-section input[type="text"]:focus {
   border: 1.4px solid #00c2a8;
   background: #f8feff;
