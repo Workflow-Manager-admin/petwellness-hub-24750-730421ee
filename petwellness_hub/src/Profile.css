@@ -1,9 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,600,700|Inter:400,600|Roboto:400,500&display=swap');
 
-/* --- Color palette: Soft teal, blue, coral, background washes ---
-   Use .css variables if desired for extensibility.
-   See also Dashboard.css and App.css for primary vars.
-*/
+/* --- Color palette: Soft teal, blue, coral, background washes --- */
 :root {
   --profile-teal: #8aa182;
   --profile-coral: #F18C63;
@@ -17,6 +14,53 @@
   --profile-soft-shadow: 0 4px 22px 0 #8aa18228;
   --profile-border: #e6ebe9;
   --profile-gray: #6d7d83;
+}
+
+/* === Added custom styles for topics, subtopics, and black text === */
+
+/* Main topic styled green */
+.topic-green {
+  color: #218739;
+  font-weight: 700;
+}
+
+/* Subtopics random color classes */
+.subtopic-violet {
+  background: #7a5cff;
+  color: #fff;
+}
+.subtopic-blue {
+  background: #4797e4;
+  color: #fff;
+}
+.subtopic-orange {
+  background: #E87A41;
+  color: #fff;
+}
+
+/* Uniform pill look for subtopics */
+.subtopic-pill {
+  display: inline-block;
+  border-radius: 12px;
+  padding: 4px 14px;
+  margin: 2px 8px 2px 0;
+  font-size: 0.95em;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+/* Black text for inputs and any label/info using text-black class */
+.input-black {
+  color: #111 !important;
+  background: #fff !important;
+  border: 1px solid #ddd;
+}
+.input-black::placeholder {
+  color: #222;
+  opacity: 1;
+}
+.text-black {
+  color: #111 !important;
 }
 
 /* --- Page root --- */
