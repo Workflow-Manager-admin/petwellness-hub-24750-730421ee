@@ -24,8 +24,6 @@ function SignUp() {
   const [submitting, setSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState({ type: "", message: "" });
 
-  const navigate = useNavigate();
-
   // Utils for validation
   function validate(fields = form) {
     let errs = {};
@@ -237,7 +235,7 @@ function SignUp() {
           });
           // For demo, navigate to Log In after a delay
           setTimeout(() => {
-            if (navigate) navigate("/login");
+            navigate("/login");
           }, 1200);
         }
       }, 1300);
