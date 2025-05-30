@@ -1,32 +1,6 @@
-.profile-page .topic-green {
-  color: #37a863;
-  font-weight: bold;
-}
-
-.profile-page .subtopic-violet {
-  color: #7759b5;
-}
-
-.profile-page .subtopic-blue {
-  color: #3c7ccd;
-}
-
-.profile-page .subtopic-orange {
-  color: #e87a41;
-}
-
-.profile-page .input-black input {
-  color: #191919;
-}
-
-.profile-page .input-black textarea {
-  color: #191919;
-}
-
-.profile-page .input-black select {
-  color: #191919;
-}
-
-.profile-page .text-black {
-  color: #191919 !important;
-}
+.topic-green { color: #2ecc40; font-weight: bold; }
+.subtopic-violet { color: #8e44ad; font-weight: 500; }
+.subtopic-blue { color: #2980d9; font-weight: 500; }
+.subtopic-orange { color: #ff9800; font-weight: 500; }
+.input-black { color: #000 !important; }
+.text-black { color: #000 !important; }
