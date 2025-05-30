@@ -12,6 +12,7 @@ import HealthTracker from "./HealthTracker";
 import "./HealthTracker.css";
 import DietNutrition from "./DietNutrition";
 import Activity from "./Activity";
+import AppointmentsManage from "./AppointmentsManage";
 
 // PUBLIC_INTERFACE
 function App() {
@@ -46,12 +47,7 @@ function App() {
               />
               <Route
                 path="/appointments/manage"
-                element={
-                  <div>
-                    <h1>Appointments Manage</h1>
-                    <p>This is the Appointments management page.</p>
-                  </div>
-                }
+                element={<AppointmentsManage />}
               />
               <Route
                 path="/activity"
