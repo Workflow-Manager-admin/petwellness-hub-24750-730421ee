@@ -102,7 +102,7 @@ function Activity() {
       {/* Daily Activity Log */}
       <div className="section-card">
         <div className="section-title">Daily Activity Log</div>
-        <form className="add-log-form" onSubmit={addActivityLog}>
+        <form className="add-log-form daily-input-orange" onSubmit={addActivityLog}>
           <input
             type="time"
             className="add-log-time"
@@ -130,7 +130,7 @@ function Activity() {
               (log.time === "12:20" && log.desc.includes("Fetch in backyard")) ||
               (log.time === "17:50" && log.desc.includes("Dog park run"));
             return (
-              <li className="log-entry" key={idx}>
+              <li className={`log-entry${isBlackLine ? " log-output-black-full" : ""}`} key={idx}>
                 <span className={`log-time${isBlackLine ? " log-black" : ""}`}>{log.time}</span>
                 <span className={`log-desc${isBlackLine ? " log-black" : ""}`}>{log.desc}</span>
               </li>

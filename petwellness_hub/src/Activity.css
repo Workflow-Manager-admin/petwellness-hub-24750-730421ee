@@ -84,9 +84,16 @@
   background: rgba(255,255,255,0.09);
   border: 1px solid var(--border-color);
   border-radius: 4px;
-  color: #FF9800; /* Orange user input, matches project-accent */
+  /* Remove direct color setting here for scoping, move orange to new class below */
   padding: 6px 8px;
   font-size: 1rem;
+}
+
+/* Isolate orange input for only Daily Activity log form */
+.daily-input-orange .add-log-input,
+.daily-input-orange .add-log-time,
+.daily-input-orange textarea {
+  color: #FF9800 !important;
 }
 /* Ensure input placeholder color remains readable if desired */
 /* .add-log-input::placeholder, .add-log-form textarea::placeholder {
