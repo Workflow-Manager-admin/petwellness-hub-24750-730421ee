@@ -741,11 +741,26 @@ function ApptModal({ modal, close }) {
     return (
       <div className="appt-details-modal">
         <h3>Appointment Details</h3>
-        <div><b>Pet:</b> {getPetModal(appt.petId).avatar} {getPetModal(appt.petId).name}</div>
-        <div><b>Type:</b> {getTypeObjModal(appt.type).icon} {getTypeObjModal(appt.type).label}</div>
-        <div><b>Date:</b> {getFmtDateModal(appt.datetime)}</div>
-        <div><b>Veterinarian:</b> {appt.vet}</div>
-        <div><b>Notes:</b> {appt.notes}</div>
+        <div>
+          <b className="label-status-info">Pet:</b>
+          <span className="appt-detail-output"> {getPetModal(appt.petId).avatar} {getPetModal(appt.petId).name}</span>
+        </div>
+        <div>
+          <b className="label-status-info">Type:</b>
+          <span className="appt-detail-output"> {getTypeObjModal(appt.type).icon} {getTypeObjModal(appt.type).label}</span>
+        </div>
+        <div>
+          <b className="label-status-info">Date:</b>
+          <span className="appt-detail-output"> {getFmtDateModal(appt.datetime)}</span>
+        </div>
+        <div>
+          <b className="label-status-info">Veterinarian:</b>
+          <span className="appt-detail-output"> {appt.vet}</span>
+        </div>
+        <div>
+          <b className="label-status-info">Notes:</b>
+          <span className="appt-detail-output"> {appt.notes}</span>
+        </div>
       </div>
     );
   }
