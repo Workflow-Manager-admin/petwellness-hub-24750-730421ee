@@ -7,6 +7,7 @@ import "./Profile.css";
   with appropriate UI controls. No changes are persisted.
 */
 
+// PUBLIC_INTERFACE
 const initialPetProfile = {
   name: "Buddy",
   species: "Dog",
@@ -21,11 +22,28 @@ const initialPetProfile = {
   attachments: [
     { type: "Vaccination Record", filename: "vaccination.pdf" },
     { type: "Prescription", filename: "heartworm_rx.pdf" }
-  ]
+  ],
+  topics: [
+    { topic: "General Info", subtopics: ["Breed", "Date of Birth", "Color"] },
+    { topic: "Medical", subtopics: ["Vaccinations", "Last Vet Visit"] },
+    { topic: "Diet", subtopics: ["Meal Plan", "Allergies"] },
+    { topic: "Activity", subtopics: ["Walks", "Exercise Routine"] }
+  ],
+  contactEmail: "jane.doe@email.com",
 };
 
 // Utility function for deep cloning arrays/objects
 const clone = val => JSON.parse(JSON.stringify(val));
+
+// Return a random color class for subtopics (deterministic based on index)
+function randomSubtopicClass(idx) {
+  const colorStyles = [
+    "subtopic-violet",
+    "subtopic-blue",
+    "subtopic-orange",
+  ];
+  return colorStyles[idx % colorStyles.length];
+}
 
 // PUBLIC_INTERFACE
 function Profile() {
@@ -148,7 +166,7 @@ function Profile() {
   function renderAttributes() {
     return (
       <div>
-        <b>Attributes:</b>
+        <b className="topic-green">Attributes:</b>
         <ul>
           {attributes.map((attr, idx) =>
             editingAttrIdx === idx ? (
@@ -158,12 +176,13 @@ function Profile() {
                   value={pendingAttrInput}
                   onChange={e => setPendingAttrInput(e.target.value)}
                   autoFocus
+                  className="input-black"
                 />
                 <button className="btn" onClick={saveAttrEdit} style={{ marginLeft: 5 }}>Save</button>
                 <button className="btn" onClick={resetAttributeEdit} style={{ marginLeft: 5 }}>Cancel</button>
               </li>
             ) : (
-              <li key={idx}>
+              <li key={idx} className="text-black">
                 {attr}
                 <button
                   className="btn"
@@ -180,6 +199,7 @@ function Profile() {
                 value={pendingAttrInput}
                 onChange={e => setPendingAttrInput(e.target.value)}
                 autoFocus
+                className="input-black"
               />
               <button className="btn" onClick={saveAttrEdit} style={{ marginLeft: 5 }}>Add</button>
               <button className="btn" onClick={resetAttributeEdit} style={{ marginLeft: 5 }}>Cancel</button>
@@ -196,7 +216,7 @@ function Profile() {
   function renderContacts() {
     return (
       <div>
-        <b>Contacts:</b>
+        <b className="topic-green">Contacts:</b>
         <ul style={{ listStyle: "none", paddingLeft: 0 }}>
           {contacts.map((contact, idx) =>
             editingContactIdx === idx ? (
@@ -208,6 +228,7 @@ function Profile() {
                   onChange={e => setPendingContactLabel(e.target.value)}
                   style={{ marginRight: 4 }}
                   autoFocus
+                  className="input-black"
                 />
                 <input
                   type="text"
@@ -215,12 +236,13 @@ function Profile() {
                   value={pendingContactValue}
                   onChange={e => setPendingContactValue(e.target.value)}
                   style={{ marginRight: 4 }}
+                  className="input-black"
                 />
                 <button className="btn" onClick={saveContactEdit} style={{ marginLeft: 5 }}>Save</button>
                 <button className="btn" onClick={resetContactEdit} style={{ marginLeft: 5 }}>Cancel</button>
               </li>
             ) : (
-              <li key={idx}>
+              <li key={idx} className="text-black">
                 <b>{contact.label}:</b> {contact.value}
                 <button
                   className="btn"
@@ -239,6 +261,7 @@ function Profile() {
                 onChange={e => setPendingContactLabel(e.target.value)}
                 style={{ marginRight: 4 }}
                 autoFocus
+                className="input-black"
               />
               <input
                 type="text"
@@ -246,6 +269,7 @@ function Profile() {
                 value={pendingContactValue}
                 onChange={e => setPendingContactValue(e.target.value)}
                 style={{ marginRight: 4 }}
+                className="input-black"
               />
               <button className="btn" onClick={saveContactEdit} style={{ marginLeft: 5 }}>Add</button>
               <button className="btn" onClick={resetContactEdit} style={{ marginLeft: 5 }}>Cancel</button>
@@ -262,7 +286,7 @@ function Profile() {
   function renderAttachments() {
     return (
       <div>
-        <b>Attachments:</b>
+        <b className="topic-green">Attachments:</b>
         <ul style={{ listStyle: "none", paddingLeft: 0 }}>
           {attachments.map((att, idx) =>
             editingAttachIdx === idx ? (
@@ -274,6 +298,7 @@ function Profile() {
                   onChange={e => setPendingAttachType(e.target.value)}
                   style={{ marginRight: 4 }}
                   autoFocus
+                  className="input-black"
                 />
                 <input
                   type="text"
@@ -281,12 +306,13 @@ function Profile() {
                   value={pendingAttachFilename}
                   onChange={e => setPendingAttachFilename(e.target.value)}
                   style={{ marginRight: 4 }}
+                  className="input-black"
                 />
                 <button className="btn" onClick={saveAttachmentEdit} style={{ marginLeft: 5 }}>Save</button>
                 <button className="btn" onClick={resetAttachmentEdit} style={{ marginLeft: 5 }}>Cancel</button>
               </li>
             ) : (
-              <li key={idx}>
+              <li key={idx} className="text-black">
                 <span>{att.type}:</span> <span>{att.filename}</span>
                 <button
                   className="btn"
@@ -305,6 +331,7 @@ function Profile() {
                 onChange={e => setPendingAttachType(e.target.value)}
                 style={{ marginRight: 4 }}
                 autoFocus
+                className="input-black"
               />
               <input
                 type="text"
@@ -312,6 +339,7 @@ function Profile() {
                 value={pendingAttachFilename}
                 onChange={e => setPendingAttachFilename(e.target.value)}
                 style={{ marginRight: 4 }}
+                className="input-black"
               />
               <button className="btn" onClick={saveAttachmentEdit} style={{ marginLeft: 5 }}>Add</button>
               <button className="btn" onClick={resetAttachmentEdit} style={{ marginLeft: 5 }}>Cancel</button>
@@ -325,16 +353,67 @@ function Profile() {
     );
   }
 
+  // Main: modern profile details, topics-section, and static info display
   return (
     <div className="profile-container">
       <h2>
-        {initialPetProfile.name} <span className="profile-species">{initialPetProfile.species}</span>
+        <span className="topic-green">{initialPetProfile.name}</span> <span className="profile-species">{initialPetProfile.species}</span>
       </h2>
       <div className="profile-details">
-        <div><b>Breed:</b> {initialPetProfile.breed}</div>
-        <div><b>Age:</b> {initialPetProfile.age} years</div>
-        <div><b>Gender:</b> {initialPetProfile.gender}</div>
-        {/* In-memory attribute array rendering */}
+        <div className="text-black"><b>Breed:</b> {initialPetProfile.breed}</div>
+        <div className="text-black"><b>Age:</b> {initialPetProfile.age} years</div>
+        <div className="text-black"><b>Gender:</b> {initialPetProfile.gender}</div>
+      </div>
+      <div className="topics-section" style={{ marginTop: "28px", marginBottom: "28px" }}>
+        {initialPetProfile.topics && initialPetProfile.topics.map((t, i) => (
+          <div key={i} className="topic-group">
+            <div className="topic-main topic-green">
+              {t.topic}
+            </div>
+            <div className="subtopics-list">
+              {t.subtopics.map((s, j) => (
+                <span
+                  key={j}
+                  className={"subtopic-pill " + randomSubtopicClass(j)}
+                >
+                  {s}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+        <div className="profile-section" style={{marginTop:30}}>
+          <label className="text-black">Contact Email</label>
+          <input
+            name="contactEmail"
+            value={initialPetProfile.contactEmail}
+            type="email"
+            className="input-black"
+            readOnly
+          />
+        </div>
+      </div>
+      <div className="profile-info">
+        <div className="text-black">
+          <strong>Name:</strong> {initialPetProfile.name}
+        </div>
+        <div className="text-black">
+          <strong>Species:</strong> {initialPetProfile.species}
+        </div>
+        <div className="text-black">
+          <strong>Breed:</strong> {initialPetProfile.breed}
+        </div>
+        <div className="text-black">
+          <strong>Age:</strong> {initialPetProfile.age}
+        </div>
+        <div className="text-black">
+          <strong>Gender:</strong> {initialPetProfile.gender}
+        </div>
+        <div className="text-black">
+          <strong>Contact Email:</strong> {initialPetProfile.contactEmail}
+        </div>
+      </div>
+      <div style={{marginTop: 30}}>
         {renderAttributes()}
         {renderContacts()}
         {renderAttachments()}
