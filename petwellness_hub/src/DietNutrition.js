@@ -173,11 +173,11 @@ function DietNutrition() {
         </div>
         <div className="calendar-legend">
           <span className="legend-box" style={{ background: "#FFD8BE" }} />
-          <span>Protein</span>
+          <span className="black-legend-label">Protein</span>
           <span className="legend-box" style={{ background: "#A9DDD6" }} />
-          <span>Carbs</span>
+          <span className="black-legend-label">Carbs</span>
           <span className="legend-box" style={{ background: "#FBC2EB" }} />
-          <span>Veggies</span>
+          <span className="black-legend-label">Veggies</span>
         </div>
       </section>
 

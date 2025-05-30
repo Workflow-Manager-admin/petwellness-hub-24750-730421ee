@@ -193,6 +193,11 @@
   margin: 5px 0 0 2px;
   font-size: 0.93rem;
 }
+
+/* Only the labels 'Protein', 'Carbs', 'Veggies' in the weekly food schedule legend should be black. */
+.black-legend-label {
+  color: #000 !important;
+}
 .legend-box {
   width: 17px;
   height: 14px;
