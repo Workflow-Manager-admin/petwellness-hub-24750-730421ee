@@ -124,14 +124,14 @@ function Activity() {
         </form>
         <ul className="activity-log-list">
           {activityLogs.map((log, idx) => {
-            // Identify the three original logs to render in black
+            // Identify the three original logs to render in black (entire line, incl. emoji/time)
             const isBlackLine =
               (log.time === "07:00" && log.desc.includes("Morning walk")) ||
               (log.time === "12:20" && log.desc.includes("Fetch in backyard")) ||
               (log.time === "17:50" && log.desc.includes("Dog park run"));
             return (
               <li className="log-entry" key={idx}>
-                <span className="log-time">{log.time}</span>
+                <span className={`log-time${isBlackLine ? " log-black" : ""}`}>{log.time}</span>
                 <span className={`log-desc${isBlackLine ? " log-black" : ""}`}>{log.desc}</span>
               </li>
             );
