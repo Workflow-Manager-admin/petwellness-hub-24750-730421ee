@@ -221,12 +221,32 @@ function Dashboard() {
 
       {/* Floating/side quick actions panel */}
       <aside className="dashboard-quick-actions">
-        {quickActions.map((qa) => (
-          <button className="quick-action-btn" key={qa.label} title={qa.label}>
-            <span className="qa-ic">{qa.icon}</span>
-            <span className="qa-label">{qa.label}</span>
-          </button>
-        ))}
+        {quickActions.map((qa) => {
+          // Define route for each specific quick action as per requirements
+          let route = null;
+          if (qa.label === "Add Health") route = "/health-tracker";
+          else if (qa.label === "Log Meal") route = "/diet-nutrition";
+          else if (qa.label === "Log Activity") route = "/activity";
+          else if (qa.label === "Book Appt") route = "/appointments/manage";
+
+          return route ? (
+            <Link
+              to={route}
+              className="quick-action-btn"
+              key={qa.label}
+              title={qa.label}
+              style={{ textDecoration: "none" }}
+            >
+              <span className="qa-ic">{qa.icon}</span>
+              <span className="qa-label">{qa.label}</span>
+            </Link>
+          ) : (
+            <button className="quick-action-btn" key={qa.label} title={qa.label}>
+              <span className="qa-ic">{qa.icon}</span>
+              <span className="qa-label">{qa.label}</span>
+            </button>
+          );
+        })}
       </aside>
 
       {/* Motivational tip/quote at bottom */}
