@@ -40,7 +40,7 @@ function HealthTracker() {
       type: "Vet Visit",
       desc: "Routine checkup. Vaccination updated.",
       status: "complete",
-      icon: "🩺",
+      icon: "🧺",
     },
     {
       date: "2024-05-20",
@@ -231,8 +231,6 @@ function HealthTracker() {
             fontSize: 45,
             filter: "grayscale(1) contrast(2)",
             WebkitFilter: "grayscale(1) contrast(2)",
-            // Remove colored gradient from the emoji for monochrome look
-            // No background gradient; force color
             color: "#232323",
             fontWeight: 700,
             letterSpacing: "-0.02em",
@@ -401,7 +399,7 @@ function HealthTracker() {
             </ol>
           </section>
 
-          {/* Allergies and Conditions - Tag Pills */}
+          {/* Allergies and Conditions - Tag Pills, Refactored Stacked Layout */}
           <section
             className="health-pill-section"
             style={{
@@ -411,6 +409,7 @@ function HealthTracker() {
               padding: "19px 19px 13px 19px",
               marginBottom: 22,
               border: "2px solid #edfaf2",
+              overflow: "hidden",
             }}
           >
             <div
@@ -430,147 +429,177 @@ function HealthTracker() {
               </span>
               Allergies &amp; Medical Conditions
             </div>
-            <div style={{ fontWeight: 600, color: "#485", margin: "4px 0 1px 1px", display: "flex", gap: 7 }}>
-              Allergies:
-              {allergies.map((al, i) => (
-                <span
-                  key={i}
+            {/* Allergies Pills & Input - Stacked Downward */}
+            <div className="allergy-section-stack">
+              <div className="allergy-pills-row">
+                <span style={{ fontWeight: 600, color: "#485", marginRight: 7 }}>Allergies:</span>
+                <div className="allergy-pills-list">
+                  {allergies.map((al, i) => (
+                    <span
+                      key={i}
+                      className="allergy-pill"
+                      style={{
+                        borderRadius: 13,
+                        background: pillColor(al.severity) + "22",
+                        color: "#FF6B6B",
+                        marginRight: 7,
+                        marginBottom: 6,
+                        padding: "2.5px 11px",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        fontWeight: 600,
+                        boxShadow: "0 1px 5px #ff6b6b2a",
+                        maxWidth: "100%",
+                        wordBreak: "break-word"
+                      }}
+                    >
+                      {al.tag}
+                      <button
+                        aria-label="Remove allergy"
+                        style={{
+                          background: "none",
+                          border: "none",
+                          color: "#c22",
+                          fontWeight: "bold",
+                          fontSize: 15,
+                          cursor: "pointer",
+                          marginLeft: 5,
+                        }}
+                        onClick={() => handleRemoveAllergy(i)}
+                        title="Remove"
+                      >
+                        &times;
+                      </button>
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div className="allergy-input-row">
+                <input
+                  type="text"
+                  value={allergyInput}
+                  placeholder="Add allergy"
                   style={{
-                    borderRadius: 13,
-                    background: pillColor(al.severity) + "22",
-                    color: "#FF6B6B",
-                    marginLeft: 7,
-                    padding: "2.5px 11px",
-                    display: "inline-flex",
-                    alignItems: "center",
-                    fontWeight: 600,
-                    boxShadow: "0 1px 5px #ff6b6b2a",
+                    border: "1.3px solid #FF6B6B77",
+                    borderRadius: 10,
+                    padding: "2px 9px",
+                    fontFamily: "Inter,Poppins",
+                    marginRight: 6,
+                    width: "100%",
+                    maxWidth: 200,
                   }}
+                  onChange={(e) => setAllergyInput(e.target.value)}
+                  onKeyDown={(e) => e.key === "Enter" && handleAddAllergy()}
+                  maxLength={19}
+                />
+              </div>
+              <div className="allergy-add-btn-row">
+                <button
+                  style={{
+                    background: "linear-gradient(88deg, #FF6B6B 54%, #FFD166 90%)",
+                    border: "none",
+                    padding: "6px 15px",
+                    borderRadius: 9,
+                    color: "#fff",
+                    fontWeight: 600,
+                    cursor: "pointer",
+                    fontSize: 15,
+                    width: 110,
+                    marginTop: 3,
+                  }}
+                  onClick={handleAddAllergy}
+                  title="Add allergy"
+                  tabIndex={0}
                 >
-                  {al.tag}
-                  <button
-                    aria-label="Remove allergy"
-                    style={{
-                      background: "none",
-                      border: "none",
-                      color: "#c22",
-                      fontWeight: "bold",
-                      fontSize: 15,
-                      cursor: "pointer",
-                      marginLeft: 5,
-                    }}
-                    onClick={() => handleRemoveAllergy(i)}
-                    title="Remove"
-                  >
-                    ×
-                  </button>
-                </span>
-              ))}
-              <input
-                type="text"
-                value={allergyInput}
-                placeholder="Add allergy"
-                style={{
-                  border: "1.3px solid #FF6B6B77",
-                  borderRadius: 10,
-                  marginLeft: 9,
-                  padding: "2px 9px",
-                  fontFamily: "Inter,Poppins",
-                  width: 90,
-                }}
-                onChange={(e) => setAllergyInput(e.target.value)}
-                onKeyDown={(e) => e.key === "Enter" && handleAddAllergy()}
-                maxLength={19}
-              />
-              <button
-                style={{
-                  background: "linear-gradient(88deg, #FF6B6B 54%, #FFD166 90%)",
-                  border: "none",
-                  padding: "3px 13px",
-                  borderRadius: 9,
-                  color: "#fff",
-                  fontWeight: 600,
-                  marginLeft: 3,
-                  cursor: "pointer",
-                  fontSize: 14,
-                }}
-                onClick={handleAddAllergy}
-                title="Add allergy"
-                tabIndex={0}
-              >
-                Add +
-              </button>
+                  Add +
+                </button>
+              </div>
             </div>
-            <div style={{ fontWeight: 600, color: "#00A295", margin: "8px 0 3px 1px", display: "flex", gap: 8 }}>
-              Conditions:
-              {conditions.map((cond, i) => (
-                <span
-                  key={i}
+            {/* Conditions Pills & Input - Stacked Downward */}
+            <div className="condition-section-stack">
+              <div className="condition-pills-row">
+                <span style={{ fontWeight: 600, color: "#00A295", marginRight: 8 }}>Conditions:</span>
+                <div className="condition-pills-list">
+                  {conditions.map((cond, i) => (
+                    <span
+                      key={i}
+                      className="condition-pill"
+                      style={{
+                        borderRadius: 13,
+                        background: pillColor(cond.severity) + "22",
+                        color: "#00C2A8",
+                        marginRight: 7,
+                        marginBottom: 6,
+                        padding: "2.5px 11px",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        fontWeight: 600,
+                        boxShadow: "0 1px 5px #00c2a82b",
+                        maxWidth: "100%",
+                        wordBreak: "break-word"
+                      }}
+                    >
+                      {cond.tag}
+                      <button
+                        aria-label="Remove condition"
+                        style={{
+                          background: "none",
+                          border: "none",
+                          color: "#00897b",
+                          fontWeight: "bold",
+                          fontSize: 15,
+                          cursor: "pointer",
+                          marginLeft: 5,
+                        }}
+                        onClick={() => handleRemoveCondition(i)}
+                        title="Remove"
+                      >
+                        &times;
+                      </button>
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div className="condition-input-row">
+                <input
+                  type="text"
+                  value={conditionInput}
+                  placeholder="Add condition"
                   style={{
-                    borderRadius: 13,
-                    background: pillColor(cond.severity) + "22",
-                    color: "#00C2A8",
-                    marginLeft: 7,
-                    padding: "2.5px 11px",
-                    display: "inline-flex",
-                    alignItems: "center",
-                    fontWeight: 600,
-                    boxShadow: "0 1px 5px #00c2a82b",
+                    border: "1.3px solid #00C2A877",
+                    borderRadius: 10,
+                    padding: "2px 9px",
+                    fontFamily: "Inter,Poppins",
+                    marginRight: 6,
+                    width: "100%",
+                    maxWidth: 200,
                   }}
+                  onChange={(e) => setConditionInput(e.target.value)}
+                  onKeyDown={(e) => e.key === "Enter" && handleAddCondition()}
+                  maxLength={19}
+                />
+              </div>
+              <div className="condition-add-btn-row">
+                <button
+                  style={{
+                    background: "linear-gradient(77deg, #00C2A8 64%, #FFD166 100%)",
+                    border: "none",
+                    padding: "6px 15px",
+                    borderRadius: 9,
+                    color: "#fff",
+                    fontWeight: 600,
+                    cursor: "pointer",
+                    fontSize: 15,
+                    width: 110,
+                    marginTop: 3
+                  }}
+                  onClick={handleAddCondition}
+                  title="Add condition"
+                  tabIndex={0}
                 >
-                  {cond.tag}
-                  <button
-                    aria-label="Remove condition"
-                    style={{
-                      background: "none",
-                      border: "none",
-                      color: "#00897b",
-                      fontWeight: "bold",
-                      fontSize: 15,
-                      cursor: "pointer",
-                      marginLeft: 5,
-                    }}
-                    onClick={() => handleRemoveCondition(i)}
-                    title="Remove"
-                  >
-                    ×
-                  </button>
-                </span>
-              ))}
-              <input
-                type="text"
-                value={conditionInput}
-                placeholder="Add condition"
-                style={{
-                  border: "1.3px solid #00C2A877",
-                  borderRadius: 10,
-                  marginLeft: 9,
-                  padding: "2px 9px",
-                  fontFamily: "Inter,Poppins",
-                  width: 90,
-                }}
-                onChange={(e) => setConditionInput(e.target.value)}
-                onKeyDown={(e) => e.key === "Enter" && handleAddCondition()}
-                maxLength={19}
-              />
-              <button
-                style={{
-                  background: "linear-gradient(77deg, #00C2A8 64%, #FFD166 100%)",
-                  border: "none",
-                  padding: "3px 13px",
-                  borderRadius: 9,
-                  color: "#fff",
-                  fontWeight: 600,
-                  marginLeft: 3,
-                  cursor: "pointer",
-                  fontSize: 14,
-                }}
-                onClick={handleAddCondition}
-                title="Add condition"
-                tabIndex={0}
-              >
-                Add +
-              </button>
+                  Add +
+                </button>
+              </div>
             </div>
           </section>
           {/* Medication Tracker */}
@@ -731,7 +760,7 @@ function HealthTracker() {
                 }}
               >
                 <span role="img" aria-label="badge">
-                  🩺
+                  🧺
                 </span>{" "}
                 {pet.healthStatus}
                 <span
