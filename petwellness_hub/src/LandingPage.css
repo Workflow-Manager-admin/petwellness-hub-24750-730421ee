@@ -69,7 +69,7 @@
   margin-bottom: 12px;
   margin-top: 0.5rem;
   box-shadow: var(--furever-shadow-card);
-  border: 3px solid #fff4;
+  border: none; /* removed border */
 }
 .furevercare-paw { font-size: 2.2rem; }
 .furevercare-title {
@@ -165,7 +165,7 @@
   border-radius: 1.3rem;
   box-shadow: var(--furever-shadow-card);
   backdrop-filter: blur(var(--furever-glass-blur));
-  border: 1.5px solid #bef2e1cc;
+  border: none; /* removed border */
   text-align: center;
   transition: transform 0.19s, box-shadow 0.2s;
   will-change: transform;
@@ -215,7 +215,7 @@
   margin-bottom: 0.7rem;
   text-align: center;
   backdrop-filter: blur(var(--furever-glass-blur));
-  border: 1.4px solid #faf7e948;
+  border: none; /* removed border */
   color: var(--text-dark);
   will-change: transform;
   transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
@@ -256,6 +256,7 @@
   text-align: center;
   position: relative;
   animation: fadeInStep 0.8s cubic-bezier(.66,2,.4,.92) backwards;
+  border: none !important; /* removed border */
 }
 @keyframes fadeInStep {
   from { opacity:0; transform: translateY(60px);}
@@ -273,7 +274,7 @@
   margin: -27px auto 7px auto;
   font-size: 1.12rem;
   box-shadow: 0 2px 14px #ffe5b466;
-  border: 1.5px solid #fffbe2;
+  border: none;
 }
 .step-icon {
   font-size: 2.15rem;
@@ -322,7 +323,7 @@
   border-radius: 1.3rem;
   box-shadow: var(--furever-shadow-card);
   background: var(--furever-glass);
-  border: 1.5px solid #e4dffb;
+  border: none; /* removed border */
   backdrop-filter: blur(var(--furever-glass-blur));
   margin-bottom: 1rem;
   display: flex;
@@ -348,7 +349,7 @@
   justify-content: center;
   margin: -3.1rem auto 0.7rem auto;
   box-shadow: 0 1px 16px #eee, 0 2px 7px #ffeeef22;
-  border: 3px solid #fff;
+  border: none; /* removed border */
 }
 .testimonial-card blockquote {
   font-size: 1.08rem;
@@ -446,7 +447,7 @@
 .glassy-card {
   background: var(--furever-glass);
   backdrop-filter: blur(var(--furever-glass-blur));
-  border: 1.7px solid #aeece4aa;
+  border: none; /* removed border */
   box-shadow: var(--furever-shadow-card);
   border-radius: 1.25rem;
 }
