@@ -72,6 +72,11 @@
   color: #000 !important;
 }
 
+/* Ensures entire entry (all text/emojis in li) is black for the three output logs only */
+.log-output-black-full, .log-output-black-full * {
+  color: #000 !important;
+}
+
 .add-log-form {
   display: flex;
   gap: 6px;
