@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,600,700|Inter:400,600|Roboto:400,500&display=swap');
+
+/* General layout for health-tracker-root handled via inline style */
+
+/* Responsive 2-col + mobile stacked */
+@media (max-width: 900px) {
+  .health-tracker-root {
+    flex-direction: column !important;
+    padding: 6vw 2vw 28px 2vw !important;
+  }
+  .health-tracker-root > div {
+    flex-direction: column !important;
+    gap: 17px !important;
+  }
+}
+
+/* Timeline event left vertical line, dot, icon */
+.ht-timeline .timeline-event {
+  position: relative;
+  min-height: 39px;
+  transition: background .22s;
+}
+
+.ht-timeline .timeline-event:hover {
+  background: #00c2a80b;
+  box-shadow: 0 1px 7px #00c2a812;
+  border-radius: 13px;
+  cursor: pointer;
+}
+.ht-timeline .timeline-event:active {
+  background: #ffd16624;
+}
+
+.ht-timeline .timeline-event span[role="img"] {
+  transition: filter .23s;
+}
+.ht-timeline .timeline-event:hover span[role="img"] {
+  filter: drop-shadow(0 1px 5px #ff6b6b5c);
+}
+
+/* Tags, pills, inputs */
+.health-pill-section input[type="text"] {
+  outline: none;
+  transition: border .14s;
+}
+.health-pill-section input[type="text"]:focus {
+  border: 1.4px solid #00c2a8;
+  background: #f8feff;
+}
+.health-pill-section button:focus {
+  outline: 1.8px solid #ffd166;
+  background: #fffcf7;
+}
+
+/* Medication Cards */
+.medications-grid .medication-card {
+  transition: box-shadow .23s, transform .13s;
+  cursor: pointer;
+}
+.medications-grid .medication-card:hover {
+  box-shadow: 0 3px 15px #00c2a824;
+  background: #f4faf8;
+  transform: scale(1.04);
+}
+.medications-grid .medication-card:active {
+  background: #d2fefb;
+}
+
+/* Vax collapsed card */
+.vax-section > div > div:hover {
+  box-shadow: 0 2.5px 13px #ffd1664f;
+  background: #fffbe9;
+}
+/* Vet info action buttons */
+.vet-info-panel a:focus, .vet-info-panel a:hover {
+  outline: 2px solid #FFD166;
+  background: linear-gradient(79deg,#FFD166 67%, #00C2A8 100%);
+  color: #fff !important;
+}
+
+/* Doc filter input */
+.doc-upload-panel input[type="text"]:focus {
+  border: 1.8px solid #FFD166;
+  outline: none;
+  background: #fffbe7;
+}
+
+/* Doc upload drag & drop (not implemented, placeholder) */
+.doc-upload-panel label[aria-label="Upload Document"]:hover {
+  background: linear-gradient(92deg,#FFD166 60%, #00C2A8 100%);
+  color: #fff;
+  box-shadow: 0 7px 18px #ffd16651;
+}

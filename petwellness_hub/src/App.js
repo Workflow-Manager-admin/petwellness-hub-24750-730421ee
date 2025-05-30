@@ -9,6 +9,7 @@ import Dashboard from "./Dashboard";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Profile from "./Profile";
 import HealthTracker from "./HealthTracker";
+import "./HealthTracker.css";
 import DietNutrition from "./DietNutrition";
 import Activity from "./Activity";
 
