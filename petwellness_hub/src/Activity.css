@@ -68,6 +68,9 @@
   padding: 4px 14px;
   font-size: 1rem;
 }
+.log-black {
+  color: #000 !important;
+}
 
 .add-log-form {
   display: flex;

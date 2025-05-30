@@ -123,12 +123,19 @@ function Activity() {
           <button className="add-log-btn" type="submit">Add</button>
         </form>
         <ul className="activity-log-list">
-          {activityLogs.map((log, idx) => (
-            <li className="log-entry" key={idx}>
-              <span className="log-time">{log.time}</span>
-              <span className="log-desc">{log.desc}</span>
-            </li>
-          ))}
+          {activityLogs.map((log, idx) => {
+            // Identify the three original logs to render in black
+            const isBlackLine =
+              (log.time === "07:00" && log.desc.includes("Morning walk")) ||
+              (log.time === "12:20" && log.desc.includes("Fetch in backyard")) ||
+              (log.time === "17:50" && log.desc.includes("Dog park run"));
+            return (
+              <li className="log-entry" key={idx}>
+                <span className="log-time">{log.time}</span>
+                <span className={`log-desc${isBlackLine ? " log-black" : ""}`}>{log.desc}</span>
+              </li>
+            );
+          })}
         </ul>
       </div>
 
