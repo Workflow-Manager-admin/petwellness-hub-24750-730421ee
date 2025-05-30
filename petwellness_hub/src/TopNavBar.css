@@ -82,11 +82,14 @@
   margin: 0;
   padding-left: 0;
   display: flex;
-  gap: 0.8rem;
+  gap: 1.3rem;
   align-items: center;
-  font-size: 1.05rem;
+  font-size: 1.07rem;
   font-weight: 500;
   background: none;
+  /* evenly-space items horizontally */
+  justify-content: center;
+  font-family: "Poppins", "Inter", Arial, sans-serif;
 }
 
 /* Hamburger shown on mobile only */
@@ -141,8 +144,11 @@
 .furever-navbar-links > li > a:hover,
 .furever-navbar-links > li.open > button,
 .furever-navbar-links > li > button:focus {
-  color: var(--fur-link-active);
-  background: #ecf4ed;
+  color: #5b8e65; /* brand green */
+  background: #e2f7ea;
+  text-decoration: none;
+  box-shadow: 0 1.5px 9px 0 rgba(140,230,160,0.09);
+  transition: background .18s, color .19s;
 }
 
 /* Dropdown Carat */
