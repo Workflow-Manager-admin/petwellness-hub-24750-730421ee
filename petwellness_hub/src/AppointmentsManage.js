@@ -418,7 +418,7 @@ function AppointmentsManage() {
     return (
       <section className="appt-section">
         <div className="section-header">
-          <h2>
+          <h2 className="upcoming-appts-heading">
             <IconUI name="calendar" /> Upcoming Appointments
           </h2>
           <button className="btn-primary" onClick={openBooking}>

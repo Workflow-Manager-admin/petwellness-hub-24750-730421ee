@@ -2,6 +2,24 @@
   /* Placeholder style for Appointments Manage page */
 }
 
+/* Green heading for Upcoming Appointments */
+.upcoming-appts-heading {
+  color: #239c46 !important;
+  font-weight: 700;
+}
+
+/* Extra spacing below each upcoming appointment item */
+.appt-list .appt-card {
+  margin-bottom: 28px !important;
+  /* Ensure cards do not collapse spacing */
+}
+
+/* Reminders output (text only, not icons/emojis, but not affecting icons/buttons) */
+.reminder-text {
+  color: #239c46 !important;
+  font-weight: 500;
+}
+
 /* Semantic label styles for appointment topics/headings/labels */
 .label-status-confirmed, .appt-status-confirmed {
   color: #339966 !important; /* Green */
