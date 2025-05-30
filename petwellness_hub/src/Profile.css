@@ -1,28 +1,28 @@
-.profile-topic.topic-green {
-  color: #36b37e;
+.profile .topic-green {
+  color: #2e944b;
 }
 
-.profile-subtopic.subtopic-violet {
-  color: #8c59d5;
-}
-.profile-subtopic.subtopic-blue {
-  color: #368ee6;
-}
-.profile-subtopic.subtopic-orange {
-  color: #e87a41;
+.profile .subtopic-violet {
+  color: #7c3aed;
 }
 
-.profile-info-input.input-black,
-.profile-info-field.input-black,
-.profile-info-row input.input-black,
-.profile-info-row textarea.input-black,
-.profile-info input.input-black,
-.profile-info textarea.input-black {
-  color: #111 !important;
+.profile .subtopic-blue {
+  color: #2563eb;
 }
 
-.profile-info-text.text-black,
-.profile-info-field.text-black,
-.profile-info-row .text-black {
-  color: #111 !important;
+.profile .subtopic-orange {
+  color: #ef7d2d;
+}
+
+.profile .input-black,
+.profile input.input-black,
+.profile input[type="text"].input-black,
+.profile textarea.input-black,
+.profile select.input-black {
+  color: #222222;
+  border-color: #222222;
+}
+
+.profile .text-black {
+  color: #222222;
 }
