@@ -1,0 +1,328 @@
+:root {
+  --brand-green: #8aa182;
+  --brand-beige: #d1d5ae;
+  --brand-accent: #71706f;
+  --brand-orange: #E87A41;
+  --notification-card-bg: #f7f9f6;
+  --notification-dark: #222822;
+  --text-main: #292c26;
+  --border-light: #e7ecd6;
+}
+
+.notification-page {
+  max-width: 700px;
+  margin: 32px auto 88px auto;
+  padding: 0 1.2rem 48px 1.2rem;
+  font-family: 'Inter', Arial, sans-serif;
+}
+
+.section-card {
+  background: var(--notification-card-bg);
+  border-radius: 22px;
+  box-shadow: 0 3px 16px rgba(138,161,130,0.13);
+  margin-bottom: 2rem;
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  transition: box-shadow 0.2s;
+  border: 1px solid var(--border-light);
+}
+
+.section-card.dnd-card {
+  transition: background 0.35s;
+  background: linear-gradient(95deg, #fff8f2 60%, #e8f3ea 100%);
+}
+
+.section-title {
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: var(--brand-green);
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.01em;
+}
+
+.notif-pref-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+.notif-toggle {
+  background: #fff;
+  display: flex;
+  align-items: center;
+  border-radius: 12px;
+  border: 1.5px solid var(--border-light);
+  box-shadow: 0 1px 5px rgba(100,130,60,0.04);
+  padding: 0.45rem 1rem 0.45rem 0.75rem;
+  gap: 0.66rem;
+  font-size: 1rem;
+  cursor: pointer;
+  position: relative;
+  min-width: 180px;
+  min-height: 44px;
+  user-select: none;
+  transition: border 0.15s, box-shadow 0.15s;
+}
+.notif-toggle .notif-icon { margin-right: 4px; display: flex; }
+.notif-toggle .custom-toggle {
+  margin-left: auto;
+  width: 38px;
+  height: 22px;
+  border-radius: 16px;
+  background: #f2f4ec;
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  border: 1px solid #e7ecd6;
+  transition: background 0.15s;
+}
+.notif-toggle .custom-toggle span {
+  display:block;
+  width: 18px;
+  height: 18px;
+  transition: transform 0.22s cubic-bezier(.8,-0.4,.3,1.4), background 0.15s;
+  border-radius: 50%;
+  margin-left: 2px;
+  background: #d1d5ae;
+  box-shadow: 0 1px 3px rgba(186,194,164,0.27);
+}
+.notif-toggle.active { border-color: var(--brand-green); box-shadow: 0 2px 8px rgba(138,161,130,0.08);}
+.notif-toggle.active .custom-toggle { background: #e4f1e7;}
+.notif-toggle.active .custom-toggle span {
+  background: var(--brand-green);
+  box-shadow: 0 2px 8px #d1d5ae99;
+  transform: translateX(15px);
+}
+
+.channel-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.pill {
+  background: #fafbf9;
+  color: var(--brand-accent);
+  border-radius: 20px;
+  border: 1.5px solid var(--border-light);
+  padding: 0.5rem 1.3rem;
+  font-size: 0.98rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: color 0.16s, border 0.18s, background 0.12s;
+  gap: 0.46em;
+  box-shadow: 0 1px 5px rgba(186,194,164,0.07);
+}
+.pill .pill-icon { margin-right: 5px; display: flex;}
+.pill.pill-active {
+  background: var(--brand-green);
+  color: #fff;
+  border-color: var(--brand-green);
+  box-shadow: 0 4px 12px #c7dbc690;
+}
+
+.reminder-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.4rem;
+}
+.reminder-setting {
+  flex: 1 1 200px;
+  display: grid;
+  grid-template-columns: 32px 1fr 110px 78px;
+  align-items: center;
+  gap: 0.2rem 0.5rem;
+  background: #fff;
+  border-radius: 10px;
+  border: 1.5px solid var(--border-light);
+  margin-bottom: 0.8em;
+  padding: 0.4em 0.6em;
+  min-width: 300px;
+  font-size: 0.98rem;
+  transition: box-shadow 0.15s;
+}
+.reminder-label { font-weight: 500; color: var(--brand-accent);}
+.reminder-setting select, .reminder-setting .time-input {
+  margin-left: 4px;
+  border-radius: 8px;
+  border: 1px solid #e7ecd6;
+  padding: 0.15em 0.5em;
+  background: #f7f9f6;
+  font-size: 0.98rem;
+  color: var(--brand-green);
+}
+.reminder-setting .time-input {
+  width: 68px;
+}
+.reminder-setting select:focus,
+.reminder-setting input:focus,
+.dnd-time-inputs input:focus {
+  outline: 2px solid var(--brand-green);
+}
+
+.dnd-row {
+  display: flex;
+  align-items: center;
+  gap: 1.7rem;
+  margin-bottom: 0.9em;
+  min-height: 40px;
+}
+.dnd-labels { flex-grow: 1; }
+.dnd-status {
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.035em;
+}
+.dnd-times {
+  margin-left: 12px;
+  font-size: 0.95rem;
+  color: var(--brand-accent);
+}
+.dnd-toggle {
+  width: 55px;
+  height: 30px;
+  border-radius: 20px;
+  background: #e6efe3;
+  border: 1.5px solid var(--border-light);
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: background 0.25s cubic-bezier(.77,.03,.33,1), box-shadow 0.15s;
+  box-shadow: 0 2px 8px #c7dbc625;
+}
+.dnd-toggle span {
+  background: #e7ecd6;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  margin-left: 3px;
+  display: block;
+  transition: transform 0.33s cubic-bezier(.83,-0.01,.29,1.02), background 0.19s;
+  box-shadow: 0 2px 8px #d1d5aeac;
+}
+.dnd-toggle.dnd--on {
+  background: var(--brand-orange);
+  box-shadow: 0 4px 14px #e87a417c;
+}
+.dnd-toggle.dnd--on span {
+  background: #fff;
+  transform: translateX(23px);
+  box-shadow: 0 2px 14px 1px #E87A4190;
+}
+.dnd-time-inputs {
+  display: flex;
+  gap: 2rem;
+  margin-top: 0.8em;
+}
+.dnd-time-inputs label {
+  font-weight: 500;
+  color: var(--brand-green);
+  font-size: 1em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.notif-feed {
+  background: #fcfdfc;
+  min-height: 85px;
+  border-radius: 15px;
+  box-shadow: 0 2px 13px rgba(140,160,120,0.07);
+  padding: 1em 1em 0.3em 0.8em;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  max-height: 240px;
+  overflow-y: auto;
+  border: 1px solid var(--border-light);
+}
+.notif-feed-entry {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2em;
+  animation: notifFeedEntry 0.4s cubic-bezier(0.58,0.38,0.34,1.2);
+}
+@keyframes notifFeedEntry {
+  from { opacity: 0; transform: translateY(16px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+.notif-feed-icon {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #eef5e7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.notif-feed-entry.notif-health .notif-feed-icon { background: #eafaed;}
+.notif-feed-entry.notif-diet .notif-feed-icon { background: #f4f8ec;}
+.notif-feed-entry.notif-appointments .notif-feed-icon { background: #ffefea;}
+.notif-feed-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3em;
+}
+.notif-feed-text { color: var(--text-main); font-weight: 500; }
+.notif-feed-time { color: #a9ae90; font-size: 0.93em; }
+
+.notif-feed-empty {
+  color: #aec2b0;
+  text-align: center;
+  padding: 1.0em 0 0.8em 0;
+  font-size: 1em;
+}
+
+.sticky-save-btn {
+  z-index: 4;
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  background: linear-gradient(90deg, var(--brand-green), #e7ecd6 78%);
+  color: #fff;
+  border: none;
+  font-size: 1.16rem;
+  font-weight: 700;
+  box-shadow: 0 -1px 26px #8aa1822a;
+  padding: 1.15em 0 1.10em 0;
+  outline: none;
+  transition: box-shadow 0.13s, background 0.16s, filter 0.17s;
+  border-radius: 0;
+  cursor: pointer;
+  width: 100vw;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 730px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  letter-spacing: 0.04em;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+.sticky-save-btn.sticky-save--anim {
+  background: linear-gradient(88deg, var(--brand-orange) 30%, #e7ecd6 70%);
+  filter: brightness(1.09);
+  box-shadow: 0 0 24px 5px #E87A4175;
+  animation: saveBtnGlow 0.9s cubic-bezier(.25,.73,.47,.99);
+}
+@keyframes saveBtnGlow {
+  from { filter: brightness(1.4) blur(1.5px);}
+  to { filter: brightness(1) blur(0);}
+}
+
+@media (max-width: 710px) {
+  .notification-page { max-width: 99vw; padding: 0 0.5em 76px 0.5em;}
+  .section-card { padding: 1.3rem 0.7rem;}
+  .section-card:not(:last-child) { margin-bottom: 0.6rem;}
+  .reminder-setting { min-width: 90vw;}
+  .sticky-save-btn { border-radius: 12px 12px 0 0; }
+}
+
+/* Hide input number spinners for reminder select */
+.reminder-setting select::-webkit-inner-spin-button,
+.reminder-setting select::-webkit-outer-spin-button {
+  -webkit-appearance: none; margin: 0;
+}
