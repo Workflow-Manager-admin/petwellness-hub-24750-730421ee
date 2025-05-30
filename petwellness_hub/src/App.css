@@ -9,7 +9,8 @@
 body {
   margin: 0;
   font-family: 'Inter', 'Roboto', 'Helvetica', 'Arial', sans-serif;
-  background-color: var(--kavia-dark);
+  /* Use soft off-white gradient for app border background */
+  background: linear-gradient(120deg, #faf9fb 70%, #f7fff5 100%) !important;
   color: var(--text-color);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
