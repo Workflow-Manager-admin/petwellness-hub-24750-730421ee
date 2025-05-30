@@ -129,10 +129,12 @@ function Activity() {
               (log.time === "07:00" && log.desc.includes("Morning walk")) ||
               (log.time === "12:20" && log.desc.includes("Fetch in backyard")) ||
               (log.time === "17:50" && log.desc.includes("Dog park run"));
+            // User-entered logs: not part of the 3 hardcoded initial logs (which are always in the initial state only)
+            const isUserLog = !isBlackLine;
             return (
-              <li className={`log-entry${isBlackLine ? " log-output-black-full" : ""}`} key={idx}>
-                <span className={`log-time${isBlackLine ? " log-black" : ""}`}>{log.time}</span>
-                <span className={`log-desc${isBlackLine ? " log-black" : ""}`}>{log.desc}</span>
+              <li className={`log-entry${isBlackLine ? " log-output-black-full" : ""}${isUserLog ? " log-user" : ""}`} key={idx}>
+                <span className={`log-time${isBlackLine ? " log-black" : ""}${isUserLog ? " log-user" : ""}`}>{log.time}</span>
+                <span className={`log-desc${isBlackLine ? " log-black" : ""}${isUserLog ? " log-user" : ""}`}>{log.desc}</span>
               </li>
             );
           })}

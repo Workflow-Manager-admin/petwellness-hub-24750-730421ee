@@ -100,11 +100,23 @@
 .daily-input-orange textarea {
   color: #FF9800 !important;
 }
+/* Enforce black text for DAILY ACTIVITY LOG input fields (override previous orange for new entry form only) */
+.daily-input-orange .add-log-input,
+.daily-input-orange .add-log-time {
+  color: #000 !important;
+}
+
 /* Ensure input placeholder color remains readable if desired */
 /* .add-log-input::placeholder, .add-log-form textarea::placeholder {
   color: #fdb75f;
   opacity: 0.77;
 } */
+
+/* Make output log entry text black when user-entered (not for the three static ones) */
+.log-user,
+.log-user * {
+  color: #000 !important;
+}
 
 .add-log-input:focus,
 .add-log-time:focus {
