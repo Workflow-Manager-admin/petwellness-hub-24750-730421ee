@@ -270,6 +270,10 @@
   margin-bottom: 8px;
   color: var(--text-secondary);
 }
+.behavior-entry-black,
+.behavior-entry-black * {
+  color: #000 !important;
+}
 
 .achievement-list {
   display: flex;
