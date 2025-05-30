@@ -527,7 +527,7 @@ function AppointmentsManage() {
     return (
       <section className="appt-section">
         <div className="section-header">
-          <h2><IconUI name="calendar" /> Calendar View</h2>
+          <h2 className="appt-green-heading"><IconUI name="calendar" /> Calendar View</h2>
           <div className="calendar-filters">
             <label>
               Pet:&nbsp;
@@ -578,7 +578,7 @@ function AppointmentsManage() {
     return (
       <section className="appt-section">
         <div className="section-header">
-          <h2><IconUI name="history" /> Past Appointments</h2>
+          <h2 className="appt-green-heading"><IconUI name="history" /> Past Appointments</h2>
         </div>
         <div className="appt-list appt-history-list">
           {history.length === 0 ? (
@@ -654,7 +654,7 @@ function AppointmentsManage() {
     return (
       <aside className="appt-section appt-reminders">
         <div className="section-header">
-          <h2>
+          <h2 className="appt-green-heading">
             <IconUI name="bell" /> Reminders
           </h2>
         </div>
