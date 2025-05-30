@@ -357,12 +357,13 @@ function Profile() {
   return (
     <div className="profile-container">
       <h2>
-        <span className="topic-green">{initialPetProfile.name}</span> <span className="profile-species">{initialPetProfile.species}</span>
+        <span className="topic-green">{initialPetProfile.name}</span>{" "}
+        <span className="profile-species text-black">{initialPetProfile.species}</span>
       </h2>
       <div className="profile-details">
-        <div className="text-black"><b>Breed:</b> {initialPetProfile.breed}</div>
-        <div className="text-black"><b>Age:</b> {initialPetProfile.age} years</div>
-        <div className="text-black"><b>Gender:</b> {initialPetProfile.gender}</div>
+        <div className="text-black"><b>Breed:</b> <span className="text-black">{initialPetProfile.breed}</span></div>
+        <div className="text-black"><b>Age:</b> <span className="text-black">{initialPetProfile.age} years</span></div>
+        <div className="text-black"><b>Gender:</b> <span className="text-black">{initialPetProfile.gender}</span></div>
       </div>
       <div className="topics-section" style={{ marginTop: "28px", marginBottom: "28px" }}>
         {initialPetProfile.topics && initialPetProfile.topics.map((t, i) => (
