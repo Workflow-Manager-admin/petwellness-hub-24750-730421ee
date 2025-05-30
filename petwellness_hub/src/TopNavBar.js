@@ -50,6 +50,15 @@ function TopNavBar() {
       <div className="furever-navbar-inner">
         {/* Brand Logo and Name (left): links to landing */}
         <a className="furever-logo" href="/" onClick={closeAllDropdowns}>
+          {/* Paw emoji/icon for accent before SVG */}
+          <span
+            className="furever-logo-paw"
+            role="img"
+            aria-label="paw print"
+            style={{ fontSize: 22, marginRight: 6 }}
+          >
+            🐾
+          </span>
           {LogoSVG}
           <span className="furever-logo-text">FurEverCare</span>
         </a>
