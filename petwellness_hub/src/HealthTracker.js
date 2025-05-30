@@ -229,13 +229,17 @@ function HealthTracker() {
         <span
           style={{
             fontSize: 45,
-            background:
-              "linear-gradient(88deg, #00C2A8 78%, #FF6B6B 100%)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
+            filter: "grayscale(1) contrast(2)",
+            WebkitFilter: "grayscale(1) contrast(2)",
+            // Remove colored gradient from the emoji for monochrome look
+            // No background gradient; force color
+            color: "#232323",
             fontWeight: 700,
             letterSpacing: "-0.02em",
+            display: "inline-block",
+            lineHeight: 1,
           }}
+          aria-label="dog"
         >
           {pet.avatar}
         </span>
