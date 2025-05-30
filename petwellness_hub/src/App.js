@@ -13,6 +13,7 @@ import "./HealthTracker.css";
 import DietNutrition from "./DietNutrition";
 import Activity from "./Activity";
 import AppointmentsManage from "./AppointmentsManage";
+import Notification from "./Notification";
 
 // PUBLIC_INTERFACE
 function App() {
