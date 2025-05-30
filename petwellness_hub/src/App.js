@@ -73,6 +73,10 @@ function App() {
                 element={<Login />}
               />
               <Route
+                path="/signup"
+                element={React.createElement(require("./SignUp").default)}
+              />
+              <Route
                 path="/about"
                 element={<AboutPrivacy />}
               />
