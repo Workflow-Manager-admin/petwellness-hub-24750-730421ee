@@ -22,7 +22,7 @@ const veterinarians = [
 ];
 
 const appointmentTypes = [
-  { key: "checkup", label: "Checkup", icon: "🩺" },
+  { key: "checkup", label: "Checkup", icon: "🧺" },
   { key: "vaccination", label: "Vaccination", icon: "💉" },
   { key: "grooming", label: "Grooming", icon: "✂️" },
   { key: "surgery", label: "Surgery", icon: "🏥" },
@@ -126,32 +126,37 @@ function getTypeObj(key) {
 function renderStepPet({ bookingForm, errors, onInput }) {
   return (
     <div className="booking-step-content">
-      <label>Pet <span className="asterisk">*</span></label>
-      <select name="petId" value={bookingForm.petId} onChange={onInput}>
+      <label style={{color: "#000"}}>Pet <span className="asterisk" style={{color: "#000"}}>*</span></label>
+      <select name="petId" value={bookingForm.petId} onChange={onInput} style={{ color: "#000", borderColor: "#000", background: "#fff" }}>
         <option value="">Select pet...</option>
         {pets.map((p) => <option value={p.id} key={p.id}>{p.avatar} {p.name}</option>)}
       </select>
-      {errors.petId && <div className="booking-error">{errors.petId}</div>}
+      {errors.petId && <div className="booking-error" style={{color:"#000"}}>{errors.petId}</div>}
     </div>
   );
 }
 function renderStepType({ bookingForm, errors, onInput }) {
   return (
     <div className="booking-step-content">
-      <label>Appointment Type <span className="asterisk">*</span></label>
+      <label style={{color:"#000"}}>Appointment Type <span className="asterisk" style={{color:"#000"}}>*</span></label>
       <div className="booking-type-grid">
         {appointmentTypes.map((t) => (
           <button
             key={t.key}
             type="button"
             className={`appt-type-btn${bookingForm.type === t.key ? " selected" : ""}`}
+            style={{
+              color: "#000",
+              borderColor: "#000",
+              background: bookingForm.type === t.key ? "#e7eafb" : "#fff"
+            }}
             onClick={() => onInput({ target: { name: "type", value: t.key } })}
           >
-            <span className="appt-type-icon">{t.icon}</span> {t.label}
+            <span className="appt-type-icon" style={{color:"#000"}}>{t.icon}</span> {t.label}
           </button>
         ))}
       </div>
-      {errors.type && <div className="booking-error">{errors.type}</div>}
+      {errors.type && <div className="booking-error" style={{color:"#000"}}>{errors.type}</div>}
     </div>
   );
 }
@@ -160,7 +165,7 @@ function renderStepTime({ bookingForm, errors, onInput }) {
   const minDate = new Date().toISOString().split("T")[0];
   return (
     <div className="booking-step-content">
-      <label htmlFor="date">Date <span className="asterisk">*</span></label>
+      <label htmlFor="date" style={{color:"#000"}}>Date <span className="asterisk" style={{color:"#000"}}>*</span></label>
       <input
         type="date"
         id="date"
@@ -168,20 +173,22 @@ function renderStepTime({ bookingForm, errors, onInput }) {
         min={minDate}
         value={bookingForm.date}
         onChange={onInput}
+        style={{ color: "#000", borderColor: "#000", background: "#fff" }}
       />
-      {errors.date && <div className="booking-error">{errors.date}</div>}
-      <label htmlFor="time">Time <span className="asterisk">*</span></label>
+      {errors.date && <div className="booking-error" style={{color:"#000"}}>{errors.date}</div>}
+      <label htmlFor="time" style={{color:"#000"}}>Time <span className="asterisk" style={{color:"#000"}}>*</span></label>
       <input
         type="time"
         id="time"
         name="time"
         value={bookingForm.time}
         onChange={onInput}
+        style={{ color: "#000", borderColor: "#000", background: "#fff" }}
       />
-      {errors.time && <div className="booking-error">{errors.time}</div>}
+      {errors.time && <div className="booking-error" style={{color:"#000"}}>{errors.time}</div>}
       {/* Suggestions */}
       <div className="booking-tips">
-        <small>Next available: 10:30 AM, 1:30 PM, 3:00 PM</small>
+        <small style={{color:"#000"}}>Next available: 10:30 AM, 1:30 PM, 3:00 PM</small>
       </div>
     </div>
   );
@@ -189,31 +196,32 @@ function renderStepTime({ bookingForm, errors, onInput }) {
 function renderStepVet({ bookingForm, errors, onInput }) {
   return (
     <div className="booking-step-content">
-      <label>Veterinarian <span className="asterisk">*</span></label>
-      <select name="vetId" value={bookingForm.vetId} onChange={onInput}>
+      <label style={{color:"#000"}}>Veterinarian <span className="asterisk" style={{color:"#000"}}>*</span></label>
+      <select name="vetId" value={bookingForm.vetId} onChange={onInput} style={{ color: "#000", borderColor: "#000", background: "#fff" }}>
         <option value="">Choose vet...</option>
         {veterinarians.map((v) => <option value={v.id} key={v.id}>{v.name} – {v.location}</option>)}
       </select>
-      {errors.vetId && <div className="booking-error">{errors.vetId}</div>}
+      {errors.vetId && <div className="booking-error" style={{color:"#000"}}>{errors.vetId}</div>}
     </div>
   );
 }
 function renderStepDocuments({ bookingForm, errors, onInput }) {
   return (
     <div className="booking-step-content">
-      <label>Attach Documents (optional):</label>
+      <label style={{color:"#000"}}>Attach Documents (optional):</label>
       <input
         type="file"
         name="attachments"
         multiple
         onChange={onInput}
         accept="image/*,application/pdf"
+        style={{color: "#000", borderColor: "#000", background: "#fff"}}
       />
       {/* Preview attached files */}
       {bookingForm.attachments && bookingForm.attachments.length > 0 &&
         <div className="booking-attachments-preview">
           {bookingForm.attachments.map((f, idx) => (
-            <div className="booking-attachment" key={idx}>
+            <div className="booking-attachment" key={idx} style={{color:"#000"}}>
               <IconUI name={f.type === "img" ? "img" : "doc"} />
               <span className="attach-filename">{f.filename}</span>
             </div>
@@ -228,35 +236,35 @@ function renderStepConfirm({ bookingForm, errors }) {
   const type = getTypeObj(bookingForm.type);
   const vet = veterinarians.find(v => v.id === parseInt(bookingForm.vetId));
   return (
-    <div className="booking-step-content">
-      <h3>Review Appointment</h3>
+    <div className="booking-step-content" style={{color:"#000"}}>
+      <h3 style={{color:"#000"}}>Review Appointment</h3>
       <div className="booking-confirm-field">
-        <b className="label-status-info">Pet:</b>
-        <span className="appt-detail-output"> {pet.avatar} {pet.name}</span>
+        <b className="label-status-info" style={{color:"#000"}}>Pet:</b>
+        <span className="appt-detail-output" style={{color:"#000"}}> {pet.avatar} {pet.name}</span>
       </div>
       <div className="booking-confirm-field">
-        <b className="label-status-info">Type:</b>
-        <span className="appt-detail-output"> {type.icon} {type.label}</span>
+        <b className="label-status-info" style={{color:"#000"}}>Type:</b>
+        <span className="appt-detail-output" style={{color:"#000"}}> {type.icon} {type.label}</span>
       </div>
       <div className="booking-confirm-field">
-        <b className="label-status-info">Date:</b>
-        <span className="appt-detail-output"> {bookingForm.date}</span>
+        <b className="label-status-info" style={{color:"#000"}}>Date:</b>
+        <span className="appt-detail-output" style={{color:"#000"}}> {bookingForm.date}</span>
       </div>
       <div className="booking-confirm-field">
-        <b className="label-status-info">Time:</b>
-        <span className="appt-detail-output"> {bookingForm.time}</span>
+        <b className="label-status-info" style={{color:"#000"}}>Time:</b>
+        <span className="appt-detail-output" style={{color:"#000"}}> {bookingForm.time}</span>
       </div>
       <div className="booking-confirm-field">
-        <b className="label-status-info">Veterinarian:</b>
-        <span className="appt-detail-output"> {vet ? vet.name : ""}</span>
+        <b className="label-status-info" style={{color:"#000"}}>Veterinarian:</b>
+        <span className="appt-detail-output" style={{color:"#000"}}> {vet ? vet.name : ""}</span>
       </div>
       <div className="booking-confirm-field">
-        <b className="label-status-info">Notes:</b>
-        <span className="appt-detail-output"> {bookingForm.note}</span>
+        <b className="label-status-info" style={{color:"#000"}}>Notes:</b>
+        <span className="appt-detail-output" style={{color:"#000"}}> {bookingForm.note}</span>
       </div>
       <div className="booking-confirm-field">
-        <b className="label-status-info">Attachments:</b>
-        <span className="appt-detail-output">
+        <b className="label-status-info" style={{color:"#000"}}>Attachments:</b>
+        <span className="appt-detail-output" style={{color:"#000"}}>
           {(bookingForm.attachments || []).map((f, i) => (
             <span key={i}>{f.filename}&nbsp;</span>
           ))}
@@ -710,7 +718,19 @@ function Modal({ children, onClose, wide }) {
   return (
     <div className="appt-modal-overlay" tabIndex={-1}>
       <div className={`appt-modal${wide ? " modal-wide" : ""}`}>
-        <button className="modal-close-btn" onClick={onClose} aria-label="Close">&times;</button>
+        <button
+          className="modal-close-btn"
+          onClick={onClose}
+          aria-label="Close"
+          style={{
+            color: "#000",
+            borderColor: "#000",
+            background: "#fff",
+            fontSize: 28
+          }}
+        >
+          &times;
+        </button>
         {children}
       </div>
     </div>
@@ -719,9 +739,9 @@ function Modal({ children, onClose, wide }) {
 
 function DocPreview({ docs, onDelete }) {
   return (
-    <div className="doc-preview-root">
-      <h3>Attachments</h3>
-      {docs.length === 0 ? <div>No documents attached.</div> : docs.map((att, idx) => (
+    <div className="doc-preview-root" style={{color:"#000"}}>
+      <h3 style={{color:"#000"}}>Attachments</h3>
+      {docs.length === 0 ? <div style={{color:"#000"}}>No documents attached.</div> : docs.map((att, idx) => (
         <div className="doc-preview-entry" key={idx}>
           <span className="doc-preview-ic">
             <IconUI name={att.type === "img" ? "img" : "doc"} />
@@ -729,92 +749,258 @@ function DocPreview({ docs, onDelete }) {
           <span className="doc-preview-fn">{att.filename}</span>
           <span>
             {att.type === "img" && att.url ? (
-              <a href={att.url} target="_blank" rel="noopener noreferrer" className="doc-preview-thumb">Preview</a>
+              <a href={att.url} target="_blank" rel="noopener noreferrer" className="doc-preview-thumb" style={{color:"#000"}}>Preview</a>
             ) : (
-              <a href={att.url} target="_blank" rel="noopener noreferrer">Open</a>
+              <a href={att.url} target="_blank" rel="noopener noreferrer" style={{color:"#000"}}>Open</a>
             )}
           </span>
-          <button className="doc-preview-del" title="Delete" onClick={() => onDelete(idx)}>
-            <IconUI name="cancel" />
-          </button>
+          <button className="doc-preview-del" title="Delete" onClick={() => onDelete(idx)} style={{color:"#000"}}><IconUI name="cancel" /></button>
         </div>
       ))}
     </div>
   );
 }
 
+// --- Interactive Editable Appointment Modal ---
 function ApptModal({ modal, close }) {
-  // Helper functions -- modal-only version to prevent scope bleed
-  function getTypeObjModal(key) {
-    return appointmentTypes.find((t) => t.key === key) || { label: key, icon: "📋" };
-  }
-  function getPetModal(pid) {
-    return pets.find((p) => p.id === pid) || { name: "Unknown", avatar: "🦎" };
-  }
-  function getFmtDateModal(dt) {
-    const d = new Date(dt);
-    return d.toLocaleString(undefined, {
-      weekday: "short",
-      month: "short",
-      day: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-    });
+  // Interactive edit appointment fields are managed here
+  const { appt, type } = modal;
+  const [tempForm, setTempForm] = React.useState(
+    appt
+      ? {
+          petId: appt.petId ? String(appt.petId) : "",
+          type: appt.type || "",
+          date: appt.datetime ? appt.datetime.split("T")[0] : "",
+          time: appt.datetime ? (appt.datetime.split("T")[1]?.slice(0,5) || "") : "",
+          vetId: appt.vet
+            ? (
+                veterinarians.find((v) => v.name === appt.vet)?.id + "" ||
+                ""
+              )
+            : "",
+          note: appt.notes || "",
+        }
+      : {
+          petId: "",
+          type: "",
+          date: "",
+          time: "",
+          vetId: "",
+          note: "",
+        }
+  );
+  const [editErrors, setEditErrors] = React.useState({});
+
+  function handleInput(e) {
+    const { name, value } = e.target;
+    setTempForm((f) => ({ ...f, [name]: value }));
   }
 
-  const { appt, type } = modal;
+  function handleTypeClick(val) {
+    setTempForm((f) => ({ ...f, type: val }));
+  }
+
+  function handleSave() {
+    // Validate fields for demo only (minimum, not all rules)
+    let errors = {};
+    if (!tempForm.petId) errors.petId = "Pet required";
+    if (!tempForm.type) errors.type = "Type required";
+    if (!tempForm.date) errors.date = "Date required";
+    if (!tempForm.time) errors.time = "Time required";
+    if (!tempForm.vetId) errors.vetId = "Vet required";
+    setEditErrors(errors);
+    if (Object.keys(errors).length === 0) {
+      close();
+    }
+  }
+
   if (!appt) return null;
   if (type === "details") {
+    function getTypeObjModal(key) {
+      return appointmentTypes.find((t) => t.key === key) || { label: key, icon: "📋" };
+    }
+    function getPetModal(pid) {
+      return pets.find((p) => p.id === pid) || { name: "Unknown", avatar: "🦎" };
+    }
+    function getFmtDateModal(dt) {
+      const d = new Date(dt);
+      return d.toLocaleString(undefined, {
+        weekday: "short",
+        month: "short",
+        day: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+    }
     return (
-      <div className="appt-details-modal">
-        <h3>Appointment Details</h3>
+      <div className="appt-details-modal" style={{color: "#000"}}>
+        <h3 style={{color: "#000"}}>Appointment Details</h3>
         <div>
-          <b className="label-status-info">Pet:</b>
-          <span className="appt-detail-output"> {getPetModal(appt.petId).avatar} {getPetModal(appt.petId).name}</span>
+          <b className="label-status-info" style={{color:"#000"}}>Pet:</b>
+          <span className="appt-detail-output" style={{color:"#000"}}> {getPetModal(appt.petId).avatar} {getPetModal(appt.petId).name}</span>
         </div>
         <div>
-          <b className="label-status-info">Type:</b>
-          <span className="appt-detail-output"> {getTypeObjModal(appt.type).icon} {getTypeObjModal(appt.type).label}</span>
+          <b className="label-status-info" style={{color:"#000"}}>Type:</b>
+          <span className="appt-detail-output" style={{color:"#000"}}> {getTypeObjModal(appt.type).icon} {getTypeObjModal(appt.type).label}</span>
         </div>
         <div>
-          <b className="label-status-info">Date:</b>
-          <span className="appt-detail-output"> {getFmtDateModal(appt.datetime)}</span>
+          <b className="label-status-info" style={{color:"#000"}}>Date:</b>
+          <span className="appt-detail-output" style={{color:"#000"}}>{getFmtDateModal(appt.datetime)}</span>
         </div>
         <div>
-          <b className="label-status-info">Veterinarian:</b>
-          <span className="appt-detail-output"> {appt.vet}</span>
+          <b className="label-status-info" style={{color:"#000"}}>Veterinarian:</b>
+          <span className="appt-detail-output" style={{color:"#000"}}>{appt.vet}</span>
         </div>
         <div>
-          <b className="label-status-info">Notes:</b>
-          <span className="appt-detail-output"> {appt.notes}</span>
+          <b className="label-status-info" style={{color:"#000"}}>Notes:</b>
+          <span className="appt-detail-output" style={{color:"#000"}}>{appt.notes}</span>
         </div>
       </div>
     );
   }
   if (type === "cancel") {
     return (
-      <div className="appt-cancel-modal">
-        <h3>Cancel Appointment</h3>
-        <div>Are you sure you want to cancel this appointment?</div>
+      <div className="appt-cancel-modal" style={{color: "#000"}}>
+        <h3 style={{color: "#000"}}>Cancel Appointment</h3>
+        <div style={{color: "#000"}}>Are you sure you want to cancel this appointment?</div>
         <div style={{ marginTop: 18 }}>
-          <button className="btn-cancel" onClick={close}>Yes, Cancel</button> &nbsp;
-          <button className="btn-secondary" onClick={close}>No</button>
+          <button className="btn-cancel" style={{color:"#000", borderColor:"#000"}} onClick={close}>Yes, Cancel</button> &nbsp;
+          <button className="btn-secondary" style={{color:"#000", borderColor:"#000"}} onClick={close}>No</button>
         </div>
       </div>
     );
   }
   if (type === "edit") {
     return (
-      <div className="appt-edit-modal">
-        <h3>Edit Appointment</h3>
-        <div>This action is demo only.</div>
-        <button className="btn-secondary" onClick={close}>Close</button>
+      <div className="appt-edit-modal" style={{ color: "#000" }}>
+        <h3 style={{color:"#000"}}>Edit Appointment</h3>
+        <form
+          style={{ display: "flex", flexDirection: "column", gap: "14px", color: "#000" }}
+          onSubmit={e => { e.preventDefault(); handleSave(); }}
+          autoComplete="off"
+        >
+          <label style={{color:"#000"}}>Pet <span>*</span></label>
+          <select
+            name="petId"
+            value={tempForm.petId}
+            onChange={handleInput}
+            style={{ color: "#000", borderColor: "#000", background: "#fff" }}
+          >
+            <option value="">Select pet...</option>
+            {pets.map((p) => (
+              <option key={p.id} value={p.id}>{p.avatar} {p.name}</option>
+            ))}
+          </select>
+          {editErrors.petId && (
+            <div style={{ color: "#000", fontSize: 12 }}>{editErrors.petId}</div>
+          )}
+
+          <label style={{color:"#000"}}>Appointment Type <span>*</span></label>
+          <div style={{display:"flex", flexWrap:"wrap", gap:"6px"}}>
+            {appointmentTypes.map((t) => (
+              <button
+                key={t.key}
+                type="button"
+                className={`appt-type-btn${tempForm.type === t.key ? " selected" : ""}`}
+                style={{
+                  color: "#000",
+                  borderColor: "#000",
+                  background: tempForm.type === t.key ? "#e7eafb" : "#fff"
+                }}
+                onClick={() => handleTypeClick(t.key)}
+              >
+                <span style={{color:"#000"}}>{t.icon}</span> {t.label}
+              </button>
+            ))}
+          </div>
+          {editErrors.type && (
+            <div style={{ color: "#000", fontSize: 12 }}>{editErrors.type}</div>
+          )}
+
+          <label htmlFor="date" style={{color:"#000"}}>Date <span>*</span></label>
+          <input
+            type="date"
+            id="date"
+            name="date"
+            value={tempForm.date}
+            onChange={handleInput}
+            style={{ color: "#000", borderColor: "#000", background: "#fff" }}
+          />
+          {editErrors.date && (
+            <div style={{ color: "#000", fontSize: 12 }}>{editErrors.date}</div>
+          )}
+
+          <label htmlFor="time" style={{color:"#000"}}>Time <span>*</span></label>
+          <input
+            type="time"
+            id="time"
+            name="time"
+            value={tempForm.time}
+            onChange={handleInput}
+            style={{ color: "#000", borderColor: "#000", background: "#fff" }}
+          />
+          {editErrors.time && (
+            <div style={{ color: "#000", fontSize: 12 }}>{editErrors.time}</div>
+          )}
+
+          <label style={{color:"#000"}}>Veterinarian <span>*</span></label>
+          <select
+            name="vetId"
+            value={tempForm.vetId}
+            onChange={handleInput}
+            style={{ color: "#000", borderColor: "#000", background: "#fff" }}
+          >
+            <option value="">Choose vet...</option>
+            {veterinarians.map((v) => (
+              <option key={v.id} value={v.id}>{v.name} – {v.location}</option>
+            ))}
+          </select>
+          {editErrors.vetId && (
+            <div style={{ color: "#000", fontSize: 12 }}>{editErrors.vetId}</div>
+          )}
+
+          <label style={{color:"#000"}}>Notes</label>
+          <textarea
+            name="note"
+            value={tempForm.note}
+            onChange={handleInput}
+            rows={2}
+            style={{
+              color: "#000",
+              borderColor: "#000",
+              background: "#fff",
+              minHeight: "40px"
+            }}
+          />
+          <div style={{display:"flex", gap:"14px", marginTop:"6px"}}>
+            <button
+              type="submit"
+              className="btn-primary"
+              style={{
+                color:"#000",
+                borderColor:"#000",
+                background:"#eaeaea"
+              }}
+            >Save</button>
+            <button
+              type="button"
+              className="btn-secondary"
+              onClick={close}
+              style={{
+                color:"#000",
+                borderColor:"#000",
+                background:"#fff"
+              }}
+            >Cancel</button>
+          </div>
+        </form>
       </div>
     );
   }
   return null;
 }
 
+// --- Booking Wizard ---
 function BookingWizard({ step, setStep, bookingForm, setBookingForm, errors, onInput, onContinue, onBack, onClose }) {
   const BOOKING_STEP_LABELS = [
     "Pet", "Type", "Date/Time", "Vet", "Documents", "Confirm"
@@ -831,13 +1017,13 @@ function BookingWizard({ step, setStep, bookingForm, setBookingForm, errors, onI
 
   const Component = BOOKING_STEP_COMPONENTS[step];
   return (
-    <div className="booking-wizard-root">
-      <h2>
+    <div className="booking-wizard-root" style={{color:"#000"}}>
+      <h2 style={{color:"#000"}}>
         <IconUI name="calendar" /> Book Appointment
       </h2>
       <div className="booking-progress">
         {BOOKING_STEP_LABELS.map((lbl, idx) => (
-          <div className={`booking-step-label${idx <= step ? " active" : ""}`} key={idx}>{lbl}</div>
+          <div className={`booking-step-label${idx <= step ? " active" : ""}`} key={idx} style={{color:"#000"}}>{lbl}</div>
         ))}
       </div>
       <div className="booking-step-main">
@@ -845,17 +1031,19 @@ function BookingWizard({ step, setStep, bookingForm, setBookingForm, errors, onI
       </div>
       <div className="booking-step-actions">
         {step > 0 && (
-          <button className="btn-secondary" type="button" onClick={onBack}>Back</button>
+          <button className="btn-secondary" type="button" onClick={onBack} style={{color:"#000", borderColor:"#000"}}>Back</button>
         )}
-        <button className="btn-primary" type="button" onClick={onContinue}>
+        <button className="btn-primary" type="button" onClick={onContinue}
+            style={{color:"#000", borderColor:"#000"}} >
           {step === BOOKING_STEP_LABELS.length - 1 ? "Book" : "Next"}
         </button>
-        <button className="btn-secondary" type="button" onClick={onClose}>Cancel</button>
+        <button className="btn-secondary" type="button" onClick={onClose} style={{color:"#000", borderColor:"#000"}}>Cancel</button>
       </div>
     </div>
   );
 }
 
+// --- IconUI util ---
 function IconUI({ name }) {
   const icons = {
     calendar: <span role="img" aria-label="calendar">📅</span>,
@@ -871,7 +1059,7 @@ function IconUI({ name }) {
     clock: <span role="img" aria-label="clock">⏰</span>,
     vet: <span role="img" aria-label="vet">👩‍⚕️</span>,
   };
-  return <span className="icon-ui">{icons[name] || "❔"}</span>;
+  return <span className="icon-ui" style={{color:"#000"}}>{icons[name] || "❔"}</span>;
 }
 
 function pastelColor(type) {
