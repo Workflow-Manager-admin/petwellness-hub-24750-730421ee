@@ -22,7 +22,7 @@ const veterinarians = [
 ];
 
 const appointmentTypes = [
-  { key: "checkup", label: "Checkup", icon: "🩺" },
+  { key: "checkup", label: "Checkup", icon: "🧺" },
   { key: "vaccination", label: "Vaccination", icon: "💉" },
   { key: "grooming", label: "Grooming", icon: "✂️" },
   { key: "surgery", label: "Surgery", icon: "🏥" },
@@ -114,6 +114,126 @@ const mockReminders = [
   },
 ];
 
+// --- Booking Wizard: Renderers ---
+
+function renderStepPet({ bookingForm, errors, onInput }) {
+  return (
+    <div className="booking-step-content">
+      <label>Pet <span className="asterisk">*</span></label>
+      <select name="petId" value={bookingForm.petId} onChange={onInput}>
+        <option value="">Select pet...</option>
+        {pets.map((p) => <option value={p.id} key={p.id}>{p.avatar} {p.name}</option>)}
+      </select>
+      {errors.petId && <div className="booking-error">{errors.petId}</div>}
+    </div>
+  );
+}
+function renderStepType({ bookingForm, errors, onInput }) {
+  return (
+    <div className="booking-step-content">
+      <label>Appointment Type <span className="asterisk">*</span></label>
+      <div className="booking-type-grid">
+        {appointmentTypes.map((t) => (
+          <button
+            key={t.key}
+            type="button"
+            className={`appt-type-btn${bookingForm.type === t.key ? " selected" : ""}`}
+            onClick={() => onInput({ target: { name: "type", value: t.key } })}
+          >
+            <span className="appt-type-icon">{t.icon}</span> {t.label}
+          </button>
+        ))}
+      </div>
+      {errors.type && <div className="booking-error">{errors.type}</div>}
+    </div>
+  );
+}
+function renderStepTime({ bookingForm, errors, onInput }) {
+  // Suggest nearest available slot
+  const minDate = new Date().toISOString().split("T")[0];
+  return (
+    <div className="booking-step-content">
+      <label htmlFor="date">Date <span className="asterisk">*</span></label>
+      <input
+        type="date"
+        id="date"
+        name="date"
+        min={minDate}
+        value={bookingForm.date}
+        onChange={onInput}
+      />
+      {errors.date && <div className="booking-error">{errors.date}</div>}
+      <label htmlFor="time">Time <span className="asterisk">*</span></label>
+      <input
+        type="time"
+        id="time"
+        name="time"
+        value={bookingForm.time}
+        onChange={onInput}
+      />
+      {errors.time && <div className="booking-error">{errors.time}</div>}
+      {/* Suggestions */}
+      <div className="booking-tips">
+        <small>Next available: 10:30 AM, 1:30 PM, 3:00 PM</small>
+      </div>
+    </div>
+  );
+}
+function renderStepVet({ bookingForm, errors, onInput }) {
+  return (
+    <div className="booking-step-content">
+      <label>Veterinarian <span className="asterisk">*</span></label>
+      <select name="vetId" value={bookingForm.vetId} onChange={onInput}>
+        <option value="">Choose vet...</option>
+        {veterinarians.map((v) => <option value={v.id} key={v.id}>{v.name} – {v.location}</option>)}
+      </select>
+      {errors.vetId && <div className="booking-error">{errors.vetId}</div>}
+    </div>
+  );
+}
+function renderStepDocuments({ bookingForm, errors, onInput }) {
+  return (
+    <div className="booking-step-content">
+      <label>Attach Documents (optional):</label>
+      <input
+        type="file"
+        name="attachments"
+        multiple
+        onChange={onInput}
+        accept="image/*,application/pdf"
+      />
+      {/* Preview attached files */}
+      {bookingForm.attachments && bookingForm.attachments.length > 0 &&
+        <div className="booking-attachments-preview">
+          {bookingForm.attachments.map((f, idx) => (
+            <div className="booking-attachment" key={idx}>
+              <IconUI name={f.type === "img" ? "img" : "doc"} />
+              <span className="attach-filename">{f.filename}</span>
+            </div>
+          ))}
+        </div>
+      }
+    </div>
+  );
+}
+function renderStepConfirm({ bookingForm, errors }) {
+  const pet = getPet(bookingForm.petId);
+  const type = getTypeObj(bookingForm.type);
+  const vet = veterinarians.find(v => v.id === parseInt(bookingForm.vetId));
+  return (
+    <div className="booking-step-content">
+      <h3>Review Appointment</h3>
+      <div className="booking-confirm-field"><b>Pet:</b> {pet.avatar} {pet.name}</div>
+      <div className="booking-confirm-field"><b>Type:</b> {type.icon} {type.label}</div>
+      <div className="booking-confirm-field"><b>Date:</b> {bookingForm.date}</div>
+      <div className="booking-confirm-field"><b>Time:</b> {bookingForm.time}</div>
+      <div className="booking-confirm-field"><b>Veterinarian:</b> {vet ? vet.name : ""}</div>
+      <div className="booking-confirm-field"><b>Notes:</b> {bookingForm.note}</div>
+      <div className="booking-confirm-field"><b>Attachments:</b> {(bookingForm.attachments || []).map((f, i) => <span key={i}>{f.filename}</span>)}</div>
+    </div>
+  );
+}
+
 // --- Main Component ---
 function AppointmentsManage() {
   // State for active tab/section
@@ -160,7 +280,7 @@ function AppointmentsManage() {
 
   /** Utility: Find pet by id */
   function getPet(pid) {
-    return pets.find((p) => p.id === pid) || { name: "Unknown", avatar: "🐾" };
+    return pets.find((p) => p.id === pid) || { name: "Unknown", avatar: "🦎" };
   }
 
   /** Utility: Find type display for appointment */
@@ -545,125 +665,6 @@ function AppointmentsManage() {
     );
   }
 
-  // --- Booking Wizard Steps Renderers ---
-  function renderStepPet({ bookingForm, errors, onInput }) {
-    return (
-      <div className="booking-step-content">
-        <label>Pet <span className="asterisk">*</span></label>
-        <select name="petId" value={bookingForm.petId} onChange={onInput}>
-          <option value="">Select pet...</option>
-          {pets.map((p) => <option value={p.id} key={p.id}>{p.avatar} {p.name}</option>)}
-        </select>
-        {errors.petId && <div className="booking-error">{errors.petId}</div>}
-      </div>
-    );
-  }
-  function renderStepType({ bookingForm, errors, onInput }) {
-    return (
-      <div className="booking-step-content">
-        <label>Appointment Type <span className="asterisk">*</span></label>
-        <div className="booking-type-grid">
-          {appointmentTypes.map((t) => (
-            <button
-              key={t.key}
-              type="button"
-              className={`appt-type-btn${bookingForm.type === t.key ? " selected" : ""}`}
-              onClick={() => onInput({ target: { name: "type", value: t.key } })}
-            >
-              <span className="appt-type-icon">{t.icon}</span> {t.label}
-            </button>
-          ))}
-        </div>
-        {errors.type && <div className="booking-error">{errors.type}</div>}
-      </div>
-    );
-  }
-  function renderStepTime({ bookingForm, errors, onInput }) {
-    // Suggest nearest available slot
-    const minDate = new Date().toISOString().split("T")[0];
-    return (
-      <div className="booking-step-content">
-        <label htmlFor="date">Date <span className="asterisk">*</span></label>
-        <input
-          type="date"
-          id="date"
-          name="date"
-          min={minDate}
-          value={bookingForm.date}
-          onChange={onInput}
-        />
-        {errors.date && <div className="booking-error">{errors.date}</div>}
-        <label htmlFor="time">Time <span className="asterisk">*</span></label>
-        <input
-          type="time"
-          id="time"
-          name="time"
-          value={bookingForm.time}
-          onChange={onInput}
-        />
-        {errors.time && <div className="booking-error">{errors.time}</div>}
-        {/* Suggestions */}
-        <div className="booking-tips">
-          <small>Next available: 10:30 AM, 1:30 PM, 3:00 PM</small>
-        </div>
-      </div>
-    );
-  }
-  function renderStepVet({ bookingForm, errors, onInput }) {
-    return (
-      <div className="booking-step-content">
-        <label>Veterinarian <span className="asterisk">*</span></label>
-        <select name="vetId" value={bookingForm.vetId} onChange={onInput}>
-          <option value="">Choose vet...</option>
-          {veterinarians.map((v) => <option value={v.id} key={v.id}>{v.name} – {v.location}</option>)}
-        </select>
-        {errors.vetId && <div className="booking-error">{errors.vetId}</div>}
-      </div>
-    );
-  }
-  function renderStepDocuments({ bookingForm, errors, onInput }) {
-    return (
-      <div className="booking-step-content">
-        <label>Attach Documents (optional):</label>
-        <input
-          type="file"
-          name="attachments"
-          multiple
-          onChange={onInput}
-          accept="image/*,application/pdf"
-        />
-        {/* Preview attached files */}
-        {bookingForm.attachments && bookingForm.attachments.length > 0 &&
-          <div className="booking-attachments-preview">
-            {bookingForm.attachments.map((f, idx) => (
-              <div className="booking-attachment" key={idx}>
-                <IconUI name={f.type === "img" ? "img" : "doc"} />
-                <span className="attach-filename">{f.filename}</span>
-              </div>
-            ))}
-          </div>
-        }
-      </div>
-    );
-  }
-  function renderStepConfirm({ bookingForm, errors }) {
-    const pet = getPet(bookingForm.petId);
-    const type = getTypeObj(bookingForm.type);
-    const vet = veterinarians.find(v => v.id === parseInt(bookingForm.vetId));
-    return (
-      <div className="booking-step-content">
-        <h3>Review Appointment</h3>
-        <div className="booking-confirm-field"><b>Pet:</b> {pet.avatar} {pet.name}</div>
-        <div className="booking-confirm-field"><b>Type:</b> {type.icon} {type.label}</div>
-        <div className="booking-confirm-field"><b>Date:</b> {bookingForm.date}</div>
-        <div className="booking-confirm-field"><b>Time:</b> {bookingForm.time}</div>
-        <div className="booking-confirm-field"><b>Veterinarian:</b> {vet ? vet.name : ""}</div>
-        <div className="booking-confirm-field"><b>Notes:</b> {bookingForm.note}</div>
-        <div className="booking-confirm-field"><b>Attachments:</b> {(bookingForm.attachments || []).map((f, i) => <span key={i}>{f.filename}</span>)}</div>
-      </div>
-    );
-  }
-
   // --- Navigation tabs: Upcoming, Calendar, History ---
   return (
     <div className="appt-manage-root">
@@ -856,7 +857,7 @@ function getTypeObjModal(key) {
   return appointmentTypes.find((t) => t.key === key) || { label: key, icon: "📋" };
 }
 function getPetModal(pid) {
-  return pets.find((p) => p.id === pid) || { name: "Unknown", avatar: "🐾" };
+  return pets.find((p) => p.id === pid) || { name: "Unknown", avatar: "🦎" };
 }
 function getFmtDateModal(dt) {
   const d = new Date(dt);
