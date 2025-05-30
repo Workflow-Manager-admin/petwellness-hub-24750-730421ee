@@ -14,6 +14,7 @@ import DietNutrition from "./DietNutrition";
 import Activity from "./Activity";
 import AppointmentsManage from "./AppointmentsManage";
 import Notification from "./Notification";
+import AboutPrivacy from "./AboutPrivacy";
 
 // PUBLIC_INTERFACE
 function App() {
@@ -65,6 +66,10 @@ function App() {
                 element={
                   <LandingPage />
                 }
+              />
+              <Route
+                path="/about"
+                element={<AboutPrivacy />}
               />
               {/* Support: Contact Us and Help */}
               <Route
