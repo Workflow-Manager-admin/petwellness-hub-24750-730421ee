@@ -16,15 +16,17 @@
 .furever-navbar {
   width: 100%;
   min-height: var(--fur-navbar-height);
-  background: var(--fur-navbar-bg);
-  box-shadow: var(--fur-navbar-shadow);
+  /* Modern pastel green gradient background */
+  background: linear-gradient(90deg, #e9f8ef 0%, #d6f5e3 60%, #f2fdf5 100%);
+  box-shadow: 0 4px 28px 0 rgba(91, 142, 101, 0.10), 0 1.5px 0 #e6eee4;
   border-bottom: 1px solid var(--fur-border);
   display: flex;
   align-items: center;
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 998;
-  font-family: "Inter", system-ui, Arial, sans-serif;
+  /* Poppins for navbar per requirement, fallback to Inter, system (if missing google fonts) */
+  font-family: "Poppins", "Inter", system-ui, Arial, sans-serif;
 }
 
 .furever-navbar-inner {
