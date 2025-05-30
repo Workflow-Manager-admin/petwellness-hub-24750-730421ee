@@ -20,6 +20,105 @@
   font-weight: 500;
 }
 
+/* Reminders section heading (only the heading!) */
+.appt-reminders .section-header h2 {
+  color: #111 !important;
+  font-weight: 700;
+}
+
+/* === Modal/Dialog Styles Section - Only affect popup/dialog content for appointment modals and wizards === */
+
+/* Modal headings, section titles, and close icons */
+.appt-modal, .appt-modal * ,
+.booking-wizard-root, .booking-wizard-root *,
+.doc-preview-root, .doc-preview-root * {
+  --appt-black: #111;
+}
+
+.appt-modal h2, .appt-modal h3,
+.booking-wizard-root h2, .booking-wizard-root h3,
+.doc-preview-root h3,
+.booking-step-label,
+.booking-step-label.active {
+  color: var(--appt-black) !important;
+}
+
+/* Modal labels and all modal-specific label styles */
+.appt-modal label,
+.booking-wizard-root label,
+.doc-preview-root label {
+  color: var(--appt-black) !important;
+}
+
+/* Modal close icon (the &times; button) */
+.appt-modal .modal-close-btn,
+.booking-wizard-root .modal-close-btn,
+.doc-preview-root .modal-close-btn,
+.appt-modal .modal-close-btn:focus,
+.appt-modal .modal-close-btn:hover {
+  color: var(--appt-black) !important;
+  opacity: 1;
+}
+
+/* Modal buttons (do not change background, only icon/text color for close) */
+.appt-modal .modal-close-btn {
+  background: none;
+  border: none;
+}
+
+/* Modal section titles or strong/label in confirm/stepper */
+.appt-modal .label-status-info,
+.booking-wizard-root .label-status-info,
+.doc-preview-root .label-status-info {
+  color: var(--appt-black) !important;
+  font-weight: 600;
+}
+
+/* Modal input, select, textarea and their text */
+.appt-modal input,
+.appt-modal select,
+.appt-modal textarea,
+.booking-wizard-root input,
+.booking-wizard-root select,
+.booking-wizard-root textarea,
+.doc-preview-root input,
+.doc-preview-root select,
+.doc-preview-root textarea {
+  color: var(--appt-black) !important;
+  border-color: #aaa;
+}
+
+/* Input placeholder text color in modals */
+.appt-modal input::placeholder,
+.booking-wizard-root input::placeholder,
+.doc-preview-root input::placeholder,
+.appt-modal textarea::placeholder,
+.booking-wizard-root textarea::placeholder,
+.doc-preview-root textarea::placeholder {
+  color: #444 !important;
+  opacity: 1;
+}
+
+/* For selects: ensure dropdown text is black */
+.appt-modal select,
+.booking-wizard-root select,
+.doc-preview-root select {
+  color: var(--appt-black) !important;
+}
+
+/* Modal field output (Appt details, confirm, etc.) */
+.appt-modal .appt-detail-output,
+.booking-wizard-root .appt-detail-output,
+.doc-preview-root .appt-detail-output {
+  color: var(--appt-black) !important;
+  font-weight: 400;
+}
+
+/* Modal doc preview filename and button */
+.doc-preview-root .doc-preview-fn {
+  color: var(--appt-black) !important;
+}
+
 /* Semantic label styles for appointment topics/headings/labels */
 .label-status-confirmed, .appt-status-confirmed {
   color: #339966 !important; /* Green */
