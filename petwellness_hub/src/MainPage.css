@@ -1,0 +1,513 @@
+:root {
+  --brand-primary: #8aa182;
+  --brand-secondary: #d1d5ae;
+  --brand-accent: #71706f;
+  --header-bg: linear-gradient(90deg, #f5efeb 70%, #d9f0e5 130%);
+  --header-height: 68px;
+  --pet-card-shadow: 0 4px 20px 0 rgba(200,200,200,0.21), 0 1.5px 5px 0 rgba(140,150,150,0.06);
+  --main-bg: #faf9fb;
+  --soft-panel: #f7f8fa;
+  --section-shadow: 0 3px 24px 0 rgba(180,190,190,0.14);
+  --overview-radius: 26px;
+  --font-family-main: 'Nunito', 'Quicksand', 'Segoe UI', sans-serif;
+}
+
+.mainpage-root {
+  font-family: var(--font-family-main);
+  background: var(--main-bg);
+  min-height: 100vh;
+  color: #434344;
+}
+
+.mainpage-header {
+  position: fixed;
+  z-index: 1001;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: var(--header-bg);
+  box-shadow: 0 1.5px 11px 0 rgba(190,190,190,0.10);
+  height: var(--header-height);
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1220px;
+  margin: 0 auto;
+  height: 100%;
+  padding: 0 32px;
+}
+
+.brand-area {
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: 1.42rem;
+  letter-spacing: 0.04em;
+}
+
+.brand-logo {
+  font-size: 2.1rem;
+  margin-right: 0.44em;
+  vertical-align: middle;
+}
+.brand-title {
+  letter-spacing: 0.01em;
+  color: var(--brand-primary);
+}
+
+.main-nav {
+  display: flex;
+  gap: 2.6em;
+  font-size: 1.07rem;
+}
+.main-nav a {
+  color: var(--brand-accent);
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.17s;
+  padding: 4px 0 0 0;
+}
+.main-nav a:hover, .main-nav a:focus {
+  color: var(--brand-primary);
+  filter: brightness(1.18);
+}
+.avatar-area {
+  display: flex;
+  align-items: center;
+}
+.user-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 100%;
+  box-shadow: 0 0 0 3px var(--brand-secondary);
+  background: #fff;
+}
+
+.main-layout {
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: calc(var(--header-height) + 18px);
+  margin-bottom: 70px;
+}
+
+.hero-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(90deg, #f5efe7 47%, #d8ece4 110%);
+  border-radius: 38px;
+  box-shadow: var(--section-shadow);
+  padding: 2.7rem 2.5rem 2.3rem 2.5rem;
+  margin-bottom: 35px;
+  min-height: 242px;
+}
+
+.hero-text {
+  flex: 2;
+}
+
+.hero-text h1 {
+  font-size: 2.4rem;
+  color: var(--brand-primary);
+  font-weight: 800;
+  margin-bottom: 10px;
+  letter-spacing: 0.01em;
+}
+.hero-highlight {
+  background: linear-gradient(94deg, #FFCA87 20%, #B3DFCC 100%);
+  padding: 0.08em 0.23em;
+  border-radius: 0.38em;
+  color: #4f4d4d;
+  margin-left: 0.32em;
+}
+
+.hero-text p {
+  font-size: 1.13rem;
+  color: #646465;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.hero-visual {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  min-width: 180px;
+}
+
+.hero-img {
+  max-width: 220px;
+  border-radius: 50% 38% 51% 69%/56% 43% 42% 58%;
+  box-shadow: 0 0 55px #e7e3d4c2, 0 10px 28px #eaf5ea61;
+  user-drag: none;
+}
+
+/* PET CARD GRID */
+.pet-grid-panel {
+  margin: 30px 0 16px 0;
+}
+.pet-grid-panel h2 {
+  font-size: 1.38rem;
+  font-weight: 700;
+  color: var(--brand-primary);
+  margin: 0 0 15px 2px;
+  letter-spacing: 0.03em;
+}
+.pet-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+.pet-card {
+  background: #fff5;
+  border-radius: 2.2em;
+  box-shadow: var(--pet-card-shadow);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 22px 24px;
+  transition: transform 0.18s, box-shadow 0.19s;
+  cursor: pointer;
+  min-width: 0;
+}
+.pet-card:hover {
+  transform: translateY(-7px) scale(1.025);
+  box-shadow: 0 8px 27px 0 rgba(160, 180, 180, 0.16), var(--pet-card-shadow);
+}
+.pet-avatar {
+  width: 62px;
+  height: 62px;
+  margin-right: 24px;
+  border-radius: 100%;
+  box-shadow: 0 4px 13px 0 rgba(170,170,170,0.19);
+  background: #fff;
+  flex-shrink: 0;
+}
+.pet-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1;
+}
+.pet-name {
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: var(--brand-accent);
+  margin-bottom: 0.1em;
+  letter-spacing: 0.01em;
+}
+.pet-type-age {
+  font-size: 0.99rem;
+  color: #666;
+  font-weight: 400;
+  margin-bottom: 0.2em;
+}
+.pet-next-checkup, .pet-activity {
+  font-size: 0.98rem;
+  color: #4a4a4a;
+}
+.pet-activity-bar-bg {
+  display: inline-block;
+  background: #eedfc6;
+  border-radius: 8px;
+  height: 8px;
+  width: 54px;
+  margin: 0 7px -3px 4px;
+  vertical-align: middle;
+  position: relative;
+}
+.pet-activity-bar {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #E87A41 56%, #B3DFCC 99%);
+  border-radius: 7px;
+  width: 62%;
+  min-width: 10px;
+  max-width: 100%;
+}
+
+/* Panels row: health, reminders, tips */
+.main-panels-row {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr;
+  gap: 32px;
+  margin-top: 49px;
+  width: 100%;
+}
+
+/* HEALTH OVERVIEW */
+.health-overview-panel {
+  background: var(--soft-panel);
+  border-radius: 26px;
+  box-shadow: var(--section-shadow);
+  padding: 28px 28px 25px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.health-overview-panel h3 {
+  font-size: 1.12rem;
+  color: var(--brand-primary);
+  font-weight: 700;
+  margin: 0 0 16px 1px;
+}
+
+.overview-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 14px 16px;
+  width: 98%;
+}
+
+.overview-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8em;
+  padding: 15px 18px;
+  border-radius: var(--overview-radius);
+  font-size: 0.99rem;
+  box-shadow: 0 1.5px 8px 0 rgba(210,220,220,0.11);
+  letter-spacing: 0.002em;
+  font-weight: 500;
+}
+.overview-icon {
+  font-size: 1.26em;
+  margin-right: 0.55em;
+  vertical-align: middle;
+}
+.overview-status {
+  font-size: 0.99em;
+  font-weight: 600;
+  color: #5b5b5b;
+  margin-left: 0.48em;
+  padding: 2px 10px;
+  border-radius: 12px;
+  background: #f7f6f0;
+}
+.overview-status.positive {
+  color: var(--brand-primary);
+  background: #cef2ce;
+}
+.overview-status.warning {
+  color: #b28e0c;
+  background: #ffeeb3;
+}
+
+/* REMINDERS */
+.reminders-panel {
+  background: linear-gradient(153deg, #dcedfb 77%, #eceff6 100%);
+  border-radius: 24px;
+  box-shadow: var(--section-shadow);
+  padding: 28px 20px 18px 22px;
+  min-height: 210px;
+  display: flex;
+  flex-direction: column;
+}
+.reminders-panel h3 {
+  font-size: 1.08rem;
+  color: var(--brand-accent);
+  font-weight: 700;
+  margin: 0 0 10px 1px;
+  letter-spacing: 0.01em;
+  display: flex;
+  align-items: center;
+}
+.reminders-scroll-list {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  max-height: 166px;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+.reminder-item {
+  background: #fffef7;
+  box-shadow: 0 1.3px 7px 0 rgba(210, 210, 140, 0.08);
+  font-size: 0.97rem;
+  color: #585850;
+  padding: 9px 14px 9px 12px;
+  border-radius: 13px;
+  font-weight: 500;
+  transition: background 0.16s, color 0.16s;
+}
+.reminder-item.alert {
+  background: #fff3ea;
+  color: #d78241;
+}
+.reminder-item.info {
+  background: #f1fcff;
+  color: #3298b4;
+}
+.reminder-item.reminder {
+  background: #f1ffe8;
+  color: #7b9261;
+}
+
+/* TIPS PANEL */
+.tips-panel {
+  background: linear-gradient(108deg, #e6faed 68%, #ffe9fe 100%);
+  border-radius: 23px;
+  box-shadow: var(--section-shadow);
+  padding: 28px 18px 24px 21px;
+  display: flex;
+  flex-direction: column;
+}
+.tips-panel h3 {
+  font-size: 1.08rem;
+  color: var(--brand-accent);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  margin: 0 0 10px 1px;
+  display: flex;
+  align-items: center;
+}
+.tips-columns {
+  display: flex;
+  gap: 23px;
+  width: 100%;
+}
+.tips-columns ul {
+  list-style: disc;
+  margin: 0;
+  padding-left: 17px;
+  padding-right: 7px;
+  color: #586363;
+  font-size: 0.99rem;
+  font-weight: 500;
+  min-width: 0;
+}
+.tips-columns li {
+  margin-bottom: 9px;
+  line-height: 1.42;
+}
+
+@media (max-width: 1100px) {
+  .main-layout {
+    max-width: 98vw;
+    padding-left: 7px;
+    padding-right: 7px;
+  }
+  .header-content {
+    max-width: 99vw;
+    padding-left: 13px;
+    padding-right: 13px;
+  }
+}
+@media (max-width: 950px) {
+  .hero-section {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding: 2.1rem 1.3rem 2.1rem 1.3rem;
+  }
+  .hero-visual {
+    justify-content: flex-start;
+    margin-top: 1.1rem;
+    width: 100%;
+  }
+  .pet-card-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .main-panels-row {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+}
+
+/* FOOTER */
+.mainpage-footer {
+  margin-top: 0;
+  width: 100vw;
+  padding: 0;
+  position: relative;
+}
+.footer-gradient {
+  width: 100vw;
+  height: 35px;
+  background: linear-gradient(180deg, #eaf4df88 6%, #ebe9fb10 60%, #fff 100%);
+  filter: blur(1.4px);
+}
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: none;
+  padding: 28px 18px 17px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.footer-brand-social {
+  display: flex;
+  align-items: center;
+  gap: 1.7em;
+  margin-bottom: 18px;
+}
+.footer-logo {
+  font-size: 1.9rem;
+}
+.footer-title {
+  font-size: 1.20rem;
+  font-weight: 700;
+  color: var(--brand-primary);
+}
+.footer-social-icons {
+  display: flex;
+  gap: 0.97em;
+  font-size: 1.22rem;
+}
+.footer-social-icons i {
+  color: var(--brand-accent);
+  transition: color 0.16s;
+}
+.footer-social-icons a:hover i,
+.footer-social-icons a:focus i {
+  color: var(--brand-primary);
+  filter: brightness(1.12);
+}
+.footer-links {
+  display: flex;
+  gap: 2.2em;
+  margin: 18px 0 1px 0;
+  font-size: 1.03rem;
+}
+.footer-links a {
+  color: #848484;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 2px 0;
+  transition: color 0.16s;
+}
+.footer-links a:hover, .footer-links a:focus {
+  color: var(--brand-primary);
+  text-decoration: underline;
+  letter-spacing: 0.015em;
+}
+.footer-copyright {
+  font-size: 0.96rem;
+  color: #b3b3b3;
+  margin: 8px 0 0 0;
+  letter-spacing: 0.01em;
+}
+
+/* FontAwesome icons for social, add fallback for demonstration */
+.fa-brands, .fa-regular {
+  font-family: 'Font Awesome 6 Free',"FontAwesome", system-ui, Arial, sans-serif;
+  font-weight: 900;
+  display: inline-block;
+  line-height: 1;
+  font-style: normal;
+  text-rendering: auto;
+}
