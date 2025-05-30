@@ -181,7 +181,7 @@ function Activity() {
                     style={{ width: `${percent}%` }}
                   ></div>
                 </div>
-                <div className="progress-bar-value">{goal.current} / {goal.target}</div>
+                <div className="progress-bar-value progress-bar-value-black">{goal.current} / {goal.target}</div>
               </div>
             );
           })}
@@ -229,7 +229,7 @@ function Activity() {
           </form>
           <ul className="behavior-log-list">
             {behaviorLogs.map((entry, idx) => (
-              <li className="behavior-entry" key={idx}>
+              <li className="behavior-entry behavior-entry-black" key={idx}>
                 <span style={{ fontSize: "1.07rem", marginRight: 4 }}>{entry.mood}</span>
                 <span>{entry.text}</span>
               </li>
