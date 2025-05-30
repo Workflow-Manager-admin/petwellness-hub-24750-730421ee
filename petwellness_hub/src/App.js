@@ -53,6 +53,11 @@ function App() {
                 path="/activity"
                 element={<Activity />}
               />
+              {/* Notifications route */}
+              <Route
+                path="/notifications"
+                element={<Notification />}
+              />
               {/* Default/fallback landing */}
               <Route
                 path="/"
