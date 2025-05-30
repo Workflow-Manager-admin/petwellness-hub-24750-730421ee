@@ -24,7 +24,7 @@ function SignUp() {
   const [submitting, setSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState({ type: "", message: "" });
 
-  const navigate = useNavigate ? useNavigate() : () => {};
+  const navigate = useNavigate();
 
   // Utils for validation
   function validate(fields = form) {
