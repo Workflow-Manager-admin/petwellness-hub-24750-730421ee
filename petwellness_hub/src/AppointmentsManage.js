@@ -22,7 +22,7 @@ const veterinarians = [
 ];
 
 const appointmentTypes = [
-  { key: "checkup", label: "Checkup", icon: "🧺" },
+  { key: "checkup", label: "Checkup", icon: "🩺" },
   { key: "vaccination", label: "Vaccination", icon: "💉" },
   { key: "grooming", label: "Grooming", icon: "✂️" },
   { key: "surgery", label: "Surgery", icon: "🏥" },
@@ -414,6 +414,7 @@ function AppointmentsManage() {
     });
   }
 
+  // --- Render Section: Upcoming (Update: headline uses green class, appointment item spacing via CSS only) ---
   function renderUpcoming() {
     return (
       <section className="appt-section">
@@ -640,6 +641,7 @@ function AppointmentsManage() {
     );
   }
 
+  // --- Render Section: Reminders (output text gets green class for span.reminder-text) ---
   function renderReminders() {
     return (
       <aside className="appt-section appt-reminders">
@@ -649,7 +651,7 @@ function AppointmentsManage() {
           </h2>
         </div>
         <ul className="reminders-list">
-          {reminders.length === 0 ? <li>No reminders</li> : reminders.map(r => (
+          {reminders.length === 0 ? <li><span className="reminder-text">No reminders</span></li> : reminders.map(r => (
             <li className={`reminder-item${r.done ? " reminder-done" : ""}`} key={r.id}>
               <span className="reminder-icon">{r.icon}</span>
               <span className="reminder-text">{r.text}</span>
