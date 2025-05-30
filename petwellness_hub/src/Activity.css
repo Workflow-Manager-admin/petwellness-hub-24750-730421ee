@@ -79,14 +79,20 @@
 }
 
 .add-log-input,
-.add-log-time {
+.add-log-time,
+.add-log-form textarea {
   background: rgba(255,255,255,0.09);
   border: 1px solid var(--border-color);
   border-radius: 4px;
-  color: orange;
+  color: #FF9800; /* Orange user input, matches project-accent */
   padding: 6px 8px;
   font-size: 1rem;
 }
+/* Ensure input placeholder color remains readable if desired */
+/* .add-log-input::placeholder, .add-log-form textarea::placeholder {
+  color: #fdb75f;
+  opacity: 0.77;
+} */
 
 .add-log-input:focus,
 .add-log-time:focus {
