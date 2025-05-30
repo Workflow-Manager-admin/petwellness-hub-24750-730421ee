@@ -1,3 +1,27 @@
 .appointments-manage-container {
   /* Placeholder style for Appointments Manage page */
 }
+
+/* Semantic label styles for appointment topics/headings/labels */
+.label-status-confirmed, .appt-status-confirmed {
+  color: #339966 !important; /* Green */
+  font-weight: 600;
+}
+.label-status-scheduled, .appt-status-scheduled {
+  color: #75839b !important; /* Slate/grey-blue for scheduled */
+  font-weight: 600;
+}
+.label-status-cancelled, .appt-status-cancelled {
+  color: #d53d3d !important; /* Red for cancelled */
+  font-weight: 600;
+}
+.label-status-info, .appt-status-info {
+  color: #2f7edc !important; /* Blue for info */
+  font-weight: 600;
+}
+
+/* All rendered outputs/details in appointments: always black */
+.output-detail, .appt-detail-output {
+  color: #111 !important;
+  font-weight: 400;
+}
