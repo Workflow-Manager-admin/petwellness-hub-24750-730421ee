@@ -23,7 +23,8 @@ body {
 }
 
 .navbar {
-  background-color: var(--kavia-dark);
+  /* Soft pastel-gradient border-style header background */
+  background: linear-gradient(100deg, #f9f7ea 65%, #eaf6fe 140%);
   padding: 16px;
   display: flex;
   align-items: center;
