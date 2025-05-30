@@ -137,11 +137,6 @@ function TopNavBar() {
                   Manage
                 </a>
               </li>
-              <li>
-                <a href="/appointments/notes" tabIndex={openDropdown === "appointments" ? 0 : -1} onClick={closeAllDropdowns}>
-                  Notes / Documents
-                </a>
-              </li>
             </ul>
           </li>
 
