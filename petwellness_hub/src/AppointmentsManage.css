@@ -1,182 +1,144 @@
-.appointments-manage-container {
-  /* Placeholder style for Appointments Manage page */
-}
+ /* Appointment management styles - Book/Edit Modal enforce black text/icons */
+ 
+/* STRONG SELECTORS to force ALL Book/Edit Modal content to black -- scoped to dialog-modal only */
 
-/* Green heading for Upcoming Appointments */
-.upcoming-appts-heading {
-  color: #239c46 !important;
-  font-weight: 700;
-}
-
-/* Extra spacing below each upcoming appointment item */
-.appt-list .appt-card {
-  margin-bottom: 28px !important;
-  /* Ensure cards do not collapse spacing */
-}
-
-/* Reminders output (text only, not icons/emojis, but not affecting icons/buttons) */
-.reminder-text {
-  color: #239c46 !important;
-  font-weight: 500;
-}
-
-/* Reminders section heading (only the heading!) */
-.appt-reminders .section-header h2 {
-  color: #111 !important;
-  font-weight: 700;
-}
-
-/* === Modal/Dialog Styles Section - Affect ONLY Book/Edit modals and related dialogs for appointments === */
-
-/* Set --appt-black to #000 (true black) for modals */
-.appt-modal,
-.booking-wizard-root,
-.doc-preview-root {
-  --appt-black: #000;
-}
-
-/* All text, headings, buttons, icons, inputs, labels, etc. INSIDE modal: force black for all! */
-.appt-modal,
-.appt-modal *,
-.booking-wizard-root,
-.booking-wizard-root *,
-.doc-preview-root,
-.doc-preview-root * {
+/* Enforce all text, headings, inputs, section titles, and close icon in black within modal */
+.dialog-modal,
+.dialog-modal *,
+.dialog-modal *::placeholder,
+.dialog-modal *:not([class]) {
   color: #000 !important;
-  fill: #000 !important;   /* For SVGs/icons */
-  /* Ensure inheritance for all modal content */
+  fill: #000 !important;
+  border-color: #d1d5ae;
+  --icon-color: #000;
 }
 
-/* Modal headings (h1-h6), step labels, section titles */
-.appt-modal h1, .appt-modal h2, .appt-modal h3, .appt-modal h4, .appt-modal h5, .appt-modal h6,
-.booking-wizard-root h1, .booking-wizard-root h2, .booking-wizard-root h3, .booking-wizard-root h4, .booking-wizard-root h5, .booking-wizard-root h6,
-.doc-preview-root h1, .doc-preview-root h2, .doc-preview-root h3, .doc-preview-root h4, .doc-preview-root h5, .doc-preview-root h6,
-.booking-step-label, .booking-step-label.active {
+/* Enforce modal close icon to always display black */
+.dialog-modal .modal-close,
+.dialog-modal .modal-close * {
+  color: #000 !important;
+  fill: #000 !important;
+  opacity: 1 !important;
+}
+
+/* Headings and section titles */
+.dialog-modal .modal-title,
+.dialog-modal .modal-section-title {
   color: #000 !important;
 }
 
-/* Modal labels */
-.appt-modal label,
-.booking-wizard-root label,
-.doc-preview-root label {
+/* Form labels */
+.dialog-modal label {
   color: #000 !important;
-  font-weight: 500;
 }
 
-/* Modal close icon (the &times; button or SVG btn) */
-.appt-modal .modal-close-btn,
-.booking-wizard-root .modal-close-btn,
-.doc-preview-root .modal-close-btn,
-.appt-modal .modal-close-btn:focus,
-.appt-modal .modal-close-btn:hover {
-  color: #000 !important; /* Strong black for close icon */
-  fill: #000 !important;  /* SVG icons */
-  opacity: 1;
+/* Input fields and entered text */
+.dialog-modal input,
+.dialog-modal select,
+.dialog-modal textarea {
+  color: #000 !important;
+  border-color: #d1d5ae;
+  background: #fff !important;
 }
-.appt-modal .modal-close-btn {
-  background: none;
-  border: none;
+.dialog-modal input::placeholder,
+.dialog-modal select::placeholder,
+.dialog-modal textarea::placeholder {
+  color: #000 !important;
+  opacity: 0.65;
 }
 
-/* Modal input, select, textarea and their text/values */
-.appt-modal input,
-.appt-modal select,
-.appt-modal textarea,
-.booking-wizard-root input,
-.booking-wizard-root select,
-.booking-wizard-root textarea,
-.doc-preview-root input,
-.doc-preview-root select,
-.doc-preview-root textarea {
+/* Force that we do NOT affect buttons (unless part of modal actions, keep default for .btn or override below if needed) */
+.dialog-modal button,
+.dialog-modal .form-actions button {
   color: #000 !important;
-  border-color: #aaa;
+}
+
+/* Appointment management base styles remain unchanged below */
+
+.dialog-backdrop {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.12);
+  z-index: 1000;
+}
+
+.dialog-modal {
   background: #fff;
+  border-radius: 8px;
+  padding: 2.5em 2em 2em 2em;
+  margin: 5vh auto;
+  max-width: 380px;
+  box-shadow: 0 2px 16px rgba(60,60,60,0.22);
+  position: relative;
+  z-index: 1100;
+  color: #222;
 }
 
-/* Input placeholder text color in modals */
-.appt-modal input::placeholder,
-.booking-wizard-root input::placeholder,
-.doc-preview-root input::placeholder,
-.appt-modal textarea::placeholder,
-.booking-wizard-root textarea::placeholder,
-.doc-preview-root textarea::placeholder {
-  color: #444 !important;
-  opacity: 1;
+.dialog-modal .modal-title {
+  font-size: 1.35em;
+  font-weight: 700;
+  margin-bottom: 0.9em;
+  color: #222;
 }
 
-.appt-modal input:disabled,
-.appt-modal select:disabled,
-.appt-modal textarea:disabled,
-.booking-wizard-root input:disabled,
-.booking-wizard-root select:disabled,
-.booking-wizard-root textarea:disabled,
-.doc-preview-root input:disabled,
-.doc-preview-root select:disabled,
-.doc-preview-root textarea:disabled {
-  color: #333 !important;
-  background: #ececec;
+.dialog-modal .modal-section-title {
+  font-size: 1em;
+  font-weight: bold;
+  margin: 1.1em 0 0.3em 0;
+  color: #333;
 }
 
-.appt-modal button,
-.booking-wizard-root button,
-.doc-preview-root button,
-.appt-modal .btn,
-.booking-wizard-root .btn,
-.doc-preview-root .btn {
-  color: #000 !important;
+.dialog-modal .modal-close {
+  position: absolute;
+  top: 1.15em;
+  right: 1.15em;
+  cursor: pointer;
+  color: #222;
+  font-size: 1.15em;
+  border: none;
+  background: transparent;
+  padding: 0.1em 0.25em;
 }
 
-/* Checkbox and radio labels in modal */
-.appt-modal input[type="checkbox"] + label,
-.appt-modal input[type="radio"] + label,
-.booking-wizard-root input[type="checkbox"] + label,
-.booking-wizard-root input[type="radio"] + label,
-.doc-preview-root input[type="checkbox"] + label,
-.doc-preview-root input[type="radio"] + label {
-  color: #000 !important;
+.dialog-modal label {
+  display: block;
+  margin-bottom: 0.2em;
+  font-weight: 500;
+  color: #222;
+  font-size: 0.97em;
 }
 
-/* Modal section titles or strong/label in confirm/stepper */
-.appt-modal .label-status-info,
-.booking-wizard-root .label-status-info,
-.doc-preview-root .label-status-info {
-  color: #000 !important;
-  font-weight: 600;
+.dialog-modal input,
+.dialog-modal select,
+.dialog-modal textarea {
+  width: 100%;
+  padding: 0.75em 0.85em;
+  border: 1.5px solid #d1d5ae;
+  border-radius: 5px;
+  margin-bottom: 1.1em;
+  font-size: 1em;
+  background: #fff;
+  color: #222;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.18s;
 }
 
-/* Modal field output (Appt details, confirm, etc.) */
-.appt-modal .appt-detail-output,
-.booking-wizard-root .appt-detail-output,
-.doc-preview-root .appt-detail-output {
-  color: #000 !important;
-  font-weight: 400;
+.dialog-modal input:focus,
+.dialog-modal select:focus,
+.dialog-modal textarea:focus {
+  border-color: #8aa182;
 }
 
-/* Modal doc preview filename and button */
-.doc-preview-root .doc-preview-fn {
-  color: #000 !important;
+.dialog-modal .form-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.7em;
+  gap: 0.85em;
 }
 
-/* Status/semantic labels for appointment details (outside modal: revert to original colors) */
-.label-status-confirmed, .appt-status-confirmed {
-  color: #339966 !important;
-  font-weight: 600;
-}
-.label-status-scheduled, .appt-status-scheduled {
-  color: #75839b !important;
-  font-weight: 600;
-}
-.label-status-cancelled, .appt-status-cancelled {
-  color: #d53d3d !important;
-  font-weight: 600;
-}
-.label-status-info, .appt-status-info {
-  color: #2f7edc !important;
-  font-weight: 600;
-}
-
-/* All rendered outputs/details in appointments: always black */
-.output-detail, .appt-detail-output {
-  color: #111 !important;
-  font-weight: 400;
+.dialog-modal .modal-error,
+.dialog-modal .modal-success {
+  margin: 0.28em 0 0.75em 0;
+  font-size: 0.98em;
 }
