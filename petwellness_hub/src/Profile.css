@@ -1,90 +1,475 @@
-.profile-page {
-  max-width: 700px;
-  margin: 30px auto;
-  padding: 2rem 1rem;
-  background: var(--kavia-dark);
-  border-radius: 20px;
-  color: #fff;
-  box-shadow: 0 4px 18px 0 rgba(0,0,0,0.10);
+@import url('https://fonts.googleapis.com/css?family=Inter:400,700|Poppins:600,700&display=swap');
+
+/*
+  Brand Colors
+  Use: var(--kavia-*)
+*/
+
+:root {
+  --kavia-orange: #E87A41;
+  --kavia-dark: #1A1A1A;
+  --kavia-light: #fffdfa;
+  --kavia-grey: #e6e3df;
+  --kavia-accent: #71706f;
+  --profile-shadow: 0 6px 28px 0 rgba(29,29,58,0.13), 0 2px 16px 0 rgba(232,122,65,0.09);
+  --profile-bg: #fcfcf9;
 }
 
-.profile-card-container {
+body, .profile-page {
+  font-family: 'Inter', 'Poppins', Arial, sans-serif;
+}
+
+.profile-page {
+  max-width: 980px;
+  margin: 30px auto 2rem auto;
+  padding: 2rem 1.5rem;
+  background: var(--profile-bg);
+  border-radius: 22px;
+  color: var(--kavia-dark);
+  box-shadow: var(--profile-shadow);
+  position: relative;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--kavia-grey);
+  background: linear-gradient(90deg, #fff8f2 60%, #f5eddf 100%);
+  border-radius: 20px 20px 0 0;
+}
+
+.pet-photo-lg {
+  position: relative;
+  min-width: 144px;
+  min-height: 144px;
+  margin-right: 0.5rem;
+}
+.pet-photo-lg .pet-img {
+  width: 144px;
+  height: 144px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid var(--kavia-orange, #E87A41);
+  background: #ebd1c2;
+}
+.edit-photo-btn {
+  position: absolute;
+  right: 0;
+  bottom: 8px;
+  background: var(--kavia-orange);
+  color: white;
+  border-radius: 30px;
+  padding: 7px 14px;
+  cursor: pointer;
+  font-size: 1.25rem;
+  z-index: 2;
+  box-shadow: 0 1.5px 6px rgba(232,122,65,0.11);
+}
+.header-details {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 0.7rem;
+}
+.pet-name-species {
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+}
+.pet-name {
+  font-family: 'Poppins', Arial, sans-serif;
+  font-size: 2.4rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--kavia-orange);
+}
+.pet-species {
+  font-size: 1.18rem;
+  color: var(--kavia-accent);
+  font-family: 'Inter', Arial, sans-serif;
+  margin-top: 0.5rem;
+}
+.pet-bio {
+  margin-top: 0.8rem;
+  font-size: 1.10rem;
+  font-weight: 600;
+  color: var(--kavia-dark);
 }
 
-.card {
-  background: #23282f;
+.profile-main {
+  display: flex;
+  gap: 2.3rem;
+  margin: 2rem 0 0.5rem 0;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+.profile-info, .owner-info-panel {
+  background: #f6f2ec;
   border-radius: 16px;
-  box-shadow: 0 2px 12px 0 rgba(29,29,58,0.12), 0 1.5px 12px 0 rgba(232,122,65,0.07);
-  padding: 2rem;
-  transition: box-shadow 0.2s;
-  margin-bottom: 0;
+  box-shadow: 0 2px 8px 0 rgba(29,29,58,0.06), 0 1.5px 8px 0 rgba(232,122,65,0.04);
+  padding: 1.5rem 2rem 1.2rem 2rem;
+  flex: 1 1 340px;
+  min-width: 260px;
+  margin-bottom: 1.4rem;
 }
 
-.card:hover {
-  box-shadow: 0 6px 28px 0 rgba(29,29,58,0.17), 0 1.5px 16px 0 rgba(232,122,65,0.09);
+.profile-info ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
-
-.profile-section {
+.profile-info li {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  font-size: 1.11rem;
+  margin-bottom: 0.7em;
+  color: var(--kavia-accent);
+  font-weight: 500;
+}
+.profile-info .icon {
+  margin-right: 10px;
+  color: var(--kavia-orange);
+  font-size: 1.05em;
+}
+.profile-info span {
+  font-weight: 700;
+  color: var(--kavia-dark);
+  margin-right: 6px;
 }
 
-.profile-photo {
-  margin-right: 0;
+.owner-info-panel {
+  position: relative;
+  box-sizing: border-box;
+  background: #fdf9f3;
 }
-
-.pet-photo {
-  width: 90px;
-  height: 90px;
-  background: #c6c6c6;
-  border-radius: 50%;
-  border: 3px solid var(--kavia-orange, #E87A41);
+.owner-info-panel .panel-toggle {
+  font-size: 1.10rem;
+  font-weight: 700;
+  cursor: pointer;
+  color: var(--kavia-orange);
   display: flex;
   align-items: center;
-  justify-content: center;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid #e3dccf;
+  margin-bottom: 0.3rem;
+  user-select: none;
+}
+.owner-info-panel .panel-body {
+  padding-top: 0.5rem;
+  transition: max-height 0.26s;
+}
+.owner-info-panel .panel-body.collapsed {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0;
 }
 
-.profile-details h2 {
-  margin: 0 0 0.5rem 0;
-  color: var(--kavia-orange, #E87A41);
+.owner-info-section, .emergency-info-section {
+  margin-bottom: 0.8rem;
+  color: var(--kavia-accent);
+  font-size: 1.03em;
+}
+.owner-info-section a {
+  color: #4e875d;
+  text-decoration: none;
+  margin-right: 0.8em;
+}
+.owner-info-section a .icon {
+  margin-right: 4px;
+}
+.owner-info-section .icon, .emergency-info-section .icon {
+  margin-right: 6px;
+}
+.emergency-info-section {
+  margin-top: 0.3em;
+  font-size: 0.98em;
+  color: #95393c;
 }
 
-.profile-details p {
-  margin: 0.2rem 0;
+.profile-health-section {
+  display: flex;
+  gap: 2.2rem;
+  margin: 1.7rem 0 2.2rem 0;
+  flex-wrap: wrap;
+  align-items: stretch;
 }
 
-.medical-section h3,
-.document-section h3 {
-  margin-top: 0;
+.health-summary {
+  flex: 1 1 340px;
+  background: #f0fcf7;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px 0 rgba(138,161,130,0.07);
+  padding: 1.2rem 1.6rem;
+  margin-bottom: 1.3rem;
+}
+.summary-header {
+  display: flex;
+  align-items: center;
   margin-bottom: 1rem;
-  color: var(--kavia-orange, #E87A41);
-  font-size: 1.15rem;
+}
+.summary-header .icon {
+  color: #4aaa69;
+  font-size: 1.3em;
+  margin-right: 0.6em;
+}
+.health-status-tag {
+  border-radius: 12px;
+  padding: 5px 20px;
+  margin-left: 5px;
+  font-weight: 700;
+  font-size: 0.97em;
+  color: #fff;
+  background: #7eca85;
+  box-shadow: 0 1.5px 4px rgba(0,0,0,0.12);
+}
+.status-stable {
+  background: #6fc865;
+}
+.status-overdue {
+  background: #cb4545;
+}
+.status-completed {
+  background: #6fc865;
+}
+.status-upcoming {
+  background: #E87A41;
+}
+.summary-tags {
+  margin-bottom: 0.8em;
+}
+.badge.tag-badge {
+  background: #f8ad7d;
+  color: #58422b;
+  border-radius: 8px;
+  letter-spacing: 0.03em;
+  font-weight: 600;
+  margin-right: 7px;
+  padding: 3px 13px 3px 10px;
+  font-size: 0.97em;
+  display: inline-block;
+  vertical-align: middle;
+}
+.summary-list > div {
+  margin-bottom: 0.68em;
+  font-size: 1.01em;
+  color: #2c4736;
+}
+.summary-list .icon {
+  margin-right: 7px;
+  color: #8aa182;
+}
+.health-history-link {
+  color: var(--kavia-orange);
+  text-decoration: underline;
+  font-weight: 600;
+  font-size: 0.99em;
+  margin-left: 2px;
 }
 
-.medical-section ul,
-.document-section ul {
-  padding-left: 1.2rem;
+.vax-panel {
+  flex: 1 1 340px;
+  background: #f3f6fa;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px 0 rgba(138,161,130,0.07);
+  padding: 1.25rem 1.6rem;
+  margin-bottom: 1.3rem;
+}
+.vax-panel .panel-title {
+  font-size: 1.09rem;
+  color: #a26243;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+}
+.vax-panel .icon {
+  margin-right: 8px;
+  color: var(--kavia-orange);
+}
+.vax-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.vax-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.62em;
+  font-size: 1.04em;
+  border-left: 4px solid #f0e7e0;
+  padding-left: 10px;
+  border-radius: 3px;
+  background: #f9f8f6;
+}
+.vax-completed .status-bullet {
+  background: #3ad671;
+}
+.vax-overdue .status-bullet {
+  background: #ff6a6a;
+}
+.vax-upcoming .status-bullet {
+  background: #E87A41;
+}
+.status-bullet {
+  color: #fff;
+  border-radius: 23px;
+  background: #adbdbc;
+  font-size: 0.93em;
+  font-weight: 700;
+  padding: 2px 13px;
+  margin-left: 1.2em;
+  box-shadow: 0 1.5px 4px rgba(0,0,0,0.09);
+}
+.vax-name {
+  flex: 0 1 40%;
+  color: #7f5c11;
+  font-weight: 600;
+}
+.vax-date {
+  flex: 0 1 35%;
+  color: #75716a;
+  font-style: italic;
+  font-size: 0.91em;
 }
 
-.medical-section li,
-.document-section li {
-  margin-bottom: 0.4rem;
+.sticky-panel-row {
+  display: flex;
+  gap: 2.1rem;
+  align-items: flex-start;
+  margin: 2.2rem 0 0 0;
+  flex-wrap: wrap;
+}
+.editable-notes, .attachments-panel {
+  background: #fffde7;
+  border: 2px dashed #fecf91;
+  border-radius: 12px;
+  padding: 1.3rem 1.6rem 1rem 1.2rem;
+  min-width: 260px;
+  flex: 1 1 360px;
+  position: sticky;
+  top: 24px;
+  margin-bottom: 1rem;
+}
+.editable-notes textarea {
+  width: 100%;
+  background: #fffbe5;
+  border: 1.5px solid #ffd7b5;
+  border-radius: 9px;
+  padding: 8px 11px;
+  font-size: 1.06em;
+  font-family: inherit;
+  resize: vertical;
+  color: #7c5723;
+  margin-top: 0.5rem;
+}
+.notes-title, .attachments-title {
+  color: #E87A41;
+  font-size: 1.13rem;
+  font-weight: 700;
+  margin-bottom: 0.45rem;
+  display: flex;
+  align-items: center;
+}
+.notes-title .icon, .attachments-title .icon {
+  margin-right: 8px;
 }
 
-@media (max-width: 540px) {
-  .profile-section {
+.attachments-panel {
+  background: #f7fff8;
+  border-color: #aadcb5;
+  padding: 1.25rem 1.5rem;
+}
+.attachment-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-bottom: 0.8rem;
+}
+.attachment-preview {
+  position: relative;
+  display: inline-block;
+  background: #eef2ee;
+  border-radius: 7px;
+  padding: 5px 9px 7px 5px;
+  font-size: 0.99em;
+}
+.attachment-img {
+  max-width: 90px;
+  max-height: 82px;
+  border-radius: 5px;
+}
+.remove-attachment-btn {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  background: #e87a41cc;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  padding: 1px 7px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  z-index: 3;
+}
+
+.add-attachment-btn {
+  background: #7eca85;
+  color: #fff;
+  font-weight: 700;
+  padding: 7px 18px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  margin-top: 4px;
+  font-size: 1em;
+  box-shadow: 0 1px 4px rgba(111,200,101,0.13);
+  transition: background 0.13s;
+  display: inline-flex;
+  align-items: center;
+}
+.add-attachment-btn:hover {
+  background: #4aaa69;
+}
+
+@media (max-width: 940px) {
+  .profile-header {
     flex-direction: column;
-    gap: 0.8rem;
     align-items: flex-start;
+    gap: 1.15rem;
   }
-  .card {
-    padding: 1.2rem;
+  .profile-main, .profile-health-section, .sticky-panel-row {
+    flex-direction: column;
+    gap: 1.1rem;
   }
+}
+
+@media (max-width: 630px) {
   .profile-page {
-    padding: 1.2rem 0.4rem;
+    padding: 1.06rem 0.2rem;
+    border-radius: 15px;
+  }
+  .profile-header {
+    padding: 0.7rem 0.3rem;
+    gap: 0.8rem;
+  }
+  .profile-info, .owner-info-panel, .health-summary, .vax-panel, .editable-notes, .attachments-panel {
+    min-width: 0;
+    padding: 0.88rem 0.78rem;
+  }
+  .sticky-panel-row {
+    gap: 0.65rem;
+  }
+}
+
+@media (max-width: 440px) {
+  .profile-header {
+    padding-bottom: 0.2rem;
+    border-radius: 8px 8px 0 0;
+  }
+  .pet-name {
+    font-size: 1.5rem;
   }
 }
