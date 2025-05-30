@@ -1,224 +1,194 @@
 import React from "react";
 import "./LandingPage.css";
 
-/**
- * PUBLIC_INTERFACE
- * LandingPage: The modern principal area for FurEverCare landing.
- * Refactored: 
- * - Full edge-to-edge gradient background, overflow-x hidden, no horizontal scroll or black bars at any device width.
- * - Global box-sizing and max-width rules anchor all sections flush with viewport.
- * - Consistent use of Poppins/Nunito fonts, variables/colors, and whitespace for every main area.
- * - Comments and structure clarify which classes/containers solve the no-scroll and flush/fit goals.
- * - Active hover/animation on major CTAs and feature cards.
- */
+// PUBLIC_INTERFACE
 function LandingPage() {
   return (
-    // Root: background, no overflow, box sizing. All further style/box rules in LandingPage.css!
-    <div className="furever-landing">
-      {/* 
-        HERO SECTION
-        - Centered text and call-to-action
-        - Buttons with lively gradient/hover 
-        - Edge-clamped container, never allows scroll past viewport
-      */}
-      <section className="furever-hero">
-        <div className="furever-hero-left">
-          <h1 className="furever-hero-title">
-            Caring for Pets. Empowering Owners.<br />
-            <span className="gradient-text">FurEverCare.</span>
+    <div className="furevercare-landing">
+      {/* --- Hero / Banner Section --- */}
+      <section className="furevercare-hero">
+        <div className="furevercare-hero-bg-anim" aria-hidden="true"></div>
+        <div className="furevercare-hero-content">
+          <div className="furevercare-logo-circle">
+            <span role="img" aria-label="paw print" className="furevercare-paw">🐾</span>
+          </div>
+          <h1 className="furevercare-title">
+            FurEverCare
           </h1>
-          <p className="furever-hero-desc">
-            Your all-in-one pet wellness companion.<br />
-            Track health, nutrition, activity, and more—all in one beautiful dashboard.
+          <p className="furevercare-headline">
+            Modern pet wellness, <span className="gradient-text">reimagined</span>
           </p>
-          <div className="furever-hero-cta-row" style={{justifyContent: 'center', width: '100%'}}>
-            {/* "Get Started" with animated gradient bg and button lift */}
-            <a href="/signup" className="furever-btn furever-btn-gradient" tabIndex={0}>
+          <p className="furevercare-subtext">
+            All-in-one platform to track, organize, and love your pets better—from health and meals to activity and appointments.
+          </p>
+          <div className="furevercare-cta-btns">
+            <a href="/signup" className="furevercare-btn furevercare-btn-primary">
               Get Started
             </a>
-            {/* Glass style secondary button */}
-            <a href="/profile" className="furever-btn furever-btn-glass" tabIndex={0}>
-              See Dashboard
-            </a>
-          </div>
-          <div className="furever-hero-note">
-            {/* Could add AOS/GSAP for fade-in: See <LandingPage.css> for upgrade comment */}
-            <span role="img" aria-label="paw">🐾</span> Loved by pet parents and vets.
-          </div>
-        </div>
-        {/* Main illustration and floating icon accents, flush with edge */}
-        <div className="furever-hero-right">
-          <div className="furever-hero-illus-wrapper">
-            <img
-              className="furever-hero-illus"
-              src="https://undraw.co/api/illustrations/038ae9e2-b5e2-48a6-973b-f47153b57c46"
-              alt="Pet dashboard illustration (placeholder)"
-            />
-            {/* Floating, softly-animated icons: No overflow */}
-            <div className="furever-hero-float-icon furever-float-1" title="Profile">
-              <span role="img" aria-label="profile">🐶</span>
-            </div>
-            <div className="furever-hero-float-icon furever-float-2" title="Heart">
-              <span role="img" aria-label="heart">❤️</span>
-            </div>
-            <div className="furever-hero-float-icon furever-float-3" title="Checked">
-              <span role="img" aria-label="check">✅</span>
-            </div>
-          </div>
-        </div>
-      </section>
-      {/* 
-        KEY FEATURES
-        - Four cards, animated glass hover.
-        - Never overflows, grid spans flush.
-      */}
-      <section className="furever-features">
-        <h2 className="furever-section-title">Key Features</h2>
-        <div className="furever-features-grid">
-          <FeatureCard
-            icon={<span role="img" aria-label="profile">🐕</span>}
-            title="Pet Profiles"
-            desc="Create and manage detailed pet profiles for every furry friend."
-          />
-          <FeatureCard
-            icon={<span role="img" aria-label="health">🩺</span>}
-            title="Health Records"
-            desc="Track vaccinations, vet visits, medications, deworming & more."
-          />
-          <FeatureCard
-            icon={<span role="img" aria-label="nutrition">🥕</span>}
-            title="Diet & Nutrition"
-            desc="Log daily meals and receive nutrition recommendations for healthy pets."
-          />
-          <FeatureCard
-            icon={<span role="img" aria-label="activity">🏃‍♂️</span>}
-            title="Activity Monitoring"
-            desc="Visualize walks, playtime, and exercise with fun progress stats."
-          />
-        </div>
-      </section>
-      {/* 
-        ABOUT/STORY SECTION
-        - Two-column layout: text and visual.
-        - No horizontal illegality, all widths flush.
-      */}
-      <section className="furever-about-story">
-        <div className="furever-about-content">
-          <h2 className="furever-section-title">Our Story</h2>
-          <p>
-            FurEverCare began with a simple mission: to help every pet thrive and every owner feel confident.
-            Our founders, both pet lovers and technologists, wanted to build a safer, more joyful world for animals—using the power of modern technology and design.
-            Join us as we make pet wellness easy, accessible, and beautiful!
-          </p>
-        </div>
-        <div className="furever-about-illus-wrapper">
-          <img
-            src="https://undraw.co/api/illustrations/f22cdaa9-67e6-48d7-b072-2bdfd2e914b1"
-            alt="Pet owner & dog illustration"
-            className="furever-about-illus"
-          />
-        </div>
-        {/* Decorative SVG curve - width is unconstrained, so edge is flush */}
-        <svg className="furever-about-bg-svg" viewBox="0 0 500 160" preserveAspectRatio="none">
-          <path
-            d="M0,48 C180,120 320,10 500,70 L500,00 L0,0 Z"
-            style={{ fill: "rgba(138,161,130, 0.07)" }}
-          />
-        </svg>
-      </section>
-      {/* 
-        TESTIMONIALS
-        - User cards, hover/animation for delight and engagement.
-        - Responsive and always fits grid to full width (no black gaps).
-      */}
-      <section className="furever-testimonials">
-        <h2 className="furever-section-title">What Users Say</h2>
-        <div className="furever-testimonial-grid">
-          <TestimonialCard
-            avatar="https://api.dicebear.com/7.x/adventurer/svg?seed=dog1"
-            user="Alex P."
-            feedback="FurEverCare makes tracking vet appointments easy, and I love the design!"
-          />
-          <TestimonialCard
-            avatar="https://api.dicebear.com/7.x/adventurer/svg?seed=cat3"
-            user="Morgan K."
-            feedback="My cats and I are fans. The reminders and meal logs are a lifesaver 💖."
-          />
-          <TestimonialCard
-            avatar="https://api.dicebear.com/7.x/adventurer/svg?seed=rabbit"
-            user="Samantha W."
-            feedback="Finally, a pet app that's beautiful AND useful. So many features in one place!"
-          />
-        </div>
-      </section>
-      {/* 
-        FOOTER
-        - Brand, links, socials - full width, gradient background.
-        - Enforces no-gap edge-to-edge policy
-      */}
-      <footer className="furever-footer">
-        <div className="furever-footer-inner">
-          <div className="furever-footer-brand">
-            <span className="footer-logo" role="img" aria-label="paw">🐾</span>
-            <span>FurEverCare</span>
-          </div>
-          <div className="furever-footer-links">
-            <a href="/about">About</a>
-            <a href="/support/contact">Contact</a>
-            <a href="/profile">Dashboard</a>
-          </div>
-          <div className="furever-footer-social">
-            <a href="#" aria-label="Twitter" title="Twitter" rel="noopener noreferrer">
-              <span role="img" aria-label="twitter">🐦</span>
-            </a>
-            <a href="#" aria-label="Instagram" title="Instagram" rel="noopener noreferrer">
-              <span role="img" aria-label="instagram">📸</span>
+            <a href="/dashboard" className="furevercare-btn furevercare-btn-secondary">
+              Live Demo
             </a>
           </div>
         </div>
-        <div className="furever-footer-bottom">
-          &copy; {new Date().getFullYear()} FurEverCare. All rights reserved.
+      </section>
+
+      {/* --- Value Propositions --- */}
+      <section className="furevercare-grid-section">
+        <h2 className="section-title">Why FurEverCare?</h2>
+        <div className="furevercare-value-grid">
+          <div className="furevercare-value-card animate-pop">
+            <span className="card-icon" role="img" aria-label="profile">🐶</span>
+            <h3>Pet Profiles</h3>
+            <p>Create detailed, lovable profiles for all your pets.</p>
+          </div>
+          <div className="furevercare-value-card animate-pop" style={{ animationDelay: "0.07s" }}>
+            <span className="card-icon" role="img" aria-label="medical">💉</span>
+            <h3>Health Tracking</h3>
+            <p>Vaccinations, illnesses & reminders in one place.</p>
+          </div>
+          <div className="furevercare-value-card animate-pop" style={{ animationDelay: "0.14s" }}>
+            <span className="card-icon" role="img" aria-label="nutrition">🍽️</span>
+            <h3>Diet & Nutrition</h3>
+            <p>Log and manage meals for optimal pet wellness.</p>
+          </div>
+          <div className="furevercare-value-card animate-pop" style={{ animationDelay: "0.21s" }}>
+            <span className="card-icon" role="img" aria-label="activity">🏃‍♂️</span>
+            <h3>Activity Monitor</h3>
+            <p>Track steps, walks, & playtime with easy logging.</p>
+          </div>
+          <div className="furevercare-value-card animate-pop" style={{ animationDelay: "0.28s" }}>
+            <span className="card-icon" role="img" aria-label="appointment">📅</span>
+            <h3>Appointments</h3>
+            <p>Book and manage vet visits with smart reminders.</p>
+          </div>
+          <div className="furevercare-value-card animate-pop" style={{ animationDelay: "0.35s" }}>
+            <span className="card-icon" role="img" aria-label="docs">📑</span>
+            <h3>Safe Docs</h3>
+            <p>Store prescriptions, records & notes securely.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* --- Feature Preview Cards --- */}
+      <section className="furevercare-feature-cards-section">
+        <h2 className="section-title">Platform Features</h2>
+        <div className="furevercare-feature-cards">
+          <div className="furevercare-feature-card glassy-card hover-rise">
+            <div className="feature-icon" role="img" aria-label="bell">🔔</div>
+            <h3>Notifications / Reminders</h3>
+            <p>Never miss a vaccine or playdate — smart alerts keep you on track.</p>
+          </div>
+          <div className="furevercare-feature-card glassy-card hover-rise">
+            <div className="feature-icon" role="img" aria-label="dashboard">📊</div>
+            <h3>Visual Dashboard</h3>
+            <p>Easily spot trends & see progress for each pet at a glance.</p>
+          </div>
+          <div className="furevercare-feature-card glassy-card hover-rise">
+            <div className="feature-icon" role="img" aria-label="secure">🔒</div>
+            <h3>Your Data is Safe</h3>
+            <p>Bank-level security keeps your pet info and records protected.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* --- How it Works / Infographic --- */}
+      <section className="furevercare-howitworks-section">
+        <h2 className="section-title">How It Works</h2>
+        <div className="furevercare-howitworks-steps">
+          <div className="howitworks-step animate-fadein">
+            <span className="step-badge">1</span>
+            <div className="step-icon" role="img" aria-label="sign up">📝</div>
+            <div>
+              <h4>Sign up & create a pet profile</h4>
+              <p>Add all your furry friends. No limit!</p>
+            </div>
+          </div>
+          <div className="howitworks-arrow"></div>
+          <div className="howitworks-step animate-fadein" style={{ animationDelay: "0.2s" }}>
+            <span className="step-badge">2</span>
+            <div className="step-icon" role="img" aria-label="customize">⚙️</div>
+            <div>
+              <h4>Personalize wellness details</h4>
+              <p>Upload health, schedule meals, customize reminders.</p>
+            </div>
+          </div>
+          <div className="howitworks-arrow"></div>
+          <div className="howitworks-step animate-fadein" style={{ animationDelay: "0.4s" }}>
+            <span className="step-badge">3</span>
+            <div className="step-icon" role="img" aria-label="track">📈</div>
+            <div>
+              <h4>Track, manage & celebrate</h4>
+              <p>See progress, get tips, and enjoy happy pets!</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- Testimonials Section --- */}
+      <section className="furevercare-testimonials-section">
+        <h2 className="section-title">What Pet Parents Say</h2>
+        <div className="furevercare-testimonials-grid">
+          <div className="testimonial-card glassy-card animate-floating">
+            <div className="testimonial-avatar" style={{backgroundColor:"#fed6f4"}}>
+              <span role="img" aria-label="dog owner">🧑‍🦱</span>
+            </div>
+            <blockquote>
+              “FurEverCare makes it so easy to keep track of my dog’s vet visits. The reminders are a life saver!”
+            </blockquote>
+            <div className="testimonial-author">— Jamie</div>
+          </div>
+          <div className="testimonial-card glassy-card animate-floating" style={{ animationDelay: "0.15s" }}>
+            <div className="testimonial-avatar" style={{backgroundColor:"#ffe5b4"}}>
+              <span role="img" aria-label="cat owner">👩‍🦰</span>
+            </div>
+            <blockquote>
+              “My two cats' health history is finally organized.
+              I love the dashboard and cute vibes!”
+            </blockquote>
+            <div className="testimonial-author">— Alex</div>
+          </div>
+          <div className="testimonial-card glassy-card animate-floating" style={{ animationDelay: "0.3s" }}>
+            <div className="testimonial-avatar" style={{backgroundColor:"#b4eaff"}}>
+              <span role="img" aria-label="pet parent">👨‍🦳</span>
+            </div>
+            <blockquote>
+              “The activity tracker motivates us to walk more together. Highly recommend for busy pet parents.”
+            </blockquote>
+            <div className="testimonial-author">— Pat</div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- Signup CTA Banner --- */}
+      <section className="furevercare-cta-section">
+        <h2>Ready to give your pets the best?</h2>
+        <p>
+          Create your free FurEverCare account and join a happier, healthier pet community.
+        </p>
+        <a href="/signup" className="furevercare-btn furevercare-btn-large furevercare-btn-brand">
+          Try FurEverCare Free
+        </a>
+      </section>
+
+      {/* --- Footer --- */}
+      <footer className="furevercare-footer">
+        <div className="footer-main">
+          <div className="footer-logo-mark"><span role="img" aria-label="paw">🐾</span></div>
+          <div className="footer-nav">
+            <a href="/" className="footer-link">Home</a>
+            <a href="/about" className="footer-link">About</a>
+            <a href="/dashboard" className="footer-link">Dashboard</a>
+            <a href="/contact" className="footer-link">Contact</a>
+          </div>
+        </div>
+        <div className="footer-socials">
+          <a href="https://twitter.com/" className="footer-social" aria-label="Twitter" rel="noopener noreferrer" target="_blank">🐦</a>
+          <a href="https://instagram.com/" className="footer-social" aria-label="Instagram" rel="noopener noreferrer" target="_blank">📸</a>
+        </div>
+        <div className="footer-copy">
+          © {new Date().getFullYear()} FurEverCare. All rights reserved.
         </div>
       </footer>
-    </div>
-  );
-}
-
-/**
- * PUBLIC_INTERFACE
- * Glassmorphism feature card for features grid, includes hover/transition style in CSS.
- */
-function FeatureCard({ icon, title, desc }) {
-  return (
-    <div className="furever-feature-card">
-      <div className="furever-feature-icon">{icon}</div>
-      <h3 className="furever-feature-title">{title}</h3>
-      <div className="furever-feature-desc">{desc}</div>
-    </div>
-  );
-}
-
-/**
- * PUBLIC_INTERFACE
- * Testimonial card for user reviews, hover/clickable.
- */
-function TestimonialCard({ avatar, user, feedback }) {
-  return (
-    <div className="furever-testimonial-card">
-      <div className="furever-testimonial-avatar">
-        <img src={avatar} alt={user + " avatar"} />
-      </div>
-      <div className="furever-testimonial-user">{user}</div>
-      <div className="furever-testimonial-feedback">"{feedback}"</div>
-      <div className="furever-testimonial-stars" aria-label="5 stars">
-        {Array(5)
-          .fill()
-          .map((_, i) => (
-            <span key={i} role="img" aria-label="star">
-              ⭐
-            </span>
-          ))}
-      </div>
     </div>
   );
 }
