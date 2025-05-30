@@ -4,6 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 
 // PUBLIC_INTERFACE
 function SignUp() {
+  const navigate = useNavigate();
+
   // State for form fields
   const [form, setForm] = useState({
     username: "",
