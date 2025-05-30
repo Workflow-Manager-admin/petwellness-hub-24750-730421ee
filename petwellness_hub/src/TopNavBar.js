@@ -183,12 +183,12 @@ function TopNavBar() {
                 </button>
                 <ul className="dropdown-menu">
                   <li>
-                    <a href="/support/contact" tabIndex={openSubDropdown === "support" ? 0 : -1} onClick={closeAllDropdowns}>
+                    <a href="/settings/support/contact" tabIndex={openSubDropdown === "support" ? 0 : -1} onClick={closeAllDropdowns}>
                       Contact
                     </a>
                   </li>
                   <li>
-                    <a href="/support/help" tabIndex={openSubDropdown === "support" ? 0 : -1} onClick={closeAllDropdowns}>
+                    <a href="/settings/support/help" tabIndex={openSubDropdown === "support" ? 0 : -1} onClick={closeAllDropdowns}>
                       Help
                     </a>
                   </li>
