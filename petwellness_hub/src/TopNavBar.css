@@ -45,6 +45,14 @@
   align-items: center;
   gap: 12px;
   text-decoration: none;
+  font-family: "Poppins", "Inter", system-ui, Arial, sans-serif;
+}
+
+/* Paw emoji accent to left of brand */
+.furever-logo-paw {
+  display: inline-block;
+  transform: translateY(2px);
+  margin-right: 2px;
 }
 
 .furever-logo-symbol {
@@ -53,15 +61,20 @@
 }
 
 .furever-logo-text {
-  font-size: 1.25rem;
+  font-size: 1.27rem;
   font-weight: 700;
-  color: var(--fur-primary);
+  color: #5b8e65; /* brand green */
   letter-spacing: 0.04em;
   transition: color .23s;
+  /* Green glow (light) */
+  text-shadow: 0 0 5px rgba(91, 142, 101, 0.33), 0 1.2px 0 #e5f8e2;
+  font-family: "Poppins", "Inter", Arial, sans-serif;
 }
 
+/* Brand hover - shift to deeper green for effect */
 .furever-logo:hover .furever-logo-text {
-  color: var(--fur-accent);
+  color: #447c52;
+  text-shadow: 0 0 8px rgba(91, 142, 101, 0.23);
 }
 
 .furever-navbar-links {
