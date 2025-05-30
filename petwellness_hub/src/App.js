@@ -60,6 +60,15 @@ function App() {
                   <LandingPage />
                 }
               />
+              {/* Support: Contact Us and Help */}
+              <Route
+                path="/settings/support/contact"
+                element={React.createElement(require("./ContactUs").default)}
+              />
+              <Route
+                path="/settings/support/help"
+                element={React.createElement(require("./Help").default)}
+              />
             </Routes>
           </div>
         </main>
