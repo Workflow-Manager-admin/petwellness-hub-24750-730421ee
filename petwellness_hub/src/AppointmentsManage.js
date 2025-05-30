@@ -410,19 +410,19 @@ function AppointmentsManage() {
                 <div className="appt-card card-shadow" key={appt.id}>
                   <div className="appt-card-header">
                     <span className="appt-type-icon">{getTypeObj(appt.type).icon}</span>
-                    <span className="appt-type">{getTypeObj(appt.type).label}</span>
+                    <span className="appt-type label-status-info">{getTypeObj(appt.type).label}</span>
                     <span className={`appt-status appt-status-${appt.status}`}>
                       {appt.status.charAt(0).toUpperCase() + appt.status.slice(1)}
                     </span>
                   </div>
                   <div className="appt-info-row">
-                    <span className="appt-pet">{getPet(appt.petId).avatar} {getPet(appt.petId).name}</span>
-                    <span className="appt-time">
+                    <span className="appt-pet appt-detail-output">{getPet(appt.petId).avatar} {getPet(appt.petId).name}</span>
+                    <span className="appt-time appt-detail-output">
                       <IconUI name="clock" /> {fmtDate(appt.datetime)}
                     </span>
                   </div>
                   <div className="appt-info-row">
-                    <span className="appt-vet">
+                    <span className="appt-vet appt-detail-output">
                       <IconUI name="vet" /> {appt.vet}
                     </span>
                     <span className="appt-docs">
@@ -433,7 +433,7 @@ function AppointmentsManage() {
                       ) : null}
                     </span>
                   </div>
-                  <div className="appt-notes">{appt.notes}</div>
+                  <div className="appt-notes appt-detail-output">{appt.notes}</div>
                   <div className="appt-card-actions">
                     <button onClick={() => openApptModal("details", appt)}><IconUI name="info" /> Details</button>
                     <button onClick={() => openApptModal("edit", appt)}><IconUI name="edit" /> Edit</button>
@@ -556,18 +556,18 @@ function AppointmentsManage() {
                 <div className="appt-card card-shadow" key={appt.id}>
                   <div className="appt-card-header">
                     <span className="appt-type-icon">{getTypeObj(appt.type).icon}</span>
-                    <span className="appt-type">{getTypeObj(appt.type).label}</span>
-                    <span className="appt-vet">
+                    <span className="appt-type label-status-info">{getTypeObj(appt.type).label}</span>
+                    <span className="appt-vet label-status-info">
                       <IconUI name="vet" /> {appt.vet}
                     </span>
                   </div>
                   <div className="appt-info-row">
-                    <span className="appt-pet">{getPet(appt.petId).avatar} {getPet(appt.petId).name}</span>
-                    <span className="appt-time">
+                    <span className="appt-pet appt-detail-output">{getPet(appt.petId).avatar} {getPet(appt.petId).name}</span>
+                    <span className="appt-time appt-detail-output">
                       <IconUI name="clock" /> {fmtDate(appt.datetime)}
                     </span>
                   </div>
-                  <div className="appt-notes">{appt.notes}</div>
+                  <div className="appt-notes appt-detail-output">{appt.notes}</div>
                   <div className="appt-card-actions">
                     <button onClick={() => openApptModal("details", appt)}><IconUI name="info" /> Details</button>
                     <button onClick={() => {
