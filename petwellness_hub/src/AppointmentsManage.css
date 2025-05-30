@@ -24,7 +24,28 @@
 /* Headings and section titles */
 .dialog-modal .modal-title,
 .dialog-modal .modal-section-title {
-  color: #000 !important;
+  color: #8aa182 !important; /* Green for section/topic headings */
+}
+
+/* Topic/Section main headings in main view, calendar, reminders, and other non-modal containers */
+.appt-section > .section-header h2,
+.appt-reminders > .section-header h2,
+.booking-wizard-root > h2,
+.booking-confirm-field > b,
+.doc-preview-root > h3,
+.appt-details-modal > h3,
+.appt-cancel-modal > h3,
+.appt-edit-modal > h3 {
+  color: #8aa182 !important; /* Green color for non-modal topic/section headings */
+}
+
+/* For table/panel/card style section headings */
+.upcoming-appts-heading,
+.appt-section .section-header h2,
+.appt-section h2,
+.booking-step-label.active,
+.booking-step-label {
+  color: #8aa182 !important;
 }
 
 /* Form labels */
