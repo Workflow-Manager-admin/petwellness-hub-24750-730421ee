@@ -1,6 +1,27 @@
  /* Appointment management styles - Book/Edit Modal enforce black text/icons */
- 
-/* STRONG SELECTORS to force ALL Book/Edit Modal content to black -- scoped to dialog-modal only */
+ /* STRONG SELECTORS to force ALL Book/Edit Modal content to black -- scoped to dialog-modal only */
+
+/* Explicitly force all informational/output text in topic/section content to absolute black */
+.appt-detail-output,
+.appt-notes,
+.no-appts-msg,
+.appt-history-list .appt-detail-output,
+.reminder-text,
+.appt-card .appt-notes,
+.booking-confirm-field > span,
+.doc-preview-fn,
+.doc-preview-thumb,
+.doc-preview-entry,
+.appt-pet,
+.appt-time,
+.appt-vet,
+.appt-section .appt-info-row span,
+.calendar-appt-dot,
+.booking-tips small,
+.booking-error,
+.booking-attachments-preview .attach-filename {
+  color: #000 !important;
+}
 
 /* Enforce all text, headings, inputs, section titles, and close icon in black within modal */
 .dialog-modal,
