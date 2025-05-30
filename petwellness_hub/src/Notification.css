@@ -62,6 +62,10 @@
   user-select: none;
   transition: border 0.15s, box-shadow 0.15s;
 }
+/* Ensure only the toggle labels (i.e. the display name, not icon or toggle switch) are shown in black */
+.notif-toggle > span:not(.notif-icon):not(.custom-toggle) {
+  color: #000;
+}
 .notif-toggle .notif-icon { margin-right: 4px; display: flex; }
 .notif-toggle .custom-toggle {
   margin-left: auto;
