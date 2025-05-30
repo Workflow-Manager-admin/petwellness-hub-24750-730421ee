@@ -452,6 +452,13 @@ function ProfileInfoRow({ icon, label, value, onEdit, showEdit }) {
  * Preview for attachments/files: shows icon for type/image preview, filename, delete placeholder.
  */
 function AttachmentPreview({ att }) {
+  // Only these two filenames should have black font
+  const blackTextFiles = ['VetReport-May2024.pdf', 'Fido-Portrait.png'];
+  const filenameStyle =
+    blackTextFiles.includes(att.filename)
+      ? { color: "#000" }
+      : undefined;
+
   return (
     <div className="profile-attachment-preview">
       {/* Could preview thumbnails for img, icon for pdf/doc */}
@@ -462,7 +469,7 @@ function AttachmentPreview({ att }) {
           <span role="img" aria-label={att.type}>📄</span>
         )}
       </span>
-      <span className="preview-filename">{att.filename}</span>
+      <span className="preview-filename" style={filenameStyle}>{att.filename}</span>
       {/* Replace with download/view/delete logic */}
       <button
         className="profile-attachment-delete-btn"
