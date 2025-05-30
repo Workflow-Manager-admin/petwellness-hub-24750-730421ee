@@ -229,6 +229,9 @@
   margin-top: -1px;
   text-align: right;
 }
+.progress-bar-value-black {
+  color: #000 !important;
+}
 
 .energy-behavior-tracker {
   display: flex;
