@@ -230,13 +230,38 @@ function renderStepConfirm({ bookingForm, errors }) {
   return (
     <div className="booking-step-content">
       <h3>Review Appointment</h3>
-      <div className="booking-confirm-field"><b>Pet:</b> {pet.avatar} {pet.name}</div>
-      <div className="booking-confirm-field"><b>Type:</b> {type.icon} {type.label}</div>
-      <div className="booking-confirm-field"><b>Date:</b> {bookingForm.date}</div>
-      <div className="booking-confirm-field"><b>Time:</b> {bookingForm.time}</div>
-      <div className="booking-confirm-field"><b>Veterinarian:</b> {vet ? vet.name : ""}</div>
-      <div className="booking-confirm-field"><b>Notes:</b> {bookingForm.note}</div>
-      <div className="booking-confirm-field"><b>Attachments:</b> {(bookingForm.attachments || []).map((f, i) => <span key={i}>{f.filename}</span>)}</div>
+      <div className="booking-confirm-field">
+        <b className="label-status-info">Pet:</b>
+        <span className="appt-detail-output"> {pet.avatar} {pet.name}</span>
+      </div>
+      <div className="booking-confirm-field">
+        <b className="label-status-info">Type:</b>
+        <span className="appt-detail-output"> {type.icon} {type.label}</span>
+      </div>
+      <div className="booking-confirm-field">
+        <b className="label-status-info">Date:</b>
+        <span className="appt-detail-output"> {bookingForm.date}</span>
+      </div>
+      <div className="booking-confirm-field">
+        <b className="label-status-info">Time:</b>
+        <span className="appt-detail-output"> {bookingForm.time}</span>
+      </div>
+      <div className="booking-confirm-field">
+        <b className="label-status-info">Veterinarian:</b>
+        <span className="appt-detail-output"> {vet ? vet.name : ""}</span>
+      </div>
+      <div className="booking-confirm-field">
+        <b className="label-status-info">Notes:</b>
+        <span className="appt-detail-output"> {bookingForm.note}</span>
+      </div>
+      <div className="booking-confirm-field">
+        <b className="label-status-info">Attachments:</b>
+        <span className="appt-detail-output">
+          {(bookingForm.attachments || []).map((f, i) => (
+            <span key={i}>{f.filename}&nbsp;</span>
+          ))}
+        </span>
+      </div>
     </div>
   );
 }
